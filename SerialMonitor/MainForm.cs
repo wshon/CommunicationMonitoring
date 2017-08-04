@@ -105,5 +105,15 @@ namespace SerialMonitor
             t.Enabled = false;
             thisSerialPort.Close();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //textBox1.AppendText(Label);     // 追加文本，并且使得光标定位到插入地方。
+            //textBox1.ScrollToCaret();
+
+            textBox1.Focus();//获取焦点
+            textBox1.Select(textBox1.TextLength, 0);//光标定位到文本最后
+            textBox1.ScrollToCaret();//滚动到光标处
+        }
     }
 }
