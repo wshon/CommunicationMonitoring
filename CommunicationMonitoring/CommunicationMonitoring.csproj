@@ -95,6 +95,10 @@
       <Project>{f95e11b6-c3d9-408c-95a8-e6eee4b031d6}</Project>
       <Name>SocketMonitor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VirtualSerialMonitor\VirtualSerialMonitor.csproj">
+      <Project>{58e4f85c-4c6e-4796-bb72-49d02c036867}</Project>
+      <Name>VirtualSerialMonitor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

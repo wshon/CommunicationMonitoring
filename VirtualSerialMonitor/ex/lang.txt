@@ -1,0 +1,302 @@
+;语言文件格式为: 名称|中文|英文，竖线分割，逗号与分号为注释，///为换行 空行自动忽略
+lang_Main_Title|有人虚拟串口软件|USR-VCOM Virtual Serial Port Server
+lang_Main_AppTitle|USR-VCOM|USR-VCOM
+lang_Menu_Dev|设备(&D)|Device(&D)
+lang_Menu_AddCOM|添加串口|Add COM
+lang_Menu_DelCOM|删除串口|Del COM
+lang_Menu_DelAllCOM|删除全部|Del All COM
+lang_Menu_ReConnect|重新连接|Reconnect
+lang_Menu_ReConnectAll|全部重连|ReConnect All
+lang_Menu_ResetCount|复位计数|Reset Count
+lang_Menu_ResetAllCount|全部复位|Reset All Count
+lang_Menu_Quit|退 出|Quit
+lang_Menu_Tools|工具(&T)|Tools(&T)
+lang_Menu_Monitor|监 控|Monitor
+lang_Menu_Scan|搜 索|Search
+lang_Menu_Auto|自动创建|Smart VCOM
+lang_Menu_Options|选项(&O)|Options(&O)
+lang_Menu_AutoRun|开机启动|AutoRun
+lang_Menu_KeepAlive|Keep-Alive|Keep-Alive
+lang_Menu_TCPClntKAlive|TCP Client 开启|TCP Client ON
+lang_Menu_TCPSvrKAlive|TCP Server 开启|TCP Server ON
+lang_Menu_FormMini|托盘运行|Run as tray icon
+lang_Menu_FormBackground|隐藏窗口|Run in background
+lang_Menu_RFC2217|同步波特率(类RFC2217)|Synchronize baudrate(RFC2217 similar)
+lang_Menu_ComPacketTimeOut|虚拟串口打包时间(毫秒)：|VCOM Packet TimeOut(ms):
+lang_Menu_StrictBaudrate|模拟波特率|Strict Baudrate
+lang_Menu_lang|English|Chinese
+lang_Menu_Help|帮助(&H)|Help(&H)
+lang_Menu_About|关于...|About...
+lang_Menu_WebSite|访问官网|Website
+lang_Menu_UsersGuide|使用手册|Users guide
+lang_Menu_Version|最新版本|Latest version
+lang_PmTray_ShowWindow|显示窗口|Show Window
+lang_PmTray_Scan|搜索设备|Search Device
+lang_PmTray_Lang|English|Chinese
+lang_PmTray_About|关于我们|About Us
+lang_PmTray_Quit|退 出|Quit
+lang_pm_T24|USR-TCP232-T24|USR-TCP232-T24
+lang_pm_E45|USR-TCP232-E45|USR-TCP232-E45
+lang_pm_WIFI|USR-WIFI232-X|USR-WIFI232-X
+lang_Btn_AddCOM|添 加|Add COM
+lang_Btn_DelCOM|删 除|Del COM
+lang_Btn_ReConnect|连 接|Connect
+lang_Btn_ResetCount|复位计数|Reset Count
+lang_Btn_Monitor|监 控|Monitor
+lang_Btn_Scan|搜 索|Search
+lang_Btn_Auto|自动创建|Smart VCOM
+lang_Btn_Quit|退 出|Quit
+lang_Lv_Remarks|备  注|Remarks
+lang_Lv_COMName|串口号|COM Name
+lang_Lv_Param|串口参数|Parameters
+lang_Lv_COMState|串口状态|COM State
+lang_Lv_NetProtocol|网络协议|Net Protocol
+lang_Lv_RemoteIP|目标IP|Remote IP
+lang_Lv_RemotePort|目标端口|Remote Port
+lang_Lv_LocalPort|本地端口|Local Port
+lang_Lv_COMReceived|串口接收|COM Received
+lang_Lv_NetReceived|网络接收|Net Received
+lang_Lv_NetState|网络状态|Net State
+lang_Lv_RegID|注册ID|Reg ID
+lang_Lv_COMOpen|开启|Open
+lang_Lv_COMClose|未使用|Not used
+lang_Lv_UDPCreate|UDP|UDP
+lang_Lv_UDPPSend|UDP发送|UDP Send
+lang_Lv_UDPNoTarget|目标不存在|No Target
+lang_Lv_CltConnecting|连接中...|Connecting...
+lang_Lv_CltConnectionFailed|连接失败|Connection Failed
+lang_Lv_CltConnected|已连接|Connected
+lang_Lv_CltConnectionErr|连接错误|Connection Error
+lang_Lv_SvrListen|监听|Listen
+lang_Lv_SvrConnected|已连接|Connected
+lang_About_Title|关于|About
+lang_About_Version|版本：|Version:
+lang_About_OK|确 认|OK
+lang_About_SoftName|名称：有人虚拟串口软件|Name:  USR-VCOM
+lang_About_Description|说明：本程序由济南有人物联网技术有限公司设计提供，可将TCP/IP连接、UDP广播，映射成本机虚拟COM口，应用程序通过访问虚拟串口，就可以完成远程控制、数据传输等功能。本软件使用免费。|Instruction:  This software is design by Jinan usr IOT Technology Co., Ltd.
+lang_About_Contact|联系我们：|Contact Us:
+lang_About_Website|http://www.usr.cn|http://www.usriot.com
+lang_About_LastVersion|http://www.usr.cn/Download/31.html|http://www.usriot.com/Download/31.html
+lang_About_Tel|0531-88826739|0531-88826739
+lang_About_Email|tec@usr.cn|tec@usr.cn
+lang_Add_Title|添加虚拟串口|Add Virtual Serial Port
+lang_Add_Remarks|备  注:|Remarks:
+lang_Add_VirtualCOM|虚拟串口:|Virtual COM:
+lang_Add_NetProtocol|网络协议:|Net Protocol:
+lang_Add_RemoteIP|目标IP/域名:|Remote IP/addr:
+lang_Add_LocalIP|本地IP:|Local IP:
+lang_Add_RemotePort|目标端口:|Remote Port:
+lang_Add_LocalPort|本地端口:|Local Port:
+lang_Add_xLocal|*本机|*real
+lang_Add_Cancel|取 消|Cancel
+lang_Add_OK|确 认|OK
+lang_Add_Cancel|取 消|Cancel
+lang_Add_AdvancedDown|高 级  +|Advanced +
+lang_Add_AdvancedUp|高 级  -|Advanced -
+lang_Add_RegID|注册ID|Register ID
+lang_chkEnableD2D|启用D2D|Use D2D
+lang_chkEnableCloud|启用透传云|Use USR CLOUD
+lang_lbledtCommunicationCode|通讯密码 |Communication Code 
+lang_lbledtCloudId|设备编号 |Cloud ID 
+lang_CloudUrl|http://cloud.usr.cn/index.html|http://cloud.usr.cn/en/
+lang_Add_RegIDInfo|注释：只用于TCP Client模式，连接即发送注册ID。可结合D2D Server服务器程序，实现虚拟串口与目标ID设备远程数据交互。取值范围：0~65535，0为不开启。|Note: only for TCP Client mode, the connection is sending a registration ID. Can be combined with the D2D Server server, virtual serial port and target ID device remote data exchange.Range: 0~65535, 0 is not open.
+lang_Monitor_Title|数据监控|Data Monitor
+lang_Monitor_Start|开始|Start
+lang_Monitor_Stop|停止|Stop
+lang_Monitor_Clear|清空|Clear
+lang_Monitor_Save|保存|Save
+lang_Monitor_Close|退出|Close
+lang_Monitor_Length|字节|Length
+lang_Monitor_Time|时间(ms)|Time(ms)
+lang_Monitor_SysInfoTitle|RFC2217功能字节|RFC2217 function byte
+lang_Monitor_ComOpen|串口打开|COM Open
+lang_Monitor_ComClose|串口关闭|COM Close
+lang_Monitor_SysInfo|同步波特率(类RFC2217)功能字节，实现虚拟串口参数改变硬件也同步改变的效果。仅适用于USR-TCP232系列，需要TCP232系列固件版本在4.12或更高，E45系列固件版本再2011或更高。若不支持，请点击"选项->RFC2217"取消勾选即可。|Synchronize baudrate(RFC2217 similar) function byte,virtual serial port parameters and hardware synchronization changes.Only applies to USR-TCP232 Series TCP232 Series firmware version requires 4.12 or higher, E45 series firmware version before 2011 or higher.If not support,Please click on "Options -> RFC2217" uncheck the box.
+lang_Scan_Title|USR-TCP232-T24系列添加虚拟串口  适用于：USR-TCP232-T24系列|USR-TCP232-T24 series add virtual serial port  Compliant:USR-TCP232-T24 series
+lang_Scan_ScanDevice|搜索设备|Search Device
+lang_Scan_AddVSCOM|连接虚拟串口|Connect Virtual COM
+lang_Scan_SetDevice|设置参数|Set Device
+lang_Scan_Clear|清空列表|Clear
+lang_Scan_Close|退出|Close
+lang_Scan_DeviceIP|设备IP|Device IP
+lang_Scan_MAC|MAC地址|MAC
+lang_Scan_RemoteIP|目标IP|Remote IP
+lang_Scan_RemotePort|目标端口|Remote Port
+lang_Scan_DevicePort|设备端口|Device Port
+lang_Scan_Gateway|网关|Gateway
+lang_Scan_NetProtocol|网络协议|Net Protocol
+lang_Scan_BaudRate|波特率|BaudRate
+lang_Scan_COMParameter|串口参数|COM Parameter
+lang_Scan_ID|独立ID|ID
+lang_Scan_SubnetMask|子网掩码|Subnet Mask
+lang_Scan_Version|版本号|Version
+lang_Scan_ConnectVirtualCOM|连接虚拟串口|Connect to Virtual COM
+lang_ScanSet_Title|参数设置|Set Device
+lang_ScanSet_Specail|特殊功能|Specail function
+lang_ScanSet_Connect|连接|Connect
+lang_ScanSet_Data|数据|Data
+lang_ScanSet_HintConnect|建立连接后发送ID号|Send device ID when connected
+lang_ScanSet_HintData|发送数据时带ID号|Send data with device ID
+lang_ScanSet_HintReset|做TCP Client时，尝试30次连接Tcp Server失败，自动重启|When tcp client did not connect to server 30 times,restart module.
+lang_ScanSet_HintLink|引脚指示TCP连接是否正常|Pin link to show if tcp has connected or not
+lang_ScanSet_HintIndex|做TCP Server时，收发数据带有ID号，4.12或更高版本支持本功能|TCP Server index,4.12 or above support this function
+lang_ScanSet_HintRFC2217|硬件自动同步串口参数，4.13以上版本支持本功能|RFC2217 change baudrate in socket,4.13 support this function
+lang_ScanSet_OK|确认|OK
+lang_ScanSet_Cancel|取消|Cancel
+lang_WIFI232Scan_Title|USR-WIFI232-X系列添加虚拟串口  适用于：USR-WIFI232-高性能系列|USR-WIFI232-X series add virtual serial port Compliant:USR-WIFI232-High Performance series
+lang_WIFI232Scan_DevIP|设备IP|Device IP
+lang_WIFI232Scan_Name|名称|Name
+lang_WIFI232Scan_NetProtocol|网络协议|Net Protocol
+lang_WIFI232Scan_Mode|模式|Mode
+lang_WIFI232Scan_Port|端口|Port
+lang_WIFI232Scan_ScanDevice|搜索设备|Search Device
+lang_WIFI232Scan_AddVSCOM|连接虚拟串口|Connect Virtual COM
+lang_WIFI232Scan_OpenWeb|打开网页|Open Web
+lang_WIFI232Scan_Close|退出|Close
+lang_Hint_PortInUse|端口被占用！|Port is in Use!
+lang_Hint_1500PortInUse|搜索设备失败！请重试或检查1500端口是否被占用！|Search device failure! Please try again or check whether the 1500 port occupied!
+lang_Hint_InputErr|输入内容有误！|InputError!
+lang_Hint_MsgBoxHint|提示|Tips
+lang_Hint_Yes|是(&Y)|Yes(&Y)
+lang_Hint_No|否(&N)|No(&N)
+lang_Hint_Min|最小化(&M)|Minimize(&M)
+lang_Hint_COMDelErr|删除失败！串口正在被使用！|Delete failed! COM is in use!
+lang_Hint_COMAddErr|添加串口失败！存在其他虚拟串口占用本串口或程序驱动丢失，请关闭其他虚拟串口软件和防火墙，重新安装程序！|Failed to add COM!The driver is lost, Please reinstall the application!
+lang_Hint_IsDelVirtualCOM|确定删除虚拟串口吗？|Do you want to delete the virtual serial port?
+lang_Hint_IsDelAllVirtualCOM|确定删除全部虚拟串口吗？|Do you want to delete All the virtual serial port?
+lang_Hint_IsQuit|确定退出？|Do you want to quit?
+lang_Hint_TrayHint|友情提示|Firendly Tips
+lang_Hint_TrayInfo|系统隐藏为托盘图标继续为您服务。|System hidden as tray icon to continue to serve you.
+lang_Hint_CoverLocalCOM| 为计算机真实串口，点击"YES"继续并覆盖真实串口。| is a real serial port, click on "YES" will cover it.
+lang_Hint_PDFName|有人虚拟串口软件 - 使用手册.pdf|USR-VCOM - Users guide.pdf
+lang_Hint_PDFNoFound|未找到使用手册，请到软件安装目录下查找。|The Users guide not found, please search to the software installation directory.
+lang_Hint_ClickInfo|点击获取更多信息|Click here
+lang_Hint_SelectOne|请选择一个虚拟串口！|Please select a virtual serial port!
+lang_Hint_HideForm|系统转为后台运行，运行"USR-VCOM.exe"显示管理界面。|Application run in the background,Run "USR-VCOM.exe" display management interface.
+lang_Hint_ComPktNotInt|请输入0~1000的整数！|Enter 0-1000 integer please!
+lang_Hint_InQryComPktTitle|虚拟串口打包时间(0~1000)|VCOM Wait for timeout before transmit(0~1000)
+lang_Hint_InQryComPktValue|等待时间(毫秒)：|Timeout Value(ms):
+lang_E45Main_Title|USR-TCP232-E45系列添加虚拟串口  适用于：USR-TCP232-E45系列|USR-TCP232-E45 series add virtual serial port  Compliant:USR-TCP232-E45 series
+lang_E45Menu_Device|设备(&D)|Device(&D)
+lang_E45Menu_SetUDPPort|配置端口|Search Port config
+lang_E45Menu_UsrPaswd|用户名密码设置|User config
+lang_E45Menu_Upgrade|固件升级|Firmware upgrade
+lang_E45Menu_Exit|退出|Exit
+lang_E45Menu_UDPPort|搜索端口号：|Search Port:
+lang_E45grp_SearchList| 搜索列表【在搜索列表中单击设备即可读取参数】 | Search List 【Click a device to read parameters in the Search List】
+lang_E45grp_BaseSave| 基础设置 | Base Save 
+lang_E45Lv_DevIP|设备IP|Device IP
+lang_E45Lv_DevName|设备名称|Device Name
+lang_E45Lv_MAC|MAC地址|MAC
+lang_E45Lv_Version|版本|Version
+lang_E45Btn_SearchDev|搜索设备|Search Device
+lang_E45Btn_OpenDev|打开网页|Open Web
+lang_E45Btn_ReadConfig|读取设置|Read Config
+lang_E45Btn_ReadTempConfig|读取临时配置|Read Temporary
+lang_E45Btn_Reset|设备复位|Device Reset
+lang_E45Btn_SaveConfig|储存设置|Save Config
+lang_E45Btn_Default|载入默认|Default Config
+lang_E45Btn_BaseSave|基础设置|Base Save
+lang_E45Btn_SaveCOM0|端口0设置|Save COM0
+lang_E45Btn_SaveCOM1|端口1设置|Save COM1
+lang_E45Btn_SaveCOM2|端口2设置|Save COM2
+lang_E45Btn_AddVSCOM|连接虚拟串口|Connect Virtual COM
+lang_E45Lbl_UPNPPort|UPNP端口：|UPNP Port:
+lang_E45Lbl_HTTPPort|HTTP服务端口：|HTTP Port:
+lang_E45Lbl_DevID|设备ID：|Device ID:
+lang_E45Lbl_DevIDType|设备ID类型：|Device ID Type:
+lang_E45Lbl_UserName|用户名：|User Name:
+lang_E45Lbl_Password|密码：|Password:
+lang_E45Lbl_DevName|设备名称：|Device Name:
+lang_E45Lbl_MAC|MAC地址：|mac Address:
+lang_E45Lbl_IPType|IP地址类型：|IP Type:
+lang_E45Lbl_StaticIP|静态IP：|Static IP:
+lang_E45Lbl_Gateway|网关：|Gateway:
+lang_E45Lbl_SubnetMask|子网掩码：|SubnetMask:
+lang_E45Lbl_Baudrate|串口波特率：|Baudrate:
+lang_E45Lbl_PDS|校验/数据/停止：|Parity/Data/Stop:
+lang_E45Lbl_FlowControl|串口流控制：|FlowControl:
+lang_E45Lbl_LocalPort|本地端口：|Local Port:
+lang_E45Lbl_RemotePort|远程端口：|Remote Port:
+lang_E45Lbl_WorkMode|工作方式：|Work Mode:
+lang_E45Lbl_TCPSvrCount|TCP Server 连接数：|Server connect count:
+lang_E45Lbl_TCPSvrCountInfo|(1~8)|(1~8)
+lang_E45Lbl_TCPStyle|TCP Server 样式：|TCP Server style:
+lang_Lbl_ModbusTCP|ModbusTCP：|ModbusTCP:
+lang_E45Lbl_RemoteIP|目标IP/域名：|RemoteIP:
+lang_E45Lbl_TelnetTimeout|网络重连时间：|Telnet Timeout:
+lang_E45Lbl_PackTime|串口打包时间：|PackTime:
+lang_E45Lbl_PackLen|串口打包长度：|PackLen:
+lang_E45Chkbox_RFC22170|同步波特率(类RFC2217)|Synchronize baudrate(RFC2217 similar)
+lang_E45Lbl_InfoTimeOut|秒     (<256, 0为不使用)|s  (<256, 0 for no uses)
+lang_E45Lbl_InfoPackTime|毫秒 (<256, 0为不使用)|ms (<256, 0 for no uses)
+lang_E45Lbl_InfoPackLen|字节 (<1024, 0为不使用)|byte (<1024, 0 for no uses)
+lang_E45Cbb_DHCP|DHCP/动态IP|DHCP/Auto IP
+lang_E45Cbb_StaticIP|静态IP|Static IP
+lang_E45Cbb_Transparent|透明传输|Transparent transmission
+lang_E45Cbb_NoIDDiscard|按ID发送-无ID则丢弃|As ID(No ID discard)
+lang_E45Cbb_NoIDBroadcast|按ID发送-无ID则群发|As ID(No ID Broadcast)
+lang_E45Ts_Port0|  端口0  |  Port0  
+lang_E45Ts_Port1|  端口1  |  Port1  
+lang_E45Ts_Port2|  端口2  |  Port2  
+lang_E45Log_Title|用户名密码设置|User config
+lang_E45Log_OK|确定|OK
+lang_E45Log_Cancel|取消|Cancel
+lang_E45Upgrade_Title|固件升级|Firmware Upgrade
+lang_E45Upgrade_grpClnt| 目标选择 |Select Client
+lang_E45Upgrade_grpFileName| 固件选择 |Select .bin file
+lang_E45Upgrade_btnProgram|升 级|Program
+lang_E45Upgrade_btnExit|退 出|Exit
+lang_E45Upgrade_lblClientIP|目标IP地址：|Client IP Address:
+lang_E45Upgrade_lblClientMAC|目标MAC地址：|Client MAC Address:
+lang_E45Hint_DevNum| 在线设备数：| On-line Device NUM:
+lang_E45Hint_ACK| 正确执行。| ACK.
+lang_E45Hint_CheckErr| 校验错误：| Check Error:
+lang_E45Hint_ReceiveOther| 接收未知数据：| Receive unknown:
+lang_E45Hint_PswdErr| 用户名密码错误！请重新输入。| UsrName or Password Error!
+lang_E45Hint_OtherErr| 其他错误。| Other Error.
+lang_E45Hint_OverTime| 接收超时！| Receive over time.
+lang_E45Hint_Sending| 数据已发送。| Data has been sent.
+lang_E45Hint_BeenRead| 数据读取完毕。| Data has been read.
+lang_E45Hint_Searching| 搜索在线设备...| Search online Device...
+lang_E45Hint_UDPPortChange| 搜索端口：| Search Port:
+lang_E45Hint_UDPPortInUse| 端口被占用！| Port In Use!
+lang_E45Hint_NoTarget| 请在搜索列表中选择模块。| Please select the module in the search list.
+lang_E45Hint_UpSearching| 搜索可升级设备...| Searching device...
+lang_E45Hint_UpReady| 已搜索到设备，发送升级请求...| Find Device,Ready to upgrade...
+lang_E45Hint_UpProgress| 升级进度...| Upgrade progress...
+lang_E45Hint_UpSuccess| 升级已完成，请恢复出厂默认。| Upgrade successful.please restore factory default.
+lang_E45Hint_UpNoClient| 未选择升级目标。| Please Select Client first.
+lang_E45Hint_UpNoFileName| 未选择升级文件。| Please Select .bin file first.
+lang_E45Hint_Upfailed| 固件升级失败，请联系厂家！| Upgrade failed!
+lang_E45Hint_UpTimeOut| 升级超时！| Upgrade time out!
+lang_E45Hint_UpPleaseUpgrade|本程序支持2002或更高版本，请先升级：设备->固件升级|This program supports version 2002 or higher, please upgrade first:Device->Firmware upgrade
+lang_E45Hint_UpNoSamNetwork|请先设置模块与计算机在同一网段，否则无法升级。|Please set the module and the computer on the same network segment, otherwise unable to upgrade.
+lang_E45Hint_VerIncompatible|本程序不支持2002以下版本配置，请先升级至2002或更高。|This program doesn't support version 2002, please upgrade firmware to 2002 or higher
+lang_Auto_Title|Smart VCOM - 智能虚拟串口功能|Smart VCOM
+lang_Auto_SelectAll|全 选|Select all
+lang_Auto_PortInuses|搜索端口1901被占用！|Search port 1901 is occupied!
+lang_Auto_SearchingWIFI| 正在搜索USR-WIFI系列产品...| Searching USR-WIFI products...
+lang_Auto_SearchingE45| 正在搜索USR-E45系列产品...| Searching USR-E45 products...
+lang_Auto_SearchingT24| 正在搜索USR-T24系列产品...| Searching USR-T24 products...
+lang_Auto_ReadStart| 搜索完毕，读取设备参数...| Search finished...
+lang_Auto_ReadEnd| 点击"下一步"，对勾选设备或端口进行配置并创建对应虚拟串口。| Click "next",config the mark the device and create virtual serial ports.
+lang_Auto_NoDevice| 未搜索到设备！| Found no device!
+lang_Auto_AddSuccess| 成功->| Success->
+lang_Auto_AddFailed| 失败！| Failed!
+lang_Auto_E45Err|请更新固件！|update firmware!
+lang_Auto_Creating| 正在对勾选设备创建对应虚拟串口...| Create the mark device corresponding virtual serial port...
+lang_Auto_CreatEnd| 虚拟串口创建完毕。|Virtual serial port has been created.
+lang_Auto_SearchReadWIFI| 读取参数...| Read...
+lang_Auto_SearchReadWIFIInfo| 正在读取USR-WIFI系列参数...| Reading USR-WIFI...
+lang_Auto_SearchReadFailed| 读取失败或不可用！| Failed to read or not available!
+lang_AutoLv_Num|设备序号|#
+lang_AutoLv_Type|设备类型|Device type
+lang_AutoLv_IP|设备IP|Device IP
+lang_AutoLv_MAC|设备MAC|Device MAC
+lang_AutoLv_Name|设备名称|Device name
+lang_AutoLv_State|状态|State
+lang_AutoBtn_Rescan|重新扫描|Re scan
+lang_AutoBtn_Next|下一步|Next
+lang_AutoBtn_Finish|完 成|Finish
+lang_Auto_Exist|已存在->|Exist->
