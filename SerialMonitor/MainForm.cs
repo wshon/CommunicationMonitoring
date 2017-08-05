@@ -15,6 +15,8 @@ namespace SerialMonitor
     public partial class MainForm : Form
     {
         SerialPort thisSerialPort = new SerialPort();
+        private int SentBytes, RecvBytes;
+
         System.Timers.Timer t = new System.Timers.Timer(500);//实例化Timer类，设置间隔时间为10000毫秒；
         public MainForm(string title,SerialPort userSerialPort)
         {
@@ -115,5 +117,38 @@ namespace SerialMonitor
             textBox1.Select(textBox1.TextLength, 0);//光标定位到文本最后
             textBox1.ScrollToCaret();//滚动到光标处
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            thisSerialPort.Write(textBox2.Text);
+        }
+
+        private void btnSendFile_Click(object sender, EventArgs e)
+        {
+            int fRead;
+            int SizeBuf;
+            byte[] Buff = new byte[Convert.ToInt32(textLen.Text)];
+            byte[] BuffPort;
+            fRead = Convert.ToInt32(textLen.Text);
+            SizeBuf = fRead;
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "All files (*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.FileStream file = new System.IO.FileStream(openFileDialog1.FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                while (fRead == SizeBuf)
+                {
+                    fRead = file.Read(Buff, 0, SizeBuf);
+                    BuffPort = new byte[fRead];
+                    Array.Copy(Buff, BuffPort, fRead);
+                    thisSerialPort.Write(BuffPort, 0, fRead);
+                    SentBytes = SentBytes + fRead;
+                    textSent.Text = Convert.ToString(SentBytes);
+                }
+            }
+        }
+        
     }
 }
+
