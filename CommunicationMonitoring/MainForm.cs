@@ -19,17 +19,35 @@ namespace CommunicationMonitoring
 
         private void addDeviceAToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new MamageForm(this, MamageForm.OpenMode.AddFrom).ShowDialog();
+            MamageFormOpen(MamageForm.OpenMode.AddFrom);
         }
 
         private void removeDeviceRToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new MamageForm(this, MamageForm.OpenMode.RemoveFrom).ShowDialog();
+            MamageFormOpen(MamageForm.OpenMode.RemoveFrom);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void MamageFormOpen(MamageForm.OpenMode userOpenMode)
+        {
+            foreach (Form childFrm in Application.OpenForms)
+            {
+                //用子窗体的Name进行判断，如果已经存在则将他激活
+                if (childFrm.Name == "MamageForm")
+                {
+                    if (childFrm.WindowState == FormWindowState.Minimized)
+                        childFrm.WindowState = FormWindowState.Normal;
+                    //childFrm = new MamageForm(this, MamageForm.OpenMode.AddFrom);
+                    childFrm.Activate();
+                    return;
+                }
+            }
+            new MamageForm(this, MamageForm.OpenMode.AddFrom).Show();
+        }
+
     }
 }
