@@ -32,11 +32,11 @@
             this.ParityComboBox = new System.Windows.Forms.ComboBox();
             this.StopBitsComboBox = new System.Windows.Forms.ComboBox();
             this.DataBitsComboBox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbParity = new System.Windows.Forms.Label();
+            this.lbStopBits = new System.Windows.Forms.Label();
+            this.lbDataBits = new System.Windows.Forms.Label();
+            this.lbSerialNumber = new System.Windows.Forms.Label();
+            this.lbBaudRate = new System.Windows.Forms.Label();
             this.SerialNumberComboBox = new System.Windows.Forms.ComboBox();
             this.BaudRateComboBox = new System.Windows.Forms.ComboBox();
             this.addDeviceCancelButton = new System.Windows.Forms.Button();
@@ -57,11 +57,11 @@
             this.layoutPane.Controls.Add(this.ParityComboBox, 1, 3);
             this.layoutPane.Controls.Add(this.StopBitsComboBox, 1, 5);
             this.layoutPane.Controls.Add(this.DataBitsComboBox, 1, 4);
-            this.layoutPane.Controls.Add(this.label5, 0, 3);
-            this.layoutPane.Controls.Add(this.label4, 0, 5);
-            this.layoutPane.Controls.Add(this.label3, 0, 4);
-            this.layoutPane.Controls.Add(this.label1, 0, 1);
-            this.layoutPane.Controls.Add(this.label2, 0, 2);
+            this.layoutPane.Controls.Add(this.lbParity, 0, 3);
+            this.layoutPane.Controls.Add(this.lbStopBits, 0, 5);
+            this.layoutPane.Controls.Add(this.lbDataBits, 0, 4);
+            this.layoutPane.Controls.Add(this.lbSerialNumber, 0, 1);
+            this.layoutPane.Controls.Add(this.lbBaudRate, 0, 2);
             this.layoutPane.Controls.Add(this.SerialNumberComboBox, 1, 1);
             this.layoutPane.Controls.Add(this.BaudRateComboBox, 1, 2);
             this.layoutPane.Controls.Add(this.addDeviceCancelButton, 3, 7);
@@ -109,60 +109,60 @@
             this.DataBitsComboBox.Size = new System.Drawing.Size(120, 20);
             this.DataBitsComboBox.TabIndex = 9;
             // 
-            // label5
+            // lbParity
             // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(3, 79);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 26);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Parity:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbParity.AutoSize = true;
+            this.lbParity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbParity.Location = new System.Drawing.Point(3, 79);
+            this.lbParity.Name = "lbParity";
+            this.lbParity.Size = new System.Drawing.Size(89, 26);
+            this.lbParity.TabIndex = 8;
+            this.lbParity.Text = "Parity:";
+            this.lbParity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label4
+            // lbStopBits
             // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 131);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 26);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Stop Bits:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbStopBits.AutoSize = true;
+            this.lbStopBits.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbStopBits.Location = new System.Drawing.Point(3, 131);
+            this.lbStopBits.Name = "lbStopBits";
+            this.lbStopBits.Size = new System.Drawing.Size(89, 26);
+            this.lbStopBits.TabIndex = 7;
+            this.lbStopBits.Text = "Stop Bits:";
+            this.lbStopBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label3
+            // lbDataBits
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 105);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 26);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Data Bits:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbDataBits.AutoSize = true;
+            this.lbDataBits.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbDataBits.Location = new System.Drawing.Point(3, 105);
+            this.lbDataBits.Name = "lbDataBits";
+            this.lbDataBits.Size = new System.Drawing.Size(89, 26);
+            this.lbDataBits.TabIndex = 6;
+            this.lbDataBits.Text = "Data Bits:";
+            this.lbDataBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label1
+            // lbSerialNumber
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 26);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Serial number:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbSerialNumber.AutoSize = true;
+            this.lbSerialNumber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbSerialNumber.Location = new System.Drawing.Point(3, 27);
+            this.lbSerialNumber.Name = "lbSerialNumber";
+            this.lbSerialNumber.Size = new System.Drawing.Size(89, 26);
+            this.lbSerialNumber.TabIndex = 3;
+            this.lbSerialNumber.Text = "Serial number:";
+            this.lbSerialNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label2
+            // lbBaudRate
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 53);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 26);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Baud Rate:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbBaudRate.AutoSize = true;
+            this.lbBaudRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbBaudRate.Location = new System.Drawing.Point(3, 53);
+            this.lbBaudRate.Name = "lbBaudRate";
+            this.lbBaudRate.Size = new System.Drawing.Size(89, 26);
+            this.lbBaudRate.TabIndex = 5;
+            this.lbBaudRate.Text = "Baud Rate:";
+            this.lbBaudRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SerialNumberComboBox
             // 
@@ -245,11 +245,11 @@
         private System.Windows.Forms.ComboBox ParityComboBox;
         private System.Windows.Forms.ComboBox StopBitsComboBox;
         private System.Windows.Forms.ComboBox DataBitsComboBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbParity;
+        private System.Windows.Forms.Label lbStopBits;
+        private System.Windows.Forms.Label lbDataBits;
+        private System.Windows.Forms.Label lbSerialNumber;
+        private System.Windows.Forms.Label lbBaudRate;
         private System.Windows.Forms.ComboBox SerialNumberComboBox;
         private System.Windows.Forms.ComboBox BaudRateComboBox;
         private System.Windows.Forms.Button addDeviceCancelButton;

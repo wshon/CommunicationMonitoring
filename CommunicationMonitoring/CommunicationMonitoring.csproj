@@ -10,6 +10,21 @@
     <AssemblyName>CommunicationMonitoring</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,6 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resource.zh-CN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.zh-CN.resx</DependentUpon>
+    </Compile>
     <Compile Include="MamageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +77,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Resource.zh-CN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.zh-CN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="MamageForm.resx">
       <DependentUpon>MamageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -71,6 +95,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\System.IO.Ports.SerialPort.datasource" />
     <None Include="Properties\Settings.settings">
@@ -87,6 +112,18 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LanguageResource\LanguageResource.csproj">
+      <Project>{49d59a80-5f0e-4d27-abc9-75e57d6e59e6}</Project>
+      <Name>LanguageResource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RegisterVSPort\RegisterVSPort.csproj">
+      <Project>{cd138149-5526-47e3-bd59-66263773ab6b}</Project>
+      <Name>RegisterVSPort</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SerialLib\SerialLib.csproj">
+      <Project>{88bcb033-da85-47ef-a807-cf4a6b868c86}</Project>
+      <Name>SerialLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SerialMonitor\SerialMonitor.csproj">
       <Project>{f7e2e9de-064d-4fc6-9eb6-902ddd8af47f}</Project>
       <Name>SerialMonitor</Name>
@@ -99,6 +136,18 @@
       <Project>{58e4f85c-4c6e-4796-bb72-49d02c036867}</Project>
       <Name>VirtualSerialMonitor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WinformException\WinformException.csproj">
+      <Project>{80924b2a-956d-4a88-866e-7a4254bda199}</Project>
+      <Name>WinformException</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

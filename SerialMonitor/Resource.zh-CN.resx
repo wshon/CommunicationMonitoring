@@ -117,4 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="addDeviceCancelButton_Text" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="addDeviceOKButton_Text" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="lbBaudRate_Text" xml:space="preserve">
+    <value>波特率：</value>
+  </data>
+  <data name="lbDataBits_Text" xml:space="preserve">
+    <value>数据位：</value>
+  </data>
+  <data name="lbParity_Text" xml:space="preserve">
+    <value>校验位：</value>
+  </data>
+  <data name="lbSerialNumber_Text" xml:space="preserve">
+    <value>端口号：</value>
+  </data>
+  <data name="lbStopBits_Text" xml:space="preserve">
+    <value>停止位：</value>
+  </data>
+  <data name="MainForm_Text" xml:space="preserve">
+    <value>串口设备</value>
+  </data>
 </root>

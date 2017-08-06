@@ -34,7 +34,14 @@
             this.deviceDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addDeviceAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeDeviceRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simplifiedChineseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.traditionalChineseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.globalEnglishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +49,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.systemToolStripMenuItem,
-            this.deviceDToolStripMenuItem});
+            this.deviceDToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 25);
@@ -52,6 +60,7 @@
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.languageToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
             this.systemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
@@ -79,16 +88,39 @@
             // addDeviceAToolStripMenuItem
             // 
             this.addDeviceAToolStripMenuItem.Name = "addDeviceAToolStripMenuItem";
-            this.addDeviceAToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.addDeviceAToolStripMenuItem.Text = "AddDevice(&A)";
+            this.addDeviceAToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.addDeviceAToolStripMenuItem.Text = "Add(&A)";
             this.addDeviceAToolStripMenuItem.Click += new System.EventHandler(this.addDeviceAToolStripMenuItem_Click);
             // 
             // removeDeviceRToolStripMenuItem
             // 
             this.removeDeviceRToolStripMenuItem.Name = "removeDeviceRToolStripMenuItem";
-            this.removeDeviceRToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.removeDeviceRToolStripMenuItem.Text = "RemoveDevice(&R)";
+            this.removeDeviceRToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.removeDeviceRToolStripMenuItem.Text = "Remove(&R)";
             this.removeDeviceRToolStripMenuItem.Click += new System.EventHandler(this.removeDeviceRToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.test1ToolStripMenuItem,
+            this.test2ToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
+            this.helpToolStripMenuItem.Text = "Help(&H)";
+            // 
+            // test1ToolStripMenuItem
+            // 
+            this.test1ToolStripMenuItem.Name = "test1ToolStripMenuItem";
+            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test1ToolStripMenuItem.Text = "Test1";
+            this.test1ToolStripMenuItem.Click += new System.EventHandler(this.test1ToolStripMenuItem_Click);
+            // 
+            // test2ToolStripMenuItem
+            // 
+            this.test2ToolStripMenuItem.Name = "test2ToolStripMenuItem";
+            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test2ToolStripMenuItem.Text = "Test2";
+            this.test2ToolStripMenuItem.Click += new System.EventHandler(this.test2ToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -97,6 +129,35 @@
             this.statusStrip1.Size = new System.Drawing.Size(784, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // languageToolStripMenuItem
+            // 
+            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.simplifiedChineseToolStripMenuItem,
+            this.traditionalChineseToolStripMenuItem,
+            this.globalEnglishToolStripMenuItem});
+            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.languageToolStripMenuItem.Text = "Language(&L)";
+            // 
+            // simplifiedChineseToolStripMenuItem
+            // 
+            this.simplifiedChineseToolStripMenuItem.Name = "simplifiedChineseToolStripMenuItem";
+            this.simplifiedChineseToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.simplifiedChineseToolStripMenuItem.Text = "Simplified Chinese";
+            this.simplifiedChineseToolStripMenuItem.Click += new System.EventHandler(this.simplifiedChineseToolStripMenuItem_Click);
+            // 
+            // traditionalChineseToolStripMenuItem
+            // 
+            this.traditionalChineseToolStripMenuItem.Name = "traditionalChineseToolStripMenuItem";
+            this.traditionalChineseToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.traditionalChineseToolStripMenuItem.Text = "Traditional Chinese";
+            // 
+            // globalEnglishToolStripMenuItem
+            // 
+            this.globalEnglishToolStripMenuItem.Name = "globalEnglishToolStripMenuItem";
+            this.globalEnglishToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.globalEnglishToolStripMenuItem.Text = "Global English";
             // 
             // MainForm
             // 
@@ -125,6 +186,13 @@
         private System.Windows.Forms.ToolStripMenuItem deviceDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addDeviceAToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeDeviceRToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem simplifiedChineseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem traditionalChineseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem globalEnglishToolStripMenuItem;
     }
 }
 

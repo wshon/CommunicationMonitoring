@@ -117,4 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="exitToolStripMenuItem_Text" xml:space="preserve">
+    <value>退出(&amp;X)</value>
+  </data>
+  <data name="MainForm_Text" xml:space="preserve">
+    <value>通讯管理</value>
+  </data>
+  <data name="systemToolStripMenuItem_Text" xml:space="preserve">
+    <value>系统(&amp;S)</value>
+  </data>
+  <data name="addDeviceAToolStripMenuItem_Text" xml:space="preserve">
+    <value>添加(&amp;A)</value>
+  </data>
+  <data name="deviceDToolStripMenuItem_Text" xml:space="preserve">
+    <value>设备(&amp;D)</value>
+  </data>
+  <data name="helpToolStripMenuItem_Text" xml:space="preserve">
+    <value>帮助(&amp;H)</value>
+  </data>
+  <data name="languageToolStripMenuItem_Text" xml:space="preserve">
+    <value>语言(&amp;L)</value>
+  </data>
+  <data name="removeDeviceRToolStripMenuItem_Text" xml:space="preserve">
+    <value>移除(&amp;R)</value>
+  </data>
 </root>

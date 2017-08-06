@@ -1,10 +1,12 @@
-﻿using System;
+﻿using LanguageResource;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,6 +17,7 @@ namespace SerialMonitor
         public StartForm()
         {
             InitializeComponent();
+            ResourceCulture.SetResourceCulture(this.Controls, Assembly.GetExecutingAssembly());
         }
         SerialLib.Serial SerialCon = new SerialLib.Serial();
         private void StartForm_Load(object sender, EventArgs e)

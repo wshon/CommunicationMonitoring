@@ -41,6 +41,28 @@ namespace CommunicationMonitoring
 
 
         #region Windows move with mouse.
+        private void SetControlsActive(Control fatherControl)
+        {
+            Control.ControlCollection sonControls = fatherControl.Controls;
+            //遍历所有控件
+            foreach (Control control in sonControls)
+            {
+                if (control.Controls.Count != 0)
+                {
+                    control.MouseDown += MamageForm_MouseDown;
+                    control.MouseMove += MamageForm_MouseMove;
+                    control.MouseUp += MamageForm_MouseUp;
+                    SetControlsActive(control);
+                }
+                else if (control is Label)
+                {
+                    control.MouseDown += MamageForm_MouseDown;
+                    control.MouseMove += MamageForm_MouseMove;
+                    control.MouseUp += MamageForm_MouseUp;
+                }
+            }
+        }
+        
         private Point mPoint = new Point();
         private void MamageForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -82,28 +104,6 @@ namespace CommunicationMonitoring
         private void MamageForm_Load(object sender, EventArgs e)
         {
             SetControlsActive(this);
-        }
-        
-        private void SetControlsActive(Control fatherControl)
-        {
-            Control.ControlCollection sonControls = fatherControl.Controls;
-            //遍历所有控件
-            foreach (Control control in sonControls)
-            {
-                if (control.Controls.Count != 0)
-                {
-                    control.MouseDown += MamageForm_MouseDown;
-                    control.MouseMove += MamageForm_MouseMove;
-                    control.MouseUp += MamageForm_MouseUp;
-                    SetControlsActive(control);
-                }
-                else if (control is Label)
-                {
-                    control.MouseDown += MamageForm_MouseDown;
-                    control.MouseMove += MamageForm_MouseMove;
-                    control.MouseUp += MamageForm_MouseUp;
-                }
-            }
         }
         
         #region MamageTabControl

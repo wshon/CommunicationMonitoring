@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using LanguageResource;
+using System;
 using System.Reflection;
-using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CommunicationMonitoring
@@ -15,6 +11,24 @@ namespace CommunicationMonitoring
         public MainForm()
         {
             InitializeComponent();
+            ResourceCulture.SetCurrentCulture("zh-CN");
+            ResourceCulture.SetResourceCulture(menuStrip1.Items, Assembly.GetExecutingAssembly());
+            //this.SetResourceCulture(menuStrip1.Items);
+        }
+
+        private void SetResourceCulture(ToolStripItemCollection items)
+        {
+            //遍历所有控件
+            foreach (ToolStripMenuItem item in items)
+            {
+                string strTextTmp = item.Text;
+                if (ResourceCulture.GetString(item.Name + "_Text", ref strTextTmp, Assembly.GetExecutingAssembly()))
+                    item.Text = strTextTmp;
+                if ((item.DropDownItems.Count != 0))
+                {
+                    SetResourceCulture(item.DropDownItems);
+                }
+            }
         }
 
         private void addDeviceAToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,8 +60,24 @@ namespace CommunicationMonitoring
                     return;
                 }
             }
-            new MamageForm(this, MamageForm.OpenMode.AddFrom).Show();
+            new MamageForm(this, userOpenMode).Show();
         }
 
+        private void test1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            throw new Exception("啊..我这行代码异常了...");
+        }
+
+        private void test2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread th = new Thread(() => { throw new Exception("啊哦，异常错误。"); });
+            th.IsBackground = true;
+            th.Start();
+        }
+
+        private void simplifiedChineseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
