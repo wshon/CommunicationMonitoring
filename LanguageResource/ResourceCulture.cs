@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -39,11 +40,14 @@ namespace LanguageResource
                 ResourceManager rm = new ResourceManager(userAssembly.GetName().Name + ".Resource", userAssembly);
                 CultureInfo ci = Thread.CurrentThread.CurrentCulture;
                 strCurLanguage = rm.GetString(id, ci);
+                Debug.WriteLine("The ID:\"" + id + "\" Value:\"" + strCurLanguage + "\"\r\n");
                 return true;
             }
-            catch
+            catch (Exception e)
             {
                 //strCurLanguage = "No id:" + id + ", please add.";
+                Debug.WriteLine(e.Message);
+                Debug.WriteLine("The ID:\"" + id + "\" Value:\"" + strCurLanguage + "\"\r\n");
                 return false;
             }
 
@@ -52,14 +56,21 @@ namespace LanguageResource
         public static void SetResourceCulture(ToolStripItemCollection items, Assembly userAssembly)
         {
             //遍历所有控件
-            foreach (ToolStripMenuItem item in items)
+            foreach (object item in items)
             {
-                string strTextTmp = item.Text;
-                if (ResourceCulture.GetString(item.Name + "_Text", ref strTextTmp, userAssembly))
-                    item.Text = strTextTmp;
-                if ((item.DropDownItems.Count != 0))
+                try
                 {
-                    SetResourceCulture(item.DropDownItems, userAssembly);
+                    string strTextTmp = ((ToolStripMenuItem)item).Text;
+                    if (ResourceCulture.GetString(((ToolStripMenuItem)item).Name + "_Text", ref strTextTmp, userAssembly))
+                        ((ToolStripMenuItem)item).Text = strTextTmp;
+                    if ((((ToolStripMenuItem)item).DropDownItems.Count != 0))
+                    {
+                        SetResourceCulture(((ToolStripMenuItem)item).DropDownItems, userAssembly);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
                 }
             }
         }

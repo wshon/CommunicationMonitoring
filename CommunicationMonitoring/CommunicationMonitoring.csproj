@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageMamage.cs" />
     <Compile Include="Resource.zh-CN.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

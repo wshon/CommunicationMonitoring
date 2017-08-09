@@ -1,5 +1,7 @@
 ﻿using LanguageResource;
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
@@ -14,9 +16,40 @@ namespace CommunicationMonitoring
             ResourceCulture.SetCurrentCulture("zh-CN");
             ResourceCulture.SetResourceCulture(menuStrip1.Items, Assembly.GetExecutingAssembly());
             //this.SetResourceCulture(menuStrip1.Items);
+            //toolToolStripMenuItem;
+            reloadExTool();
         }
 
+        private void reloadRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            reloadExTool();
+        }
+
+        private void reloadExTool()
+        {
+            DirectoryInfo TheFolder = new DirectoryInfo(".\\ExTool\\");
+            foreach (FileInfo file in TheFolder.GetFiles())
+            {
+                if (file.Extension == ".dll")
+                {
+                    Debug.WriteLine("Find dll:" + file.Name);
+                    if (PageMamage.LoadType(".\\ExTool\\" + file.Name, "ui") != null)
+                    {
+                        Debug.WriteLine(file.Name + " is effective!\r\n");
+                        toolToolStripMenuItem.DropDownItems.Add(file.Name, null, externToolStripMenuItem_Click);
+                    }
+                }
+            }
+        }
+
+        private void externToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new PageMamage().LoadPage(".\\ExTool\\" + (sender as ToolStripMenuItem).Text, "ui", this);
+        }
+        
+
         private void SetResourceCulture(ToolStripItemCollection items)
+
         {
             //遍历所有控件
             foreach (ToolStripMenuItem item in items)

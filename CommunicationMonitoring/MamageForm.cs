@@ -125,57 +125,8 @@ namespace CommunicationMonitoring
         private void AddDeviceTabPage_Load()
         {
             tabControl.TabPages.Clear();
-            ExternMode_Load();
+            new PageMamage().ExternMode_Load(tabControl, "StartForm");
             SetControlsActive(addDeviceTabPage);
-        }
-        private void ExternMode_Load()
-        {
-            /*加载model*/
-            //C#遍历models文件夹中的所有文件 
-            DirectoryInfo TheFolder = new DirectoryInfo(".\\");
-            if (TheFolder.Exists == false) TheFolder.Create();
-            int modelLoadPass = 0, modelLoadFail = 0;
-            foreach (FileInfo file in TheFolder.GetFiles())
-            {
-                if (file.Extension == ".dll")
-                    if (LoadPage(".\\" + file.Name, tabControl))
-                        modelLoadPass++;
-                    else
-                        modelLoadFail++;
-            }
-            //modelcount.Text = "Model:" + modelLoadPass.ToString() + " Fail:" + modelLoadFail.ToString();
-
-        }
-        private bool LoadPage(String assName, TabControl tabControltmp)
-        {
-            try
-            {
-                Assembly ass = Assembly.LoadFrom(assName);
-#if DEBUG
-                Console.WriteLine(ass.FullName);
-#endif
-                /*载入model*/
-                Type type = ass.GetType(ass.GetName().Name + ".StartForm");
-                /*载入ui*/
-                Form tmpFrom = (Form)Activator.CreateInstance(type);
-                tmpFrom.BackColor = Color.White;
-                tmpFrom.Dock = DockStyle.Fill;
-                tmpFrom.FormBorderStyle = FormBorderStyle.None; //隐藏子窗体边框（去除最小花，最大化，关闭等按钮）
-                tmpFrom.TopLevel = false; //指示子窗体非顶级窗体
-                /*生成子页面*/
-                TabPage tmpPage = new TabPage();
-                tmpPage.Controls.Add(tmpFrom);//将子窗体载入panel
-                tmpPage.Text = tmpFrom.Text;
-                /*子页面添加至主页*/
-                tabControltmp.TabPages.Add(tmpPage);
-                tmpFrom.Show();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-
         }
         #endregion
 
