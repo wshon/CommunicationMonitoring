@@ -27,16 +27,25 @@ namespace CommunicationMonitoring
 
         private void reloadExTool()
         {
-            DirectoryInfo TheFolder = new DirectoryInfo(".\\ExTool\\");
-            foreach (FileInfo file in TheFolder.GetFiles())
+            int thisCount = toolToolStripMenuItem.DropDownItems.Count;
+            for (int i = 2; i < thisCount; i++)
             {
-                if (file.Extension == ".dll")
+                toolToolStripMenuItem.DropDownItems.RemoveAt(toolToolStripMenuItem.DropDownItems.Count - 1);
+            }
+            
+            DirectoryInfo TheFolder = new DirectoryInfo(".\\ExTool\\");
+            if (TheFolder.Exists)
+            {
+                foreach (FileInfo file in TheFolder.GetFiles())
                 {
-                    Debug.WriteLine("Find dll:" + file.Name);
-                    if (PageMamage.LoadType(".\\ExTool\\" + file.Name, "ui") != null)
+                    if (file.Extension == ".dll")
                     {
-                        Debug.WriteLine(file.Name + " is effective!\r\n");
-                        toolToolStripMenuItem.DropDownItems.Add(file.Name, null, externToolStripMenuItem_Click);
+                        Debug.WriteLine("Find dll:" + file.Name);
+                        if (PageMamage.LoadType(".\\ExTool\\" + file.Name, "ui") != null)
+                        {
+                            Debug.WriteLine(file.Name + " is effective!\r\n");
+                            toolToolStripMenuItem.DropDownItems.Add(file.Name, null, externToolStripMenuItem_Click);
+                        }
                     }
                 }
             }

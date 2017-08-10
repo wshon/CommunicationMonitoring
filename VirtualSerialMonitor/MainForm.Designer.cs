@@ -67,12 +67,12 @@ namespace VirtualSerialMonitor
             this.cmbAllow = new System.Windows.Forms.ComboBox();
             this.tbMask = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.axVSPortAx1 = new AxVSPortLib.AxVSPortAx();
-            this.axVSPortAx2 = new AxVSPortLib.AxVSPortAx();
+            this.axVSPortAx3 = new AxVSPortLib.AxVSPortAx();
+            this.axVSPortAx4 = new AxVSPortLib.AxVSPortAx();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axVSPortAx1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axVSPortAx2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axVSPortAx3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axVSPortAx4)).BeginInit();
             this.SuspendLayout();
             // 
             // label30
@@ -427,43 +427,30 @@ namespace VirtualSerialMonitor
             this.listBox1.Size = new System.Drawing.Size(524, 40);
             this.listBox1.TabIndex = 0;
             // 
-            // axVSPortAx1
+            // axVSPortAx3
             // 
-            this.axVSPortAx1.Enabled = true;
-            this.axVSPortAx1.Location = new System.Drawing.Point(111, 459);
-            this.axVSPortAx1.Name = "axVSPortAx1";
-            this.axVSPortAx1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVSPortAx1.OcxState")));
-            this.axVSPortAx1.Size = new System.Drawing.Size(32, 32);
-            this.axVSPortAx1.TabIndex = 27;
-            this.axVSPortAx1.OnRxChar += new AxVSPortLib._IVSPortAxEvents_OnRxCharEventHandler(this.axVSPortAx1_OnRxChar);
-            this.axVSPortAx1.OnDTR += new AxVSPortLib._IVSPortAxEvents_OnDTREventHandler(this.axVSPortAx1_OnDTR);
-            this.axVSPortAx1.OnRTS += new AxVSPortLib._IVSPortAxEvents_OnRTSEventHandler(this.axVSPortAx1_OnRTS);
-            this.axVSPortAx1.OnRING += new AxVSPortLib._IVSPortAxEvents_OnRINGEventHandler(this.axVSPortAx1_OnRING);
-            this.axVSPortAx1.OnOpenClose += new AxVSPortLib._IVSPortAxEvents_OnOpenCloseEventHandler(this.axVSPortAx1_OnOpenClose);
-            this.axVSPortAx1.OnTimeouts += new AxVSPortLib._IVSPortAxEvents_OnTimeoutsEventHandler(this.axVSPortAx1_OnTimeouts);
-            this.axVSPortAx1.OnLineControl += new AxVSPortLib._IVSPortAxEvents_OnLineControlEventHandler(this.axVSPortAx1_OnLineControl);
-            this.axVSPortAx1.OnHandflow += new AxVSPortLib._IVSPortAxEvents_OnHandflowEventHandler(this.axVSPortAx1_OnHandflow);
-            this.axVSPortAx1.OnSpecialChars += new AxVSPortLib._IVSPortAxEvents_OnSpecialCharsEventHandler(this.axVSPortAx1_OnSpecialChars);
-            this.axVSPortAx1.OnBaudRate += new AxVSPortLib._IVSPortAxEvents_OnBaudRateEventHandler(this.axVSPortAx1_OnBaudRate);
-            this.axVSPortAx1.OnEvent += new AxVSPortLib._IVSPortAxEvents_OnEventEventHandler(this.axVSPortAx1_OnEvent);
-            this.axVSPortAx1.OnBreak += new AxVSPortLib._IVSPortAxEvents_OnBreakEventHandler(this.axVSPortAx1_OnBreak);
+            this.axVSPortAx3.Enabled = true;
+            this.axVSPortAx3.Location = new System.Drawing.Point(-1, 459);
+            this.axVSPortAx3.Name = "axVSPortAx3";
+            this.axVSPortAx3.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVSPortAx3.OcxState")));
+            this.axVSPortAx3.Size = new System.Drawing.Size(32, 32);
+            this.axVSPortAx3.TabIndex = 28;
             // 
-            // axVSPortAx2
+            // axVSPortAx4
             // 
-            this.axVSPortAx2.Enabled = true;
-            this.axVSPortAx2.Location = new System.Drawing.Point(183, 459);
-            this.axVSPortAx2.Name = "axVSPortAx2";
-            this.axVSPortAx2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVSPortAx2.OcxState")));
-            this.axVSPortAx2.Size = new System.Drawing.Size(32, 32);
-            this.axVSPortAx2.TabIndex = 28;
-            this.axVSPortAx2.OnRxChar += new AxVSPortLib._IVSPortAxEvents_OnRxCharEventHandler(this.axVSPortAx2_OnRxChar);
+            this.axVSPortAx4.Enabled = true;
+            this.axVSPortAx4.Location = new System.Drawing.Point(68, 465);
+            this.axVSPortAx4.Name = "axVSPortAx4";
+            this.axVSPortAx4.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVSPortAx4.OcxState")));
+            this.axVSPortAx4.Size = new System.Drawing.Size(32, 32);
+            this.axVSPortAx4.TabIndex = 29;
             // 
             // MainForm
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
             this.ClientSize = new System.Drawing.Size(588, 496);
-            this.Controls.Add(this.axVSPortAx2);
-            this.Controls.Add(this.axVSPortAx1);
+            this.Controls.Add(this.axVSPortAx4);
+            this.Controls.Add(this.axVSPortAx3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.chkBreak);
@@ -494,8 +481,8 @@ namespace VirtualSerialMonitor
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axVSPortAx1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axVSPortAx2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axVSPortAx3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axVSPortAx4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,7 +525,7 @@ namespace VirtualSerialMonitor
         private System.Windows.Forms.Button btnAddMask;
         private System.Windows.Forms.Button btnDelMask;
         private System.Windows.Forms.TextBox tbMask;
-        private AxVSPortLib.AxVSPortAx axVSPortAx1;
-        private AxVSPortLib.AxVSPortAx axVSPortAx2;
+        private AxVSPortLib.AxVSPortAx axVSPortAx3;
+        private AxVSPortLib.AxVSPortAx axVSPortAx4;
     }
 }

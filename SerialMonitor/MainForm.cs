@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace SerialMonitor
         SerialPort thisSerialPort = new SerialPort();
         private int SentBytes, RecvBytes;
 
-        System.Timers.Timer t = new System.Timers.Timer(500);//实例化Timer类，设置间隔时间为10000毫秒；
+        System.Timers.Timer t = new System.Timers.Timer(500);//实例化Timer类，设置间隔时间为500毫秒；
         public MainForm(string title,SerialPort userSerialPort)
         {
             InitializeComponent();
@@ -30,9 +31,11 @@ namespace SerialMonitor
             if (thisSerialPort.IsOpen)
             {
                 this.ForeColor = Color.Green;
+                t.Interval = 500;
             }
             else
             {
+                t.Interval = 2000;
                 thisSerialPort.Close();
                 SerialPort_Open(thisSerialPort);
                 this.ForeColor = Color.Orange;
@@ -50,8 +53,9 @@ namespace SerialMonitor
                 t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；
                 t.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；
             }
-            catch
+            catch (Exception err)
             {
+                Debug.WriteLine(err.Message);
                 this.ForeColor = Color.Red;
             }
         }
@@ -76,17 +80,23 @@ namespace SerialMonitor
                 try
                 {
                     tmp = (sender as SerialPort).ReadByte();
-
+                    RecvBytes++;
                     Invoke((MethodInvoker)delegate ()
                     {
                         textBox1.Text += " "+(tmp.ToString("X2"));
                     });
                 }
-                catch {
+                catch (Exception err)
+                {
+                    Debug.WriteLine(err.Message);
                     break;
                 }
             }
             while (true);
+            Invoke((MethodInvoker)delegate ()
+            { 
+                RecvCountToolStripStatusLabel.Text = RecvBytes.ToString();
+            });
         }
 
         private void SerialFrom_Load(object sender, EventArgs e)
@@ -118,9 +128,17 @@ namespace SerialMonitor
             textBox1.ScrollToCaret();//滚动到光标处
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSend_Click(object sender, EventArgs e)
         {
             thisSerialPort.Write(textBox2.Text);
+        }
+
+        private void ClearToolStripSplitButton_ButtonClick(object sender, EventArgs e)
+        {
+            SentBytes = 0;
+            RecvBytes = 0;
+            RecvCountToolStripStatusLabel.Text = "0";
+            SendCountToolStripStatusLabel.Text = "0";
         }
 
         private void btnSendFile_Click(object sender, EventArgs e)
@@ -144,7 +162,7 @@ namespace SerialMonitor
                     Array.Copy(Buff, BuffPort, fRead);
                     thisSerialPort.Write(BuffPort, 0, fRead);
                     SentBytes = SentBytes + fRead;
-                    textSent.Text = Convert.ToString(SentBytes);
+                    SendCountToolStripStatusLabel.Text = Convert.ToString(SentBytes);
                 }
             }
         }

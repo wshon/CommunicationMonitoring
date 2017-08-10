@@ -106,8 +106,9 @@ namespace CommunicationMonitoring
                 tmpFrom.Show();
                 return true;
             }
-            catch
+            catch (Exception err)
             {
+                Debug.WriteLine(err.Message);
                 return false;
             }
         }
@@ -130,8 +131,9 @@ namespace CommunicationMonitoring
                 tmpFrom.Show();
                 return true;
             }
-            catch
+            catch (Exception err)
             {
+                Debug.WriteLine(err.Message);
                 return false;
             }
         }
@@ -149,8 +151,9 @@ namespace CommunicationMonitoring
 
                 return type;
             }
-            catch
+            catch (Exception err)
             {
+                Debug.WriteLine(err.Message);
                 return null;
             }
         }

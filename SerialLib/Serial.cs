@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -243,8 +244,9 @@ namespace SerialLib
                     cB_SerialStopBits.Enabled = false;
                     (sender as Button).Text = "断开";
                 }
-                catch
+                catch (Exception err)
                 {
+                    Debug.WriteLine(err.Message);
                     MessageBox.Show(SerialPortCon.PortName + " 打开失败", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -260,8 +262,9 @@ namespace SerialLib
                     cB_SerialStopBits.Enabled = true;
                     (sender as Button).Text = "连接";
                 }
-                catch
+                catch (Exception err)
                 {
+                    Debug.WriteLine(err.Message);
                     MessageBox.Show(SerialPortCon.PortName + " 关闭失败", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -340,8 +343,9 @@ namespace SerialLib
                         _tempPort.Close();
                     }
                 }
-                catch
+                catch (Exception err)
                 {
+                    Debug.WriteLine(err.Message);
                     (sender as ComboBox).Items.Add(str + "(占用)");
                 }
             }

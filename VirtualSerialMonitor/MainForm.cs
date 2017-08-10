@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using AxVSPortLib;
 using VSPortLib;
+using System.IO.Ports;
 
 namespace VirtualSerialMonitor
 {
@@ -16,12 +17,53 @@ namespace VirtualSerialMonitor
         private int SentBytes, RecvBytes;
         private Boolean Redirect;
         private Boolean Cts, Dsr, Dcd, Ri;
-
-        public MainForm(string title, string userSerialPort)
+        AxVSPortAx axVSPortAx1;
+        AxVSPortAx axVSPortAx2;
+        public MainForm(string title, SerialPort userSerialPort1, SerialPort userSerialPort2)
         {
             InitializeComponent();
             this.Text = title;
+            if (axVSPortAx1 == null) axVSPortAx1 = new AxVSPortAx();
+            if (axVSPortAx2 == null) axVSPortAx2 = new AxVSPortAx();
+            CreatePair(axVSPortAx3, userSerialPort1, axVSPortAx4, userSerialPort2);
         }
+
+        private void CreatePair(AxVSPortAx VSPort1, SerialPort SPort1, AxVSPortAx VSPort2, SerialPort SPort2)
+        {
+            if (VSPort1.IsCreated != VSPort2.IsCreated)
+            {
+                MessageBox.Show("One port was create", "Warning", MessageBoxButtons.OK);
+                this.ForeColor = Color.Orange;
+                return;
+            }
+            if ((VSPort1.CreatePort(SPort1.PortName) || VSPort1.Attach(SPort1.PortName))
+                && (VSPort2.CreatePort(SPort2.PortName) || VSPort2.Attach(SPort2.PortName)))
+            {
+                this.ForeColor = Color.Green;
+            }
+            else
+            {
+                MessageBox.Show("Cannot create pair", "Warning", MessageBoxButtons.OK);
+                VSPort1.Delete();
+                VSPort2.Delete();
+                this.ForeColor = Color.Orange;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void AddLog(string Str)
         {
             editLog.AppendText(DateTime.Now.ToString("T") + " - " + Str + "\r\n");
@@ -409,6 +451,7 @@ namespace VirtualSerialMonitor
         {
 
         }
+        
 
         private void btnAddMask_Click(object sender, System.EventArgs e)
         {

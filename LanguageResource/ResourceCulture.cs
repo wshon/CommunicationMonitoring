@@ -43,10 +43,9 @@ namespace LanguageResource
                 Debug.WriteLine("The ID:\"" + id + "\" Value:\"" + strCurLanguage + "\"\r\n");
                 return true;
             }
-            catch (Exception e)
+            catch (Exception err)
             {
-                //strCurLanguage = "No id:" + id + ", please add.";
-                Debug.WriteLine(e.Message);
+                Debug.WriteLine(err.Message);
                 Debug.WriteLine("The ID:\"" + id + "\" Value:\"" + strCurLanguage + "\"\r\n");
                 return false;
             }
@@ -68,9 +67,9 @@ namespace LanguageResource
                         SetResourceCulture(((ToolStripMenuItem)item).DropDownItems, userAssembly);
                     }
                 }
-                catch (Exception e)
+                catch (Exception err)
                 {
-                    Debug.WriteLine(e.Message);
+                    Debug.WriteLine(err.Message);
                 }
             }
         }

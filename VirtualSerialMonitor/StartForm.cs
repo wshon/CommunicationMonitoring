@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Security.Permissions;
 using System.Security.Principal;
@@ -19,10 +21,13 @@ namespace VirtualSerialMonitor
             InitializeComponent();
 
         }
-
+        SerialPort SerialCon1 = new SerialPort();
+        SerialPort SerialCon2 = new SerialPort();
         private void button1_Click(object sender, EventArgs e)
         {
-            MainForm frmSerialFrom = new MainForm(textBox1.Text, textBox2.Text);
+            SerialCon1.PortName = textBox1.Text;
+            SerialCon2.PortName = textBox2.Text;
+            MainForm frmSerialFrom = new MainForm(textBox1.Text + "<---->" + textBox2.Text, SerialCon1, SerialCon2);
             frmSerialFrom.MdiParent = this.ParentForm.Owner;
             frmSerialFrom.Show();
         }
@@ -42,10 +47,11 @@ namespace VirtualSerialMonitor
             {
                 System.Diagnostics.Process.Start("RegisterVSPort.exe");
             }
-            catch (Exception Err)
+            catch (Exception err)
             {
+                Debug.WriteLine(err.Message);
                 //Console.WriteLine("Generic Exception Handler: {0}", Err.ToString());
-                MessageBox.Show(Err.Message.ToString(), Err.Source.ToString());
+                MessageBox.Show(err.Message.ToString(), err.Source.ToString());
             }
         }
 
