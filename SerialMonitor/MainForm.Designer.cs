@@ -31,28 +31,32 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.StattoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.RecvCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.SendCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textLen = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textLen = new System.Windows.Forms.TextBox();
             this.btnSendFile = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.ClearToolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.ClearToolStripSplitButton = new System.Windows.Forms.ToolStripStatusLabel();
+            this.PortToolStripSplitButton = new System.Windows.Forms.ToolStripStatusLabel();
+            this.BuadToolStripSplitButton = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ParityToolStripSplitButton = new System.Windows.Forms.ToolStripStatusLabel();
+            this.DataBitsToolStripSplitButton = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StopBitsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -65,7 +69,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(384, 338);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(384, 339);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
@@ -79,23 +83,21 @@
             // 
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StattoolStripStatusLabel,
+            this.PortToolStripSplitButton,
+            this.BuadToolStripSplitButton,
+            this.ParityToolStripSplitButton,
+            this.DataBitsToolStripSplitButton,
+            this.StopBitsToolStripStatusLabel,
+            this.ClearToolStripSplitButton,
             this.toolStripStatusLabel2,
             this.RecvCountToolStripStatusLabel,
             this.toolStripStatusLabel3,
-            this.SendCountToolStripStatusLabel,
-            this.ClearToolStripSplitButton});
+            this.SendCountToolStripStatusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(384, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(384, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // StattoolStripStatusLabel
-            // 
-            this.StattoolStripStatusLabel.Name = "StattoolStripStatusLabel";
-            this.StattoolStripStatusLabel.Size = new System.Drawing.Size(30, 18);
-            this.StattoolStripStatusLabel.Text = "Stat";
             // 
             // toolStripStatusLabel2
             // 
@@ -134,8 +136,32 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(384, 338);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(384, 339);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.textBox2, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.textBox1, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(261, 333);
+            this.tableLayoutPanel4.TabIndex = 5;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox2.Location = new System.Drawing.Point(3, 276);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(255, 54);
+            this.textBox2.TabIndex = 1;
             // 
             // textBox1
             // 
@@ -144,38 +170,9 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(255, 266);
+            this.textBox1.Size = new System.Drawing.Size(255, 267);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(3, 275);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(255, 54);
-            this.textBox2.TabIndex = 1;
-            // 
-            // textLen
-            // 
-            this.textLen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textLen.Location = new System.Drawing.Point(74, 248);
-            this.textLen.Name = "textLen";
-            this.textLen.Size = new System.Drawing.Size(34, 21);
-            this.textLen.TabIndex = 1;
-            this.textLen.Text = "128";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 245);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 27);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "数据帧长度";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel3
             // 
@@ -200,14 +197,34 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(111, 332);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(111, 333);
             this.tableLayoutPanel3.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 246);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 27);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "数据帧长度";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textLen
+            // 
+            this.textLen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textLen.Location = new System.Drawing.Point(74, 249);
+            this.textLen.Name = "textLen";
+            this.textLen.Size = new System.Drawing.Size(34, 21);
+            this.textLen.TabIndex = 1;
+            this.textLen.Text = "128";
             // 
             // btnSendFile
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.btnSendFile, 2);
             this.btnSendFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSendFile.Location = new System.Drawing.Point(3, 275);
+            this.btnSendFile.Location = new System.Drawing.Point(3, 276);
             this.btnSendFile.Name = "btnSendFile";
             this.btnSendFile.Size = new System.Drawing.Size(105, 24);
             this.btnSendFile.TabIndex = 3;
@@ -219,7 +236,7 @@
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.btnSend, 2);
             this.btnSend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSend.Location = new System.Drawing.Point(3, 305);
+            this.btnSend.Location = new System.Drawing.Point(3, 306);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(105, 24);
             this.btnSend.TabIndex = 2;
@@ -227,30 +244,48 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.textBox2, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.textBox1, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(261, 332);
-            this.tableLayoutPanel4.TabIndex = 5;
-            // 
             // ClearToolStripSplitButton
             // 
+            this.ClearToolStripSplitButton.AutoToolTip = true;
             this.ClearToolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.ClearToolStripSplitButton.Image = ((System.Drawing.Image)(resources.GetObject("ClearToolStripSplitButton.Image")));
             this.ClearToolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ClearToolStripSplitButton.IsLink = true;
             this.ClearToolStripSplitButton.Name = "ClearToolStripSplitButton";
-            this.ClearToolStripSplitButton.Size = new System.Drawing.Size(48, 21);
+            this.ClearToolStripSplitButton.Size = new System.Drawing.Size(32, 17);
             this.ClearToolStripSplitButton.Text = "清空";
-            this.ClearToolStripSplitButton.ButtonClick += new System.EventHandler(this.ClearToolStripSplitButton_ButtonClick);
+            this.ClearToolStripSplitButton.ToolTipText = "清空收发数据计数";
+            this.ClearToolStripSplitButton.Click += new System.EventHandler(this.ClearToolStripSplitButton_Click);
+            // 
+            // PortToolStripSplitButton
+            // 
+            this.PortToolStripSplitButton.Name = "PortToolStripSplitButton";
+            this.PortToolStripSplitButton.Size = new System.Drawing.Size(30, 17);
+            this.PortToolStripSplitButton.Text = "Stat";
+            // 
+            // BuadToolStripSplitButton
+            // 
+            this.BuadToolStripSplitButton.Name = "BuadToolStripSplitButton";
+            this.BuadToolStripSplitButton.Size = new System.Drawing.Size(30, 17);
+            this.BuadToolStripSplitButton.Text = "Stat";
+            // 
+            // ParityToolStripSplitButton
+            // 
+            this.ParityToolStripSplitButton.Name = "ParityToolStripSplitButton";
+            this.ParityToolStripSplitButton.Size = new System.Drawing.Size(30, 17);
+            this.ParityToolStripSplitButton.Text = "Stat";
+            // 
+            // DataBitsToolStripSplitButton
+            // 
+            this.DataBitsToolStripSplitButton.Name = "DataBitsToolStripSplitButton";
+            this.DataBitsToolStripSplitButton.Size = new System.Drawing.Size(30, 17);
+            this.DataBitsToolStripSplitButton.Text = "Stat";
+            // 
+            // StopBitsToolStripStatusLabel
+            // 
+            this.StopBitsToolStripStatusLabel.Name = "StopBitsToolStripStatusLabel";
+            this.StopBitsToolStripStatusLabel.Size = new System.Drawing.Size(30, 17);
+            this.StopBitsToolStripStatusLabel.Text = "Stat";
             // 
             // MainForm
             // 
@@ -273,10 +308,10 @@
             this.statusStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -284,7 +319,6 @@
         #endregion
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel StattoolStripStatusLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
@@ -297,7 +331,12 @@
         private System.Windows.Forms.ToolStripStatusLabel SendCountToolStripStatusLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnSendFile;
-        private System.Windows.Forms.ToolStripSplitButton ClearToolStripSplitButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.ToolStripStatusLabel ClearToolStripSplitButton;
+        private System.Windows.Forms.ToolStripStatusLabel PortToolStripSplitButton;
+        private System.Windows.Forms.ToolStripStatusLabel BuadToolStripSplitButton;
+        private System.Windows.Forms.ToolStripStatusLabel ParityToolStripSplitButton;
+        private System.Windows.Forms.ToolStripStatusLabel DataBitsToolStripSplitButton;
+        private System.Windows.Forms.ToolStripStatusLabel StopBitsToolStripStatusLabel;
     }
 }

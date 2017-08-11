@@ -62,12 +62,11 @@ namespace SerialMonitor
 
         private void Init_SerialPort(SerialPort userSerialPort)
         {
-            StattoolStripStatusLabel.Text =
-                userSerialPort.PortName.ToString() + "," +
-                userSerialPort.BaudRate.ToString() + "," +
-                userSerialPort.Parity.ToString() + "," +
-                userSerialPort.DataBits.ToString() + "," +
-                userSerialPort.StopBits.ToString();
+            PortToolStripSplitButton.Text = userSerialPort.PortName.ToString();
+            BuadToolStripSplitButton.Text = userSerialPort.BaudRate.ToString();
+            ParityToolStripSplitButton.Text = userSerialPort.Parity.ToString();
+            DataBitsToolStripSplitButton.Text = userSerialPort.DataBits.ToString();
+            StopBitsToolStripStatusLabel.Text = userSerialPort.StopBits.ToString();
             Copy(userSerialPort, thisSerialPort);
             thisSerialPort.DataReceived += ThisSerialPort_DataReceived;
             SerialPort_Open(thisSerialPort);
@@ -115,7 +114,14 @@ namespace SerialMonitor
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             t.Enabled = false;
-            thisSerialPort.Close();
+            try
+            {
+                thisSerialPort.Close();
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -132,8 +138,8 @@ namespace SerialMonitor
         {
             thisSerialPort.Write(textBox2.Text);
         }
-
-        private void ClearToolStripSplitButton_ButtonClick(object sender, EventArgs e)
+        
+        private void ClearToolStripSplitButton_Click(object sender, EventArgs e)
         {
             SentBytes = 0;
             RecvBytes = 0;
