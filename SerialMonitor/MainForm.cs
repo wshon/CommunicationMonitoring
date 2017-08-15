@@ -1,85 +1,75 @@
-﻿using System;
+﻿using SerialLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SerialMonitor
 {
     public partial class MainForm : Form
     {
-        SerialPort thisSerialPort = new SerialPort();
-        private int SentBytes, RecvBytes;
+        #region 全局变量
 
-        System.Timers.Timer t = new System.Timers.Timer(500);//实例化Timer类，设置间隔时间为500毫秒；
-        public MainForm(string title,SerialPort userSerialPort)
+        Serial thisSerialPort = new Serial();
+
+        private BlindInt SentBytes, RecvBytes;
+        private BlindInt FileSendPerss;
+
+        #endregion
+
+        #region 主函数
+
+        public MainForm()
+        {
+            InitializeComponent();
+            Init_SerialPort(null);
+        }
+        public MainForm(string title, SerialPort userSerialPort)
         {
             InitializeComponent();
             this.Text = title;
             Init_SerialPort(userSerialPort);
         }
 
-        public void theout(object source, System.Timers.ElapsedEventArgs e)
-        {
-            if (thisSerialPort.IsOpen)
-            {
-                this.ForeColor = Color.Green;
-                t.Interval = 500;
-            }
-            else
-            {
-                t.Interval = 2000;
-                thisSerialPort.Close();
-                SerialPort_Open(thisSerialPort);
-                this.ForeColor = Color.Orange;
-            }
-            //MessageBox.Show("OK!");
-        }
-        private void SerialPort_Open(SerialPort userSerialPort)
-        {
-            try
-            {
-                thisSerialPort.Open();
-                this.ForeColor = Color.Green;
+        #endregion
 
-                t.Elapsed += new System.Timers.ElapsedEventHandler(theout);//到达时间的时候执行事件；
-                t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；
-                t.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine(err.Message);
-                this.ForeColor = Color.Red;
-            }
-        }
-
+        #region 初始化串口
+        
         private void Init_SerialPort(SerialPort userSerialPort)
         {
-            PortToolStripSplitButton.Text = userSerialPort.PortName.ToString();
-            BuadToolStripSplitButton.Text = userSerialPort.BaudRate.ToString();
-            ParityToolStripSplitButton.Text = userSerialPort.Parity.ToString();
-            DataBitsToolStripSplitButton.Text = userSerialPort.DataBits.ToString();
-            StopBitsToolStripStatusLabel.Text = userSerialPort.StopBits.ToString();
-            Copy(userSerialPort, thisSerialPort);
+            thisSerialPort.cB_SerialPortName = SerialNumberComboBox;
+            thisSerialPort.cB_SerialBaudRate = BaudRateComboBox;
+            thisSerialPort.cB_SerialParity = ParityComboBox;
+            thisSerialPort.cB_SerialDataBits = DataBitsComboBox;
+            thisSerialPort.cB_SerialStopBits = StopBitsComboBox;
+            thisSerialPort.Btn_Link = btnLink;
+            thisSerialPort.Tb_Stat = label3;
             thisSerialPort.DataReceived += ThisSerialPort_DataReceived;
-            SerialPort_Open(thisSerialPort);
+            thisSerialPort.SerialInit(userSerialPort);
         }
+
+        #endregion
+
         private void ThisSerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            //byte[] bufferin = new byte[(sender as SerialPort).ReadBufferSize];
             int tmp;
             do
             {
                 try
                 {
                     tmp = (sender as SerialPort).ReadByte();
-                    RecvBytes++;
+                    RecvBytes.Value++;
                     Invoke((MethodInvoker)delegate ()
                     {
                         textBox1.Text += " "+(tmp.ToString("X2"));
@@ -92,36 +82,30 @@ namespace SerialMonitor
                 }
             }
             while (true);
-            Invoke((MethodInvoker)delegate ()
-            { 
-                RecvCountToolStripStatusLabel.Text = RecvBytes.ToString();
-            });
         }
-
+        
         private void SerialFrom_Load(object sender, EventArgs e)
         {
+            SentBytes = new BlindInt();
+            RecvBytes = new BlindInt();
+            FileSendPerss = new BlindInt();
+
+            tBSendCount.DataBindings.Add("Text", SentBytes, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+            tBRecvCount.DataBindings.Add("Text", RecvBytes, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+            prebarSendFile.DataBindings.Add("Value", FileSendPerss, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
-        public void Copy(SerialPort source, SerialPort target)
-        {
-            target.PortName = source.PortName;
-            target.BaudRate = source.BaudRate;
-            target.Parity = source.Parity;
-            target.DataBits = source.DataBits;
-            target.StopBits = source.StopBits;
-        }
+        //public void Copy(SerialPort source, SerialPort target)
+        //{
+        //    target.PortName = source.PortName;
+        //    target.BaudRate = source.BaudRate;
+        //    target.Parity = source.Parity;
+        //    target.DataBits = source.DataBits;
+        //    target.StopBits = source.StopBits;
+        //}
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            t.Enabled = false;
-            try
-            {
-                thisSerialPort.Close();
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine(err.Message);
-            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -136,43 +120,176 @@ namespace SerialMonitor
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+            SentBytes.Value += textBox2.Text.Length;
             thisSerialPort.Write(textBox2.Text);
         }
         
-        private void ClearToolStripSplitButton_Click(object sender, EventArgs e)
+        private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            SentBytes = 0;
-            RecvBytes = 0;
-            RecvCountToolStripStatusLabel.Text = "0";
-            SendCountToolStripStatusLabel.Text = "0";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "All files (*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                tbSendFile.Text = openFileDialog1.FileName;
+                btnSendFile.Enabled = true;
+            }
+        }
+
+        private void toolStripContainer2_ContentPanel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearToolStripStatusLabel_Click(object sender, EventArgs e)
+        {
+            SentBytes.Value = 0;
+            RecvBytes.Value = 0;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            SentBytes.Value = 0;
+            RecvBytes.Value = 0;
+        }
+
+        private void tBRecvCount_TextChanged(object sender, EventArgs e)
+        {
+            RecvCountToolStripStatusLabel.Text = tBRecvCount.Text;
+        }
+
+        private void tBSendCount_TextChanged(object sender, EventArgs e)
+        {
+            SendCountToolStripStatusLabel.Text = tBSendCount.Text;
+        }
+
+        private void btnLink_Click(object sender, EventArgs e)
+        {
+            StatToolStripStatusLabel.Text =
+                SerialNumberComboBox.Text+"," +
+                BaudRateComboBox.Text + "," +
+                ParityComboBox.Text + "," +
+                DataBitsComboBox.Text + "," +
+                StopBitsComboBox.Text;
+
+        }
+
+        private void label3_TextChanged(object sender, EventArgs e)
+        {
+            ShowToolStripStatusLabel.Text = label3.Text;
         }
 
         private void btnSendFile_Click(object sender, EventArgs e)
         {
             int fRead;
             int SizeBuf;
+
             byte[] Buff = new byte[Convert.ToInt32(textLen.Text)];
             byte[] BuffPort;
             fRead = Convert.ToInt32(textLen.Text);
             SizeBuf = fRead;
-
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "All files (*.*)|*.*";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (!File.Exists(tbSendFile.Text))
             {
-                System.IO.FileStream file = new System.IO.FileStream(openFileDialog1.FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                tbSendFile.Text = "文件未找到";
+                btnSendFile.Enabled = false;
+                return;
+            }
+            System.IO.FileStream file = new System.IO.FileStream(tbSendFile.Text, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+            prebarSendFile.Maximum = (int)((file.Length / SizeBuf)) + 1;
+            FileSendPerss.Value = 0;
+            Thread SendFile = new Thread(() => {
                 while (fRead == SizeBuf)
                 {
                     fRead = file.Read(Buff, 0, SizeBuf);
                     BuffPort = new byte[fRead];
                     Array.Copy(Buff, BuffPort, fRead);
-                    thisSerialPort.Write(BuffPort, 0, fRead);
-                    SentBytes = SentBytes + fRead;
-                    SendCountToolStripStatusLabel.Text = Convert.ToString(SentBytes);
+                    if (thisSerialPort.Write(BuffPort, 0, fRead))
+                    {
+                        SentBytes.Value += fRead;
+                        FileSendPerss.Value++;
+                    }
+                    else
+                    {
+                        FileSendPerss.Value++;
+                        break;
+                    }
                 }
+            });
+            SendFile.Start();
+        }
+
+    }
+
+    public class BlindInt : INotifyPropertyChanged
+    {
+        private int _theValue = 0;
+
+        public int Value
+        {
+            get { return _theValue; }
+            set
+            {
+                if (value == _theValue)
+                    return;
+                _theValue = value;
+                NotifyPropertyChanged(() => Value);
             }
         }
-        
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged<T>(Expression<Func<T>> property)
+        {
+            if (PropertyChanged == null)
+                return;
+
+            var memberExpression = property.Body as MemberExpression;
+            if (memberExpression == null)
+                return;
+
+            try
+            {
+                (MainForm.ActiveForm).Invoke(new Action(() =>
+                {
+                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs(memberExpression.Member.Name));
+                }));
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+            }
+        }
+    }
+
+    public class MyData : INotifyPropertyChanged
+    {
+        private string _theValue = string.Empty;
+
+        public string TheValue
+        {
+            get { return _theValue; }
+            set
+            {
+                if (string.IsNullOrEmpty(value) && value == _theValue)
+                    return;
+
+                _theValue = value;
+                NotifyPropertyChanged(() => TheValue);
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged<T>(Expression<Func<T>> property)
+        {
+            if (PropertyChanged == null)
+                return;
+
+            var memberExpression = property.Body as MemberExpression;
+            if (memberExpression == null)
+                return;
+
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(memberExpression.Member.Name));
+        }
     }
 }
 

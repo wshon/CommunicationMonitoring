@@ -449,8 +449,6 @@ namespace VirtualSerialMonitor
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
             this.ClientSize = new System.Drawing.Size(588, 496);
-            this.Controls.Add(this.axVSPortAx4);
-            this.Controls.Add(this.axVSPortAx3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.chkBreak);
@@ -481,8 +479,6 @@ namespace VirtualSerialMonitor
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axVSPortAx3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axVSPortAx4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

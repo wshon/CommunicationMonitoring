@@ -19,6 +19,12 @@ namespace VirtualSerialMonitor
         private Boolean Cts, Dsr, Dcd, Ri;
         AxVSPortAx axVSPortAx1;
         AxVSPortAx axVSPortAx2;
+        public MainForm()
+        {
+            InitializeComponent();
+            if (axVSPortAx1 == null) axVSPortAx1 = new AxVSPortAx();
+            if (axVSPortAx2 == null) axVSPortAx2 = new AxVSPortAx();
+        }
         public MainForm(string title, SerialPort userSerialPort1, SerialPort userSerialPort2)
         {
             InitializeComponent();

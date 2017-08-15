@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialMonitor", "SerialMoni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketMonitor", "TcpMonitor\SocketMonitor.csproj", "{F95E11B6-C3D9-408C-95A8-E6EEE4B031D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialLib", "SerialLib\SerialLib.csproj", "{88BCB033-DA85-47EF-A807-CF4A6B868C86}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualSerialMonitor", "VirtualSerialMonitor\VirtualSerialMonitor.csproj", "{58E4F85C-4C6E-4796-BB72-49D02C036867}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterVSPort", "RegisterVSPort\RegisterVSPort.csproj", "{CD138149-5526-47E3-BD59-66263773AB6B}"
@@ -37,10 +35,6 @@ Global
 		{F95E11B6-C3D9-408C-95A8-E6EEE4B031D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F95E11B6-C3D9-408C-95A8-E6EEE4B031D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F95E11B6-C3D9-408C-95A8-E6EEE4B031D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{88BCB033-DA85-47EF-A807-CF4A6B868C86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88BCB033-DA85-47EF-A807-CF4A6B868C86}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88BCB033-DA85-47EF-A807-CF4A6B868C86}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88BCB033-DA85-47EF-A807-CF4A6B868C86}.Release|Any CPU.Build.0 = Release|Any CPU
 		{58E4F85C-4C6E-4796-BB72-49D02C036867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58E4F85C-4C6E-4796-BB72-49D02C036867}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58E4F85C-4C6E-4796-BB72-49D02C036867}.Release|Any CPU.ActiveCfg = Release|Any CPU

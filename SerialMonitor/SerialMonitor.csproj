@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F7E2E9DE-064D-4FC6-9EB6-902DDD8AF47F}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>SerialMonitor</RootNamespace>
     <AssemblyName>SerialMonitor</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -31,8 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>SerialMonitor.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -60,6 +59,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.zh-CN.resx</DependentUpon>
     </Compile>
+    <Compile Include="Serial.cs" />
     <Compile Include="StartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,10 +99,6 @@
     <ProjectReference Include="..\LanguageResource\LanguageResource.csproj">
       <Project>{49D59A80-5F0E-4D27-ABC9-75E57D6E59E6}</Project>
       <Name>LanguageResource</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SerialLib\SerialLib.csproj">
-      <Project>{88bcb033-da85-47ef-a807-cf4a6b868c86}</Project>
-      <Name>SerialLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

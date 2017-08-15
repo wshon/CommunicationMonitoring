@@ -61,10 +61,10 @@ namespace SerialMonitor
 
         private void addDeviceOKButton_Click(object sender, EventArgs e)
         {
-            MainForm frmSerialFrom = new MainForm(TitleTextBox.Text, SerialCon.SerialPortCon);
-            frmSerialFrom.MdiParent = this.ParentForm.Owner;
-            frmSerialFrom.Show();
-            TitleTextBox.Text = "SerialPort" + ((UInt16)DateTime.Now.Ticks).ToString("D5");
+           // MainForm frmSerialFrom = new MainForm(TitleTextBox.Text, SerialCon.SerialPortCon);
+            //frmSerialFrom.MdiParent = this.ParentForm.Owner;
+            //frmSerialFrom.Show();
+            //TitleTextBox.Text = "SerialPort" + ((UInt16)DateTime.Now.Ticks).ToString("D5");
         }
 
         private void addDeviceCancelButton_Click(object sender, EventArgs e)

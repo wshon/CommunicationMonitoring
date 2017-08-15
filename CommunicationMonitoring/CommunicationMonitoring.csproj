@@ -121,10 +121,6 @@
       <Project>{cd138149-5526-47e3-bd59-66263773ab6b}</Project>
       <Name>RegisterVSPort</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SerialLib\SerialLib.csproj">
-      <Project>{88bcb033-da85-47ef-a807-cf4a6b868c86}</Project>
-      <Name>SerialLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SerialMonitor\SerialMonitor.csproj">
       <Project>{f7e2e9de-064d-4fc6-9eb6-902ddd8af47f}</Project>
       <Name>SerialMonitor</Name>
