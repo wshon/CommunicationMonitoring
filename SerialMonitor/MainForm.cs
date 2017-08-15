@@ -106,6 +106,14 @@ namespace SerialMonitor
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            try
+            {
+                thisSerialPort.Close();
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
