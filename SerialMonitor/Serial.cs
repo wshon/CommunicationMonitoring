@@ -406,6 +406,7 @@ namespace SerialLib
                     //(sender as ComboBox).Items.Add(str + "(占用)");
                 }
             }
+            while (!(sender as ComboBox).IsHandleCreated) ;
             (sender as ComboBox).Invoke(new Action(() =>
             {
                 (sender as ComboBox).Items.Clear();

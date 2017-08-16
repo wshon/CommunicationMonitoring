@@ -1,5 +1,6 @@
 ﻿using SerialLib;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,11 +21,13 @@ namespace SerialMonitor
     {
         #region 全局变量
 
-        Serial thisSerialPort = new Serial();
-
-        private BlindInt SentBytes, RecvBytes;
-        private BlindInt FileSendPerss;
-
+        private Serial thisSerialPort = new Serial();
+        private BlindInt SentBytes = new BlindInt();
+        private BlindInt RecvBytes = new BlindInt();
+        private BlindInt FileSendPerss = new BlindInt();
+        private BlindString RecvDatasShow = new BlindString();
+        private List<byte> RecvDatas = new List<byte>();
+        private string NewLineStr = "";
         #endregion
 
         #region 主函数
@@ -60,50 +63,25 @@ namespace SerialMonitor
 
         #endregion
 
-        private void ThisSerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            //byte[] bufferin = new byte[(sender as SerialPort).ReadBufferSize];
-            int tmp;
-            do
-            {
-                try
-                {
-                    tmp = (sender as SerialPort).ReadByte();
-                    RecvBytes.Value++;
-                    Invoke((MethodInvoker)delegate ()
-                    {
-                        textBox1.Text += " "+(tmp.ToString("X2"));
-                    });
-                }
-                catch (Exception err)
-                {
-                    Debug.WriteLine(err.Message);
-                    break;
-                }
-            }
-            while (true);
-        }
-        
+        #region 窗体事件
+        /// <summary>
+        /// 窗体载入——进行数据绑定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SerialFrom_Load(object sender, EventArgs e)
         {
-            SentBytes = new BlindInt();
-            RecvBytes = new BlindInt();
-            FileSendPerss = new BlindInt();
-
-            tBSendCount.DataBindings.Add("Text", SentBytes, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
-            tBRecvCount.DataBindings.Add("Text", RecvBytes, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+            tbSendCount.DataBindings.Add("Text", SentBytes, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+            tbRecvCount.DataBindings.Add("Text", RecvBytes, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
             prebarSendFile.DataBindings.Add("Value", FileSendPerss, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+            tbRecvData.DataBindings.Add("Text", RecvDatasShow, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
-        //public void Copy(SerialPort source, SerialPort target)
-        //{
-        //    target.PortName = source.PortName;
-        //    target.BaudRate = source.BaudRate;
-        //    target.Parity = source.Parity;
-        //    target.DataBits = source.DataBits;
-        //    target.StopBits = source.StopBits;
-        //}
-
+        /// <summary>
+        /// 窗体关闭——关闭串口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
@@ -115,21 +93,91 @@ namespace SerialMonitor
                 Debug.WriteLine(err.Message);
             }
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void tbRecvData_TextChanged(object sender, EventArgs e)
         {
-            //textBox1.AppendText(Label);     // 追加文本，并且使得光标定位到插入地方。
-            //textBox1.ScrollToCaret();
-
-            textBox1.Focus();//获取焦点
-            textBox1.Select(textBox1.TextLength, 0);//光标定位到文本最后
-            textBox1.ScrollToCaret();//滚动到光标处
+            tbRecvData.Focus();//获取焦点
+            tbRecvData.Select(tbRecvData.TextLength, 0);//光标定位到文本最后
+            tbRecvData.ScrollToCaret();//滚动到光标处
         }
+        #endregion
+
+        #region 接收数据处理
+        /// <summary>
+        /// 串口接收数据事件——更新到接收数据内存区
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ThisSerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            byte[] bufferin;
+            int tmp;
+            do
+            {
+                try
+                {
+                    tmp = (sender as SerialPort).BytesToRead;
+                    if (tmp == 0) break;
+                    bufferin = new byte[tmp];
+                    (sender as SerialPort).Read(bufferin, 0, tmp);
+                    RecvBytes.Value += tmp;
+                    RecvDatas.AddRange(bufferin);
+                    UpdateRecvShow();
+                    //RecvDatas.Value += " " + System.Text.Encoding.Default.GetString(bufferin);//(bufferin.ToString(  "X2"));
+                }
+                catch (Exception err)
+                {
+                    Debug.WriteLine(err.Message);
+                    break;
+                }
+            }
+            while (true);
+        }
+        /// <summary>
+        /// 更新窗体的数据绑定
+        /// </summary>
+        private void UpdateRecvShow()
+        {
+            Thread SendData = new Thread(() => {
+                if (chkShowTypeHex.Checked)
+                {
+                    RecvDatasShow.Value = Conversion.byteToHexStr(RecvDatas.ToArray(), ' ');
+                }
+                else
+                {
+
+                    RecvDatasShow.Value = System.Text.Encoding.Default.GetString(RecvDatas.ToArray());
+                }
+                this.Invoke(new Action(() =>
+                {
+                    WorkToolStripStatusLabel.Text = "";
+                }));
+            });
+            WorkToolStripStatusLabel.Text = "正在运行……";
+            SendData.Start();
+        }
+        #endregion
+
+
+
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            SentBytes.Value += textBox2.Text.Length;
-            thisSerialPort.Write(textBox2.Text);
+            byte[] SendTmp = System.Text.Encoding.Default.GetBytes(textBox2.Text + NewLineStr);
+            int SengLenght = SendTmp.Length;
+            SentBytes.Value += SengLenght;
+            Thread SendData = new Thread(() => {
+                thisSerialPort.Write(SendTmp, 0, SengLenght);
+                this.Invoke(new Action(() =>
+                {
+                    btnSend.Enabled = true;
+                    btnSend.Text = "发送";
+                    WorkToolStripStatusLabel.Text = "";
+                }));
+            });
+            WorkToolStripStatusLabel.Text = "正在运行……";
+            btnSend.Enabled = false;
+            btnSend.Text = "发送中……";
+            SendData.Start();
         }
         
         private void btnOpenFile_Click(object sender, EventArgs e)
@@ -152,28 +200,23 @@ namespace SerialMonitor
         {
             SentBytes.Value = 0;
             RecvBytes.Value = 0;
+            RecvDatas.Clear();
+            UpdateRecvShow();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             SentBytes.Value = 0;
             RecvBytes.Value = 0;
+            RecvDatas.Clear();
+            UpdateRecvShow();
         }
 
-        private void tBRecvCount_TextChanged(object sender, EventArgs e)
-        {
-            RecvCountToolStripStatusLabel.Text = tBRecvCount.Text;
-        }
-
-        private void tBSendCount_TextChanged(object sender, EventArgs e)
-        {
-            SendCountToolStripStatusLabel.Text = tBSendCount.Text;
-        }
 
         private void btnLink_Click(object sender, EventArgs e)
         {
             StatToolStripStatusLabel.Text =
-                SerialNumberComboBox.Text+"," +
+                SerialNumberComboBox.Text + "," +
                 BaudRateComboBox.Text + "," +
                 ParityComboBox.Text + "," +
                 DataBitsComboBox.Text + "," +
@@ -184,8 +227,19 @@ namespace SerialMonitor
         private void label3_TextChanged(object sender, EventArgs e)
         {
             ShowToolStripStatusLabel.Text = label3.Text;
+            ShowToolStripStatusLabel.ForeColor = label3.ForeColor;
         }
 
+        private void tBRecvCount_TextChanged(object sender, EventArgs e)
+        {
+            RecvCountToolStripStatusLabel.Text = tbRecvCount.Text;
+        }
+
+        private void tBSendCount_TextChanged(object sender, EventArgs e)
+        {
+            SendCountToolStripStatusLabel.Text = tbSendCount.Text;
+        }
+        
         private void btnSendFile_Click(object sender, EventArgs e)
         {
             int fRead;
@@ -221,10 +275,24 @@ namespace SerialMonitor
                         break;
                     }
                 }
+                this.Invoke(new Action(() =>
+                {
+                    WorkToolStripStatusLabel.Text = "";
+                }));
             });
+            WorkToolStripStatusLabel.Text = "正在运行……";
             SendFile.Start();
         }
 
+        private void chkShowTypeHex_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateRecvShow();
+        }
+
+        private void cmbSendNewLine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            NewLineStr = cmbSendNewLine.Text.Replace("\\r", "\r").Replace("\\n", "\n");
+        }
     }
 
     public class BlindInt : INotifyPropertyChanged
@@ -253,6 +321,49 @@ namespace SerialMonitor
             var memberExpression = property.Body as MemberExpression;
             if (memberExpression == null)
                 return;
+
+            try
+            {
+                (MainForm.ActiveForm).Invoke(new Action(() =>
+                {
+                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs(memberExpression.Member.Name));
+                }));
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+            }
+        }
+    }
+
+    public class BlindString : INotifyPropertyChanged
+    {
+        private string _theValue = string.Empty;
+
+        public string Value
+        {
+            get { return _theValue; }
+            set
+            {
+                if (string.IsNullOrEmpty(value) && value == _theValue)
+                    return;
+
+                _theValue = value;
+                NotifyPropertyChanged(() => Value);
+            }
+        }
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged<T>(Expression<Func<T>> property)
+        {
+            if (PropertyChanged == null)
+                return;
+
+            var memberExpression = property.Body as MemberExpression;
+            if (memberExpression == null)
+                return;
+
 
             try
             {

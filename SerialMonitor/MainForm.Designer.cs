@@ -30,36 +30,39 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbRecvData = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.chkShowTypeHex = new System.Windows.Forms.CheckBox();
             this.btnLink = new System.Windows.Forms.Button();
-            this.StopBitsComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbStopBits = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.DataBitsComboBox = new System.Windows.Forms.ComboBox();
             this.SerialNumberComboBox = new System.Windows.Forms.ComboBox();
             this.lbDataBits = new System.Windows.Forms.Label();
-            this.lbBaudRate = new System.Windows.Forms.Label();
-            this.ParityComboBox = new System.Windows.Forms.ComboBox();
-            this.BaudRateComboBox = new System.Windows.Forms.ComboBox();
-            this.lbParity = new System.Windows.Forms.Label();
-            this.tBRecvCount = new System.Windows.Forms.TextBox();
-            this.tBSendCount = new System.Windows.Forms.TextBox();
+            this.tbRecvCount = new System.Windows.Forms.TextBox();
+            this.tbSendCount = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
+            this.lbBaudRate = new System.Windows.Forms.Label();
+            this.BaudRateComboBox = new System.Windows.Forms.ComboBox();
+            this.lbParity = new System.Windows.Forms.Label();
+            this.ParityComboBox = new System.Windows.Forms.ComboBox();
+            this.lbStopBits = new System.Windows.Forms.Label();
+            this.StopBitsComboBox = new System.Windows.Forms.ComboBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.cmbSendNewLine = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -72,14 +75,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ShowToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.SendCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.RecvCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ClearToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.WorkToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.ShowToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -100,7 +104,7 @@
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.textBox1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.tbRecvData, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
@@ -111,15 +115,18 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(721, 490);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
-            // textBox1
+            // tbRecvData
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(715, 363);
-            this.textBox1.TabIndex = 2;
+            this.tbRecvData.BackColor = System.Drawing.SystemColors.Window;
+            this.tbRecvData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbRecvData.Location = new System.Drawing.Point(3, 3);
+            this.tbRecvData.Multiline = true;
+            this.tbRecvData.Name = "tbRecvData";
+            this.tbRecvData.ReadOnly = true;
+            this.tbRecvData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbRecvData.Size = new System.Drawing.Size(715, 363);
+            this.tbRecvData.TabIndex = 2;
+            this.tbRecvData.TextChanged += new System.EventHandler(this.tbRecvData_TextChanged);
             // 
             // tableLayoutPanel5
             // 
@@ -161,31 +168,34 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnCount = 8;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 326F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.chkShowTypeHex, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnLink, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.StopBitsComboBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lbStopBits, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.DataBitsComboBox, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.SerialNumberComboBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbDataBits, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lbBaudRate, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.ParityComboBox, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BaudRateComboBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lbParity, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tBRecvCount, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tBSendCount, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tbRecvCount, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tbSendCount, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.label5, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.label6, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnClear, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbBaudRate, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BaudRateComboBox, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbParity, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ParityComboBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbStopBits, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.StopBitsComboBox, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -198,6 +208,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(701, 83);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // chkShowTypeHex
+            // 
+            this.chkShowTypeHex.AutoSize = true;
+            this.chkShowTypeHex.Location = new System.Drawing.Point(378, 3);
+            this.chkShowTypeHex.Name = "chkShowTypeHex";
+            this.chkShowTypeHex.Size = new System.Drawing.Size(84, 16);
+            this.chkShowTypeHex.TabIndex = 25;
+            this.chkShowTypeHex.Text = "16进制显示";
+            this.chkShowTypeHex.UseVisualStyleBackColor = true;
+            this.chkShowTypeHex.CheckedChanged += new System.EventHandler(this.chkShowTypeHex_CheckedChanged);
+            // 
             // btnLink
             // 
             this.btnLink.Location = new System.Drawing.Point(191, 57);
@@ -207,14 +228,6 @@
             this.btnLink.Text = "连接";
             this.btnLink.UseVisualStyleBackColor = true;
             this.btnLink.Click += new System.EventHandler(this.btnLink_Click);
-            // 
-            // StopBitsComboBox
-            // 
-            this.StopBitsComboBox.FormattingEnabled = true;
-            this.StopBitsComboBox.Location = new System.Drawing.Point(62, 57);
-            this.StopBitsComboBox.Name = "StopBitsComboBox";
-            this.StopBitsComboBox.Size = new System.Drawing.Size(64, 20);
-            this.StopBitsComboBox.TabIndex = 16;
             // 
             // label3
             // 
@@ -226,16 +239,6 @@
             this.label3.Text = "-";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.TextChanged += new System.EventHandler(this.label3_TextChanged);
-            // 
-            // lbStopBits
-            // 
-            this.lbStopBits.AutoSize = true;
-            this.lbStopBits.Location = new System.Drawing.Point(3, 54);
-            this.lbStopBits.Name = "lbStopBits";
-            this.lbStopBits.Size = new System.Drawing.Size(53, 12);
-            this.lbStopBits.TabIndex = 15;
-            this.lbStopBits.Text = "停止位：";
-            this.lbStopBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
@@ -273,61 +276,25 @@
             this.lbDataBits.Text = "数据位：";
             this.lbDataBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lbBaudRate
+            // tbRecvCount
             // 
-            this.lbBaudRate.AutoSize = true;
-            this.lbBaudRate.Location = new System.Drawing.Point(3, 27);
-            this.lbBaudRate.Name = "lbBaudRate";
-            this.lbBaudRate.Size = new System.Drawing.Size(53, 12);
-            this.lbBaudRate.TabIndex = 6;
-            this.lbBaudRate.Text = "波特率：";
-            this.lbBaudRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tbRecvCount.BackColor = System.Drawing.SystemColors.Window;
+            this.tbRecvCount.Location = new System.Drawing.Point(308, 3);
+            this.tbRecvCount.Name = "tbRecvCount";
+            this.tbRecvCount.ReadOnly = true;
+            this.tbRecvCount.Size = new System.Drawing.Size(64, 21);
+            this.tbRecvCount.TabIndex = 19;
+            this.tbRecvCount.TextChanged += new System.EventHandler(this.tBRecvCount_TextChanged);
             // 
-            // ParityComboBox
+            // tbSendCount
             // 
-            this.ParityComboBox.FormattingEnabled = true;
-            this.ParityComboBox.Location = new System.Drawing.Point(191, 3);
-            this.ParityComboBox.Name = "ParityComboBox";
-            this.ParityComboBox.Size = new System.Drawing.Size(64, 20);
-            this.ParityComboBox.TabIndex = 12;
-            // 
-            // BaudRateComboBox
-            // 
-            this.BaudRateComboBox.FormattingEnabled = true;
-            this.BaudRateComboBox.Location = new System.Drawing.Point(62, 30);
-            this.BaudRateComboBox.Name = "BaudRateComboBox";
-            this.BaudRateComboBox.Size = new System.Drawing.Size(64, 20);
-            this.BaudRateComboBox.TabIndex = 7;
-            // 
-            // lbParity
-            // 
-            this.lbParity.AutoSize = true;
-            this.lbParity.Location = new System.Drawing.Point(132, 0);
-            this.lbParity.Name = "lbParity";
-            this.lbParity.Size = new System.Drawing.Size(53, 12);
-            this.lbParity.TabIndex = 9;
-            this.lbParity.Text = "校验位：";
-            this.lbParity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tBRecvCount
-            // 
-            this.tBRecvCount.BackColor = System.Drawing.SystemColors.Window;
-            this.tBRecvCount.Location = new System.Drawing.Point(308, 3);
-            this.tBRecvCount.Name = "tBRecvCount";
-            this.tBRecvCount.ReadOnly = true;
-            this.tBRecvCount.Size = new System.Drawing.Size(64, 21);
-            this.tBRecvCount.TabIndex = 19;
-            this.tBRecvCount.TextChanged += new System.EventHandler(this.tBRecvCount_TextChanged);
-            // 
-            // tBSendCount
-            // 
-            this.tBSendCount.BackColor = System.Drawing.SystemColors.Window;
-            this.tBSendCount.Location = new System.Drawing.Point(308, 30);
-            this.tBSendCount.Name = "tBSendCount";
-            this.tBSendCount.ReadOnly = true;
-            this.tBSendCount.Size = new System.Drawing.Size(64, 21);
-            this.tBSendCount.TabIndex = 20;
-            this.tBSendCount.TextChanged += new System.EventHandler(this.tBSendCount_TextChanged);
+            this.tbSendCount.BackColor = System.Drawing.SystemColors.Window;
+            this.tbSendCount.Location = new System.Drawing.Point(308, 30);
+            this.tbSendCount.Name = "tbSendCount";
+            this.tbSendCount.ReadOnly = true;
+            this.tbSendCount.Size = new System.Drawing.Size(64, 21);
+            this.tbSendCount.TabIndex = 20;
+            this.tbSendCount.TextChanged += new System.EventHandler(this.tBSendCount_TextChanged);
             // 
             // label5
             // 
@@ -356,6 +323,60 @@
             this.btnClear.Text = "清空统计";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // lbBaudRate
+            // 
+            this.lbBaudRate.AutoSize = true;
+            this.lbBaudRate.Location = new System.Drawing.Point(132, 0);
+            this.lbBaudRate.Name = "lbBaudRate";
+            this.lbBaudRate.Size = new System.Drawing.Size(53, 12);
+            this.lbBaudRate.TabIndex = 6;
+            this.lbBaudRate.Text = "波特率：";
+            this.lbBaudRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // BaudRateComboBox
+            // 
+            this.BaudRateComboBox.FormattingEnabled = true;
+            this.BaudRateComboBox.Location = new System.Drawing.Point(191, 3);
+            this.BaudRateComboBox.Name = "BaudRateComboBox";
+            this.BaudRateComboBox.Size = new System.Drawing.Size(64, 20);
+            this.BaudRateComboBox.TabIndex = 7;
+            // 
+            // lbParity
+            // 
+            this.lbParity.AutoSize = true;
+            this.lbParity.Location = new System.Drawing.Point(3, 27);
+            this.lbParity.Name = "lbParity";
+            this.lbParity.Size = new System.Drawing.Size(53, 12);
+            this.lbParity.TabIndex = 9;
+            this.lbParity.Text = "校验位：";
+            this.lbParity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ParityComboBox
+            // 
+            this.ParityComboBox.FormattingEnabled = true;
+            this.ParityComboBox.Location = new System.Drawing.Point(62, 30);
+            this.ParityComboBox.Name = "ParityComboBox";
+            this.ParityComboBox.Size = new System.Drawing.Size(64, 20);
+            this.ParityComboBox.TabIndex = 12;
+            // 
+            // lbStopBits
+            // 
+            this.lbStopBits.AutoSize = true;
+            this.lbStopBits.Location = new System.Drawing.Point(3, 54);
+            this.lbStopBits.Name = "lbStopBits";
+            this.lbStopBits.Size = new System.Drawing.Size(53, 12);
+            this.lbStopBits.TabIndex = 15;
+            this.lbStopBits.Text = "停止位：";
+            this.lbStopBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // StopBitsComboBox
+            // 
+            this.StopBitsComboBox.FormattingEnabled = true;
+            this.StopBitsComboBox.Location = new System.Drawing.Point(62, 57);
+            this.StopBitsComboBox.Name = "StopBitsComboBox";
+            this.StopBitsComboBox.Size = new System.Drawing.Size(64, 20);
+            this.StopBitsComboBox.TabIndex = 16;
             // 
             // tabPage1
             // 
@@ -387,16 +408,20 @@
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.AutoSize = true;
-            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnCount = 4;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel8.Controls.Add(this.button1, 1, 2);
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel8.Controls.Add(this.btnSend, 0, 2);
-            this.tableLayoutPanel8.Controls.Add(this.textBox3, 1, 1);
-            this.tableLayoutPanel8.Controls.Add(this.label4, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.textBox3, 2, 1);
             this.tableLayoutPanel8.Controls.Add(this.checkBox1, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.label4, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.checkBox2, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.cmbSendNewLine, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.label8, 1, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(560, 0);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(450, 0);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 4;
@@ -404,25 +429,15 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(141, 83);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(251, 83);
             this.tableLayoutPanel8.TabIndex = 11;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(74, 52);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 27);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "自动";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // btnSend
             // 
             this.btnSend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSend.Location = new System.Drawing.Point(3, 52);
+            this.btnSend.Location = new System.Drawing.Point(3, 56);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(65, 27);
+            this.btnSend.Size = new System.Drawing.Size(84, 27);
             this.btnSend.TabIndex = 4;
             this.btnSend.Text = "发送";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -431,31 +446,64 @@
             // textBox3
             // 
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Location = new System.Drawing.Point(74, 25);
+            this.textBox3.Location = new System.Drawing.Point(164, 29);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(64, 21);
             this.textBox3.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 27);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "发送间隔：";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(3, 3);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(60, 16);
+            this.checkBox1.Size = new System.Drawing.Size(84, 16);
             this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "16进制";
+            this.checkBox1.Text = "16进制发送";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(93, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "发送间隔：";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(3, 29);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(72, 16);
+            this.checkBox2.TabIndex = 9;
+            this.checkBox2.Text = "自动发送";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // cmbSendNewLine
+            // 
+            this.cmbSendNewLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSendNewLine.FormattingEnabled = true;
+            this.cmbSendNewLine.Items.AddRange(new object[] {
+            "",
+            "\\r\\n",
+            "\\r",
+            "\\n"});
+            this.cmbSendNewLine.Location = new System.Drawing.Point(164, 3);
+            this.cmbSendNewLine.Name = "cmbSendNewLine";
+            this.cmbSendNewLine.Size = new System.Drawing.Size(64, 20);
+            this.cmbSendNewLine.TabIndex = 11;
+            this.cmbSendNewLine.SelectedIndexChanged += new System.EventHandler(this.cmbSendNewLine_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(93, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "发送空行：";
             // 
             // textBox2
             // 
@@ -463,7 +511,7 @@
             this.textBox2.Location = new System.Drawing.Point(3, 3);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(554, 77);
+            this.textBox2.Size = new System.Drawing.Size(444, 77);
             this.textBox2.TabIndex = 12;
             // 
             // tabPage3
@@ -587,12 +635,19 @@
             this.SendCountToolStripStatusLabel,
             this.toolStripStatusLabel2,
             this.RecvCountToolStripStatusLabel,
-            this.ClearToolStripStatusLabel});
+            this.ClearToolStripStatusLabel,
+            this.WorkToolStripStatusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(721, 22);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // ShowToolStripStatusLabel
+            // 
+            this.ShowToolStripStatusLabel.Name = "ShowToolStripStatusLabel";
+            this.ShowToolStripStatusLabel.Size = new System.Drawing.Size(89, 17);
+            this.ShowToolStripStatusLabel.Text = "MUUMLOVER";
             // 
             // StatToolStripStatusLabel
             // 
@@ -632,6 +687,11 @@
             this.ClearToolStripStatusLabel.Text = "清空";
             this.ClearToolStripStatusLabel.Click += new System.EventHandler(this.ClearToolStripStatusLabel_Click);
             // 
+            // WorkToolStripStatusLabel
+            // 
+            this.WorkToolStripStatusLabel.Name = "WorkToolStripStatusLabel";
+            this.WorkToolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
+            // 
             // toolStripContainer1
             // 
             // 
@@ -653,12 +713,6 @@
             this.toolStripContainer1.TabIndex = 9;
             this.toolStripContainer1.Text = "toolStripContainer1";
             this.toolStripContainer1.TopToolStripPanelVisible = false;
-            // 
-            // ShowToolStripStatusLabel
-            // 
-            this.ShowToolStripStatusLabel.Name = "ShowToolStripStatusLabel";
-            this.ShowToolStripStatusLabel.Size = new System.Drawing.Size(89, 17);
-            this.ShowToolStripStatusLabel.Text = "MUUMLOVER";
             // 
             // MainForm
             // 
@@ -700,13 +754,12 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbRecvData;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
@@ -731,8 +784,8 @@
         private System.Windows.Forms.ComboBox ParityComboBox;
         private System.Windows.Forms.ComboBox BaudRateComboBox;
         private System.Windows.Forms.Label lbParity;
-        private System.Windows.Forms.TextBox tBRecvCount;
-        private System.Windows.Forms.TextBox tBSendCount;
+        private System.Windows.Forms.TextBox tbRecvCount;
+        private System.Windows.Forms.TextBox tbSendCount;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnClear;
@@ -750,5 +803,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripStatusLabel StatToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel ShowToolStripStatusLabel;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox chkShowTypeHex;
+        private System.Windows.Forms.ToolStripStatusLabel WorkToolStripStatusLabel;
+        private System.Windows.Forms.ComboBox cmbSendNewLine;
+        private System.Windows.Forms.Label label8;
     }
 }
