@@ -34,6 +34,27 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.chkShowTypeHex = new System.Windows.Forms.CheckBox();
+            this.btnLink = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.DataBitsComboBox = new System.Windows.Forms.ComboBox();
+            this.SerialNumberComboBox = new System.Windows.Forms.ComboBox();
+            this.lbDataBits = new System.Windows.Forms.Label();
+            this.tbRecvCount = new System.Windows.Forms.TextBox();
+            this.tbSendCount = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.lbBaudRate = new System.Windows.Forms.Label();
+            this.BaudRateComboBox = new System.Windows.Forms.ComboBox();
+            this.lbParity = new System.Windows.Forms.Label();
+            this.ParityComboBox = new System.Windows.Forms.ComboBox();
+            this.lbStopBits = new System.Windows.Forms.Label();
+            this.StopBitsComboBox = new System.Windows.Forms.ComboBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,40 +77,21 @@
             this.label7 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.ShowToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.StatToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.SendCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.RecvCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ClearToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.WorkToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.chkShowTypeHex = new System.Windows.Forms.CheckBox();
-            this.btnLink = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.DataBitsComboBox = new System.Windows.Forms.ComboBox();
-            this.SerialNumberComboBox = new System.Windows.Forms.ComboBox();
-            this.lbDataBits = new System.Windows.Forms.Label();
-            this.tbRecvCount = new System.Windows.Forms.TextBox();
-            this.tbSendCount = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.lbBaudRate = new System.Windows.Forms.Label();
-            this.BaudRateComboBox = new System.Windows.Forms.ComboBox();
-            this.lbParity = new System.Windows.Forms.Label();
-            this.ParityComboBox = new System.Windows.Forms.ComboBox();
-            this.lbStopBits = new System.Windows.Forms.Label();
-            this.StopBitsComboBox = new System.Windows.Forms.ComboBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.ClearToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.RecvCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.SendCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ShowToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -99,8 +101,6 @@
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel4
@@ -168,6 +168,236 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "串口设置";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.listBox1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(701, 83);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 8;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.chkShowTypeHex, 6, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnLink, 3, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.DataBitsComboBox, 3, 1);
+            this.tableLayoutPanel3.Controls.Add(this.SerialNumberComboBox, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lbDataBits, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tbRecvCount, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tbSendCount, 5, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 4, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 4, 1);
+            this.tableLayoutPanel3.Controls.Add(this.btnClear, 5, 2);
+            this.tableLayoutPanel3.Controls.Add(this.lbBaudRate, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.BaudRateComboBox, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lbParity, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.ParityComboBox, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lbStopBits, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.StopBitsComboBox, 1, 2);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(90, 0);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(611, 83);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // chkShowTypeHex
+            // 
+            this.chkShowTypeHex.AutoSize = true;
+            this.chkShowTypeHex.Location = new System.Drawing.Point(378, 3);
+            this.chkShowTypeHex.Name = "chkShowTypeHex";
+            this.chkShowTypeHex.Size = new System.Drawing.Size(84, 16);
+            this.chkShowTypeHex.TabIndex = 25;
+            this.chkShowTypeHex.Text = "16进制显示";
+            this.chkShowTypeHex.UseVisualStyleBackColor = true;
+            // 
+            // btnLink
+            // 
+            this.btnLink.Location = new System.Drawing.Point(191, 57);
+            this.btnLink.Name = "btnLink";
+            this.btnLink.Size = new System.Drawing.Size(64, 23);
+            this.btnLink.TabIndex = 17;
+            this.btnLink.Text = "连接";
+            this.btnLink.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(132, 54);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(11, 12);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "-";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "串口号：";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // DataBitsComboBox
+            // 
+            this.DataBitsComboBox.FormattingEnabled = true;
+            this.DataBitsComboBox.Location = new System.Drawing.Point(191, 30);
+            this.DataBitsComboBox.Name = "DataBitsComboBox";
+            this.DataBitsComboBox.Size = new System.Drawing.Size(64, 20);
+            this.DataBitsComboBox.TabIndex = 14;
+            // 
+            // SerialNumberComboBox
+            // 
+            this.SerialNumberComboBox.FormattingEnabled = true;
+            this.SerialNumberComboBox.Location = new System.Drawing.Point(62, 3);
+            this.SerialNumberComboBox.Name = "SerialNumberComboBox";
+            this.SerialNumberComboBox.Size = new System.Drawing.Size(64, 20);
+            this.SerialNumberComboBox.TabIndex = 4;
+            // 
+            // lbDataBits
+            // 
+            this.lbDataBits.AutoSize = true;
+            this.lbDataBits.Location = new System.Drawing.Point(132, 27);
+            this.lbDataBits.Name = "lbDataBits";
+            this.lbDataBits.Size = new System.Drawing.Size(53, 12);
+            this.lbDataBits.TabIndex = 13;
+            this.lbDataBits.Text = "数据位：";
+            this.lbDataBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tbRecvCount
+            // 
+            this.tbRecvCount.BackColor = System.Drawing.SystemColors.Window;
+            this.tbRecvCount.Location = new System.Drawing.Point(308, 3);
+            this.tbRecvCount.Name = "tbRecvCount";
+            this.tbRecvCount.ReadOnly = true;
+            this.tbRecvCount.Size = new System.Drawing.Size(64, 21);
+            this.tbRecvCount.TabIndex = 19;
+            // 
+            // tbSendCount
+            // 
+            this.tbSendCount.BackColor = System.Drawing.SystemColors.Window;
+            this.tbSendCount.Location = new System.Drawing.Point(308, 30);
+            this.tbSendCount.Name = "tbSendCount";
+            this.tbSendCount.ReadOnly = true;
+            this.tbSendCount.Size = new System.Drawing.Size(64, 21);
+            this.tbSendCount.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(261, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "接收：";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(261, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "发送：";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(308, 57);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(64, 23);
+            this.btnClear.TabIndex = 23;
+            this.btnClear.Text = "清空统计";
+            this.btnClear.UseVisualStyleBackColor = true;
+            // 
+            // lbBaudRate
+            // 
+            this.lbBaudRate.AutoSize = true;
+            this.lbBaudRate.Location = new System.Drawing.Point(132, 0);
+            this.lbBaudRate.Name = "lbBaudRate";
+            this.lbBaudRate.Size = new System.Drawing.Size(53, 12);
+            this.lbBaudRate.TabIndex = 6;
+            this.lbBaudRate.Text = "波特率：";
+            this.lbBaudRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // BaudRateComboBox
+            // 
+            this.BaudRateComboBox.FormattingEnabled = true;
+            this.BaudRateComboBox.Location = new System.Drawing.Point(191, 3);
+            this.BaudRateComboBox.Name = "BaudRateComboBox";
+            this.BaudRateComboBox.Size = new System.Drawing.Size(64, 20);
+            this.BaudRateComboBox.TabIndex = 7;
+            // 
+            // lbParity
+            // 
+            this.lbParity.AutoSize = true;
+            this.lbParity.Location = new System.Drawing.Point(3, 27);
+            this.lbParity.Name = "lbParity";
+            this.lbParity.Size = new System.Drawing.Size(53, 12);
+            this.lbParity.TabIndex = 9;
+            this.lbParity.Text = "校验位：";
+            this.lbParity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ParityComboBox
+            // 
+            this.ParityComboBox.FormattingEnabled = true;
+            this.ParityComboBox.Location = new System.Drawing.Point(62, 30);
+            this.ParityComboBox.Name = "ParityComboBox";
+            this.ParityComboBox.Size = new System.Drawing.Size(64, 20);
+            this.ParityComboBox.TabIndex = 12;
+            // 
+            // lbStopBits
+            // 
+            this.lbStopBits.AutoSize = true;
+            this.lbStopBits.Location = new System.Drawing.Point(3, 54);
+            this.lbStopBits.Name = "lbStopBits";
+            this.lbStopBits.Size = new System.Drawing.Size(53, 12);
+            this.lbStopBits.TabIndex = 15;
+            this.lbStopBits.Text = "停止位：";
+            this.lbStopBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // StopBitsComboBox
+            // 
+            this.StopBitsComboBox.FormattingEnabled = true;
+            this.StopBitsComboBox.Location = new System.Drawing.Point(62, 57);
+            this.StopBitsComboBox.Name = "StopBitsComboBox";
+            this.StopBitsComboBox.Size = new System.Drawing.Size(64, 20);
+            this.StopBitsComboBox.TabIndex = 16;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(3, 3);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(84, 76);
+            this.listBox1.TabIndex = 2;
             // 
             // tabPage1
             // 
@@ -434,50 +664,6 @@
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // ShowToolStripStatusLabel
-            // 
-            this.ShowToolStripStatusLabel.Name = "ShowToolStripStatusLabel";
-            this.ShowToolStripStatusLabel.Size = new System.Drawing.Size(89, 17);
-            this.ShowToolStripStatusLabel.Text = "MUUMLOVER";
-            // 
-            // StatToolStripStatusLabel
-            // 
-            this.StatToolStripStatusLabel.Name = "StatToolStripStatusLabel";
-            this.StatToolStripStatusLabel.Size = new System.Drawing.Size(72, 17);
-            this.StatToolStripStatusLabel.Text = "Sam Wong";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(24, 17);
-            this.toolStripStatusLabel1.Text = "Tx:";
-            // 
-            // SendCountToolStripStatusLabel
-            // 
-            this.SendCountToolStripStatusLabel.Name = "SendCountToolStripStatusLabel";
-            this.SendCountToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
-            this.SendCountToolStripStatusLabel.Text = "65535";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(25, 17);
-            this.toolStripStatusLabel2.Text = "Rx:";
-            // 
-            // RecvCountToolStripStatusLabel
-            // 
-            this.RecvCountToolStripStatusLabel.Name = "RecvCountToolStripStatusLabel";
-            this.RecvCountToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
-            this.RecvCountToolStripStatusLabel.Text = "65535";
-            // 
-            // ClearToolStripStatusLabel
-            // 
-            this.ClearToolStripStatusLabel.IsLink = true;
-            this.ClearToolStripStatusLabel.Name = "ClearToolStripStatusLabel";
-            this.ClearToolStripStatusLabel.Size = new System.Drawing.Size(32, 17);
-            this.ClearToolStripStatusLabel.Text = "清空";
-            this.ClearToolStripStatusLabel.Click += new System.EventHandler(this.ClearToolStripStatusLabel_Click);
-            // 
             // WorkToolStripStatusLabel
             // 
             this.WorkToolStripStatusLabel.Name = "WorkToolStripStatusLabel";
@@ -505,235 +691,49 @@
             this.toolStripContainer1.Text = "toolStripContainer1";
             this.toolStripContainer1.TopToolStripPanelVisible = false;
             // 
-            // tableLayoutPanel1
+            // ClearToolStripStatusLabel
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(701, 83);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.ClearToolStripStatusLabel.IsLink = true;
+            this.ClearToolStripStatusLabel.Name = "ClearToolStripStatusLabel";
+            this.ClearToolStripStatusLabel.Size = new System.Drawing.Size(32, 17);
+            this.ClearToolStripStatusLabel.Text = "清空";
+            this.ClearToolStripStatusLabel.Click += new System.EventHandler(this.ClearToolStripStatusLabel_Click);
             // 
-            // tableLayoutPanel3
+            // RecvCountToolStripStatusLabel
             // 
-            this.tableLayoutPanel3.ColumnCount = 8;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.chkShowTypeHex, 6, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnLink, 3, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label3, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.DataBitsComboBox, 3, 1);
-            this.tableLayoutPanel3.Controls.Add(this.SerialNumberComboBox, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.lbDataBits, 2, 1);
-            this.tableLayoutPanel3.Controls.Add(this.tbRecvCount, 5, 0);
-            this.tableLayoutPanel3.Controls.Add(this.tbSendCount, 5, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label6, 4, 1);
-            this.tableLayoutPanel3.Controls.Add(this.btnClear, 5, 2);
-            this.tableLayoutPanel3.Controls.Add(this.lbBaudRate, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.BaudRateComboBox, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.lbParity, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.ParityComboBox, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.lbStopBits, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.StopBitsComboBox, 1, 2);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(90, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(611, 83);
-            this.tableLayoutPanel3.TabIndex = 1;
+            this.RecvCountToolStripStatusLabel.Name = "RecvCountToolStripStatusLabel";
+            this.RecvCountToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
+            this.RecvCountToolStripStatusLabel.Text = "65535";
             // 
-            // chkShowTypeHex
+            // toolStripStatusLabel2
             // 
-            this.chkShowTypeHex.AutoSize = true;
-            this.chkShowTypeHex.Location = new System.Drawing.Point(378, 3);
-            this.chkShowTypeHex.Name = "chkShowTypeHex";
-            this.chkShowTypeHex.Size = new System.Drawing.Size(84, 16);
-            this.chkShowTypeHex.TabIndex = 25;
-            this.chkShowTypeHex.Text = "16进制显示";
-            this.chkShowTypeHex.UseVisualStyleBackColor = true;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(25, 17);
+            this.toolStripStatusLabel2.Text = "Rx:";
             // 
-            // btnLink
+            // SendCountToolStripStatusLabel
             // 
-            this.btnLink.Location = new System.Drawing.Point(191, 57);
-            this.btnLink.Name = "btnLink";
-            this.btnLink.Size = new System.Drawing.Size(64, 23);
-            this.btnLink.TabIndex = 17;
-            this.btnLink.Text = "连接";
-            this.btnLink.UseVisualStyleBackColor = true;
+            this.SendCountToolStripStatusLabel.Name = "SendCountToolStripStatusLabel";
+            this.SendCountToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
+            this.SendCountToolStripStatusLabel.Text = "65535";
             // 
-            // label3
+            // toolStripStatusLabel1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(132, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(11, 12);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "-";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(24, 17);
+            this.toolStripStatusLabel1.Text = "Tx:";
             // 
-            // label2
+            // StatToolStripStatusLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "串口号：";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StatToolStripStatusLabel.Name = "StatToolStripStatusLabel";
+            this.StatToolStripStatusLabel.Size = new System.Drawing.Size(72, 17);
+            this.StatToolStripStatusLabel.Text = "Sam Wong";
             // 
-            // DataBitsComboBox
+            // ShowToolStripStatusLabel
             // 
-            this.DataBitsComboBox.FormattingEnabled = true;
-            this.DataBitsComboBox.Location = new System.Drawing.Point(191, 30);
-            this.DataBitsComboBox.Name = "DataBitsComboBox";
-            this.DataBitsComboBox.Size = new System.Drawing.Size(64, 20);
-            this.DataBitsComboBox.TabIndex = 14;
-            // 
-            // SerialNumberComboBox
-            // 
-            this.SerialNumberComboBox.FormattingEnabled = true;
-            this.SerialNumberComboBox.Location = new System.Drawing.Point(62, 3);
-            this.SerialNumberComboBox.Name = "SerialNumberComboBox";
-            this.SerialNumberComboBox.Size = new System.Drawing.Size(64, 20);
-            this.SerialNumberComboBox.TabIndex = 4;
-            // 
-            // lbDataBits
-            // 
-            this.lbDataBits.AutoSize = true;
-            this.lbDataBits.Location = new System.Drawing.Point(132, 27);
-            this.lbDataBits.Name = "lbDataBits";
-            this.lbDataBits.Size = new System.Drawing.Size(53, 12);
-            this.lbDataBits.TabIndex = 13;
-            this.lbDataBits.Text = "数据位：";
-            this.lbDataBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tbRecvCount
-            // 
-            this.tbRecvCount.BackColor = System.Drawing.SystemColors.Window;
-            this.tbRecvCount.Location = new System.Drawing.Point(308, 3);
-            this.tbRecvCount.Name = "tbRecvCount";
-            this.tbRecvCount.ReadOnly = true;
-            this.tbRecvCount.Size = new System.Drawing.Size(64, 21);
-            this.tbRecvCount.TabIndex = 19;
-            // 
-            // tbSendCount
-            // 
-            this.tbSendCount.BackColor = System.Drawing.SystemColors.Window;
-            this.tbSendCount.Location = new System.Drawing.Point(308, 30);
-            this.tbSendCount.Name = "tbSendCount";
-            this.tbSendCount.ReadOnly = true;
-            this.tbSendCount.Size = new System.Drawing.Size(64, 21);
-            this.tbSendCount.TabIndex = 20;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(261, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "接收：";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(261, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "发送：";
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(308, 57);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(64, 23);
-            this.btnClear.TabIndex = 23;
-            this.btnClear.Text = "清空统计";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // lbBaudRate
-            // 
-            this.lbBaudRate.AutoSize = true;
-            this.lbBaudRate.Location = new System.Drawing.Point(132, 0);
-            this.lbBaudRate.Name = "lbBaudRate";
-            this.lbBaudRate.Size = new System.Drawing.Size(53, 12);
-            this.lbBaudRate.TabIndex = 6;
-            this.lbBaudRate.Text = "波特率：";
-            this.lbBaudRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // BaudRateComboBox
-            // 
-            this.BaudRateComboBox.FormattingEnabled = true;
-            this.BaudRateComboBox.Location = new System.Drawing.Point(191, 3);
-            this.BaudRateComboBox.Name = "BaudRateComboBox";
-            this.BaudRateComboBox.Size = new System.Drawing.Size(64, 20);
-            this.BaudRateComboBox.TabIndex = 7;
-            // 
-            // lbParity
-            // 
-            this.lbParity.AutoSize = true;
-            this.lbParity.Location = new System.Drawing.Point(3, 27);
-            this.lbParity.Name = "lbParity";
-            this.lbParity.Size = new System.Drawing.Size(53, 12);
-            this.lbParity.TabIndex = 9;
-            this.lbParity.Text = "校验位：";
-            this.lbParity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ParityComboBox
-            // 
-            this.ParityComboBox.FormattingEnabled = true;
-            this.ParityComboBox.Location = new System.Drawing.Point(62, 30);
-            this.ParityComboBox.Name = "ParityComboBox";
-            this.ParityComboBox.Size = new System.Drawing.Size(64, 20);
-            this.ParityComboBox.TabIndex = 12;
-            // 
-            // lbStopBits
-            // 
-            this.lbStopBits.AutoSize = true;
-            this.lbStopBits.Location = new System.Drawing.Point(3, 54);
-            this.lbStopBits.Name = "lbStopBits";
-            this.lbStopBits.Size = new System.Drawing.Size(53, 12);
-            this.lbStopBits.TabIndex = 15;
-            this.lbStopBits.Text = "停止位：";
-            this.lbStopBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // StopBitsComboBox
-            // 
-            this.StopBitsComboBox.FormattingEnabled = true;
-            this.StopBitsComboBox.Location = new System.Drawing.Point(62, 57);
-            this.StopBitsComboBox.Name = "StopBitsComboBox";
-            this.StopBitsComboBox.Size = new System.Drawing.Size(64, 20);
-            this.StopBitsComboBox.TabIndex = 16;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(3, 3);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(84, 76);
-            this.listBox1.TabIndex = 2;
+            this.ShowToolStripStatusLabel.Name = "ShowToolStripStatusLabel";
+            this.ShowToolStripStatusLabel.Size = new System.Drawing.Size(89, 17);
+            this.ShowToolStripStatusLabel.Text = "MUUMLOVER";
             // 
             // MainForm
             // 
@@ -751,6 +751,9 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
@@ -766,9 +769,6 @@
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -795,18 +795,11 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel SendCountToolStripStatusLabel;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.ToolStripStatusLabel RecvCountToolStripStatusLabel;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel ClearToolStripStatusLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox tbSendFile;
         private System.Windows.Forms.ProgressBar prebarSendFile;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ToolStripStatusLabel StatToolStripStatusLabel;
-        private System.Windows.Forms.ToolStripStatusLabel ShowToolStripStatusLabel;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.ToolStripStatusLabel WorkToolStripStatusLabel;
         private System.Windows.Forms.ComboBox cmbSendNewLine;
@@ -832,5 +825,12 @@
         private System.Windows.Forms.Label lbStopBits;
         private System.Windows.Forms.ComboBox StopBitsComboBox;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ToolStripStatusLabel ShowToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel StatToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel SendCountToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel RecvCountToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel ClearToolStripStatusLabel;
     }
 }

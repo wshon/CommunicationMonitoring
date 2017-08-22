@@ -73,5 +73,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterfaceLink\InterfaceLink.csproj">
+      <Project>{4fa71d55-85ab-489d-a371-d61c08608555}</Project>
+      <Name>InterfaceLink</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

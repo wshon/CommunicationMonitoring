@@ -7,6 +7,6 @@ namespace BasicShow
 {
     interface InterfaceMain
     {
-        void updatalabel(string lsls);
+        void AppendBytes(byte[] buffPort);
     }
 }

@@ -43,13 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conversion.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="InterfaceMain.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
@@ -73,6 +73,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicSerialService\BasicSerialService.csproj">
+      <Project>{64acc54b-5827-428f-89be-d38ff7706122}</Project>
+      <Name>BasicSerialService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceLink\InterfaceLink.csproj">
+      <Project>{4fa71d55-85ab-489d-a371-d61c08608555}</Project>
+      <Name>InterfaceLink</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualSerialService\VirtualSerialService.csproj">
+      <Project>{96171e2a-3ead-4be0-8e83-a4950a40b003}</Project>
+      <Name>VirtualSerialService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
