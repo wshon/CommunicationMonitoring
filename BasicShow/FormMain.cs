@@ -149,7 +149,7 @@ namespace BasicShow
 
         private void FormMain_DataReceived(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            byte[] a = (byte[])sender;
         }
     }
 

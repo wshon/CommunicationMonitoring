@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using InterfaceLink;
 using SerialLib;
 using System.IO.Ports;
+using System.Diagnostics;
 
 namespace BasicSerialService
 {
@@ -57,7 +58,30 @@ namespace BasicSerialService
         #region 串口接收数据
         private void ThisSerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            DataReceived?.Invoke(sender, e);
+
+            byte[] bufferin;
+            int tmp;
+            do
+            {
+                try
+                {
+                    tmp = (sender as SerialPort).BytesToRead;
+                    if (tmp == 0) break;
+                    bufferin = new byte[tmp];
+                    (sender as SerialPort).Read(bufferin, 0, tmp);
+                    //RecvBytes.Value += tmp;
+                    //RecvDatas.AddRange(bufferin);
+                    //UpdateRecvShow();
+                    DataReceived?.Invoke(bufferin, new EventArgs());
+                }
+                catch (Exception err)
+                {
+                    Debug.WriteLine(err.Message);
+                    break;
+                }
+            }
+            while (true);
+
             //EventHandler handler = DataReceived;
             //if (handler != null)
             //{
