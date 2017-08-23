@@ -91,7 +91,7 @@ namespace Pages
                 //                /*载入model*/
 
                 //                Type type = ass.GetType(ass.GetName().Name + "." + assType);
-                Type type = LoadType(assName, assType);
+                Type type = LoadFromType(assName, assType);
                 /*载入ui*/
                 Form tmpFrom = (Form)Activator.CreateInstance(type);
                 tmpFrom.BackColor = Color.White;
@@ -125,7 +125,7 @@ namespace Pages
                 //                /*载入model*/
 
                 //                Type type = ass.GetType(ass.GetName().Name + "." + assType);
-                Type type = LoadType(assName, assType);
+                Type type = LoadFromType(assName, assType);
                 /*载入ui*/
                 Form tmpFrom = (Form)Activator.CreateInstance(type);
                 tmpFrom.MdiParent = formTmp;
@@ -139,23 +139,7 @@ namespace Pages
             }
         }
 
-        public static Interfaces LoadInterface(string assName, string assType)
-        {
-            try
-            {
-                Type type = LoadType(assName, assType);
-                /*载入接口*/
-                Interfaces instance = System.Activator.CreateInstance(type) as Interfaces;
-                return instance;
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine(err.Message);
-                return null;
-            }
-        }
-
-        public static Type LoadType(string assName, string assType)
+        public static Type LoadFromType(string assName, string assType)
         {
             try
             {
@@ -174,5 +158,102 @@ namespace Pages
                 return null;
             }
         }
+
+
+
+        /// <summary>
+        /// 加载外部目录下所有dll到TabControl，并统计数量
+        /// </summary>
+        /// <param name="tabControltmp">加载到的TabControl</param>
+        /// <param name="TheFolder">外部目录</param>
+        /// <param name="modelLoadPass">加载成功dll数</param>
+        /// <param name="modelLoadFail">加载失败dll数</param>
+        public List<Interfaces> ExternInterface_Load(String assType, DirectoryInfo TheFolder, ref int modelLoadPass, ref int modelLoadFail)
+        {
+            Interfaces InterfacesTemp;
+            List<Interfaces> list = new List<Interfaces>();
+            foreach (FileInfo file in TheFolder.GetFiles())
+            {
+                if (file.Extension == ".dll")
+                {
+                    Debug.WriteLine("Find dll:" + file.Name);
+                    InterfacesTemp = LoadInterface(".\\" + file.Name, assType);
+                    //InterfacesTemp = LoadInterface(file.Name, assType);
+                    if (InterfacesTemp != null)
+                    {
+                        list.Add(InterfacesTemp);
+                        Debug.WriteLine(file.Name + " is effective!\r\n");
+                        modelLoadPass++;
+                    }
+                    else
+                    {
+                        Debug.WriteLine(file.Name + " is ineffective!\r\n");
+                        modelLoadFail++;
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<Interfaces> ExternInterface_Load(String assType, ref int modelLoadPass, ref int modelLoadFail)
+        {
+            /*加载model*/
+            //C#遍历models文件夹中的所有文件 
+            DirectoryInfo TheFolder = new DirectoryInfo(".\\");
+            if (TheFolder.Exists == false) TheFolder.Create();
+            return ExternInterface_Load(assType, TheFolder, ref modelLoadPass, ref modelLoadFail);
+        }
+
+        public List<Interfaces> ExternInterface_Load(String assType)
+        {
+            int a = 0, b = 0;
+            return ExternInterface_Load(assType, ref a, ref b);
+        }
+
+        public static Interfaces LoadInterface(string assName, string assType)
+        {
+            try
+            {
+                Type type = LoadInterfacesType(assName, assType);
+                /*载入接口*/
+                Interfaces instance = System.Activator.CreateInstance(type) as Interfaces;
+                return instance;
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+                return null;
+            }
+        }
+
+        public static Type LoadInterfacesType(string assName, string assType)
+        {
+            try
+            {
+                Assembly ass = Assembly.LoadFrom(assName);
+#if DEBUG
+                Console.WriteLine(ass.FullName);
+#endif
+                /*载入model*/
+                Type type = ass.GetType(ass.GetName().Name + "." + assType);
+
+                return type;
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+                return null;
+            }
+        }
+
+        //string dir = @"c:\Libs\";
+        //string assemblyName = "InterfaceLink";
+        //for (int i = 0; i < 3; i++)
+        //{
+        //Assembly assembly = Assembly.LoadFile(dir + assemblyName + ".dll");
+        //Type type = assembly.GetType(assemblyName + ".Interfaces");
+        //Interfaces instance = System.Activator.CreateInstance(type) as Interfaces;
+        //    list.Add(instance);
+        //}
     }
 }

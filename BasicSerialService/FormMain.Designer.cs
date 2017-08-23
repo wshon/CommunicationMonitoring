@@ -229,6 +229,7 @@
             this.Controls.Add(this.layoutPane);
             this.Name = "FormMain";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.layoutPane.ResumeLayout(false);
             this.layoutPane.PerformLayout();
             this.ResumeLayout(false);

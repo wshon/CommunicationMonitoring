@@ -7,12 +7,13 @@ namespace InterfaceLink
 {
     public interface Interfaces
     {
-        event EventHandler Even;
+        void EventTest();
+        event EventHandler DataReceived;
         //void AppendBytes(byte[] buffPort);
         void Write(string text);
         void Write(char[] buffer, int offset, int count);
         bool Write(byte[] buffer, int offset, int count);
         void WriteLine(string text);
-        void Recall_DataReceived(object sender, object e);
+        //void Recall_DataReceived(object sender, object e);
     }
 }

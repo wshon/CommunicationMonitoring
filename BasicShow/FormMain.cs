@@ -131,16 +131,25 @@ namespace BasicShow
 
         private void button1_Click(object sender, EventArgs e)
         {
+            List<Interfaces> list = new List<Interfaces>();
             //string dir = @"c:\Libs\";
             //string assemblyName = "InterfaceLink";
             //for (int i = 0; i < 3; i++)
             //{
-                //Assembly assembly = Assembly.LoadFile(dir + assemblyName + ".dll");
-                //Type type = assembly.GetType(assemblyName + ".Interfaces");
-                //Interfaces instance = System.Activator.CreateInstance(type) as Interfaces;
-                Interfaces instance = PageMamage.LoadInterface("InterfaceLink", "Interfaces");
-                list.Add(instance);
+            //Assembly assembly = Assembly.LoadFile(dir + assemblyName + ".dll");
+            //Type type = assembly.GetType(assemblyName + ".Interfaces");
+            //Interfaces instance = System.Activator.CreateInstance(type) as Interfaces;
+            list = new PageMamage().ExternInterface_Load("FormMain");
+            //Interfaces instance = PageMamage.LoadInterface("InterfaceLink", "Interfaces");
+            //    list.Add(instance);
             //}
+            list.ToArray()[0].DataReceived += FormMain_DataReceived;
+            list.ToArray()[0].EventTest();
+        }
+
+        private void FormMain_DataReceived(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 
