@@ -1,6 +1,6 @@
 ﻿namespace BasicSerialService
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -82,7 +82,7 @@
             this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutPane.Size = new System.Drawing.Size(284, 261);
+            this.layoutPane.Size = new System.Drawing.Size(239, 201);
             this.layoutPane.TabIndex = 8;
             // 
             // ParityComboBox
@@ -184,7 +184,7 @@
             // 
             this.addDeviceCancelButton.AutoSize = true;
             this.addDeviceCancelButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.addDeviceCancelButton.Location = new System.Drawing.Point(221, 236);
+            this.addDeviceCancelButton.Location = new System.Drawing.Point(176, 176);
             this.addDeviceCancelButton.Name = "addDeviceCancelButton";
             this.addDeviceCancelButton.Size = new System.Drawing.Size(60, 22);
             this.addDeviceCancelButton.TabIndex = 1;
@@ -214,20 +214,20 @@
             this.addDeviceOKButton.AutoSize = true;
             this.layoutPane.SetColumnSpan(this.addDeviceOKButton, 2);
             this.addDeviceOKButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.addDeviceOKButton.Location = new System.Drawing.Point(155, 236);
+            this.addDeviceOKButton.Location = new System.Drawing.Point(110, 176);
             this.addDeviceOKButton.Name = "addDeviceOKButton";
             this.addDeviceOKButton.Size = new System.Drawing.Size(60, 22);
             this.addDeviceOKButton.TabIndex = 0;
             this.addDeviceOKButton.Text = "OK";
             this.addDeviceOKButton.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(239, 201);
             this.Controls.Add(this.layoutPane);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "Form1";
             this.layoutPane.ResumeLayout(false);
             this.layoutPane.PerformLayout();

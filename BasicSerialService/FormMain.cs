@@ -10,12 +10,25 @@ using InterfaceLink;
 
 namespace BasicSerialService
 {
-    public partial class Form1 : Form, Interfaces
+    public partial class FormMain : Form, Interfaces
 
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
+        }
+
+        event EventHandler Interfaces.Even
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
         }
 
         void Interfaces.AppendBytes(byte[] buffPort)

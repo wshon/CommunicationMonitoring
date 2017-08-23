@@ -1,5 +1,6 @@
-﻿using InterfaceLink;
-using SerialMonitor;
+﻿using Conver;
+using InterfaceLink;
+using Pages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,7 +85,7 @@ namespace BasicShow
                     WorkToolStripStatusLabel.Text = "";
                 }));
             });
-            WorkToolStripStatusLabel.Text = "正在运行……";
+            WorkToolStripStatusLabel.Text = "正在发送文件……";
             SendFile.Start();
         }
 
@@ -118,31 +119,32 @@ namespace BasicShow
                     WorkToolStripStatusLabel.Text = "";
                 }));
             });
-            WorkToolStripStatusLabel.Text = "正在运行……";
+            WorkToolStripStatusLabel.Text = "正在更新数据窗口……";
             SendData.Start();
         }
 
-        #region 接口实现
         public void AppendBytes(byte[] buffPort)
         {
             RecvDatas.AddRange(buffPort);
             UpdateRecvShow();
         }
-        #endregion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string dir = @"c:\Libs\";
-            string assemblyName = "InterfaceLink";
-            for (int i = 0; i < 3; i++)
-            {
-                Assembly assembly = Assembly.LoadFile(dir + assemblyName + (i + 1).ToString() + ".dll");
-                Type type = assembly.GetType(assemblyName + ".Interfaces");
-                Interfaces instance = System.Activator.CreateInstance(type) as Interfaces;
+            //string dir = @"c:\Libs\";
+            //string assemblyName = "InterfaceLink";
+            //for (int i = 0; i < 3; i++)
+            //{
+                //Assembly assembly = Assembly.LoadFile(dir + assemblyName + ".dll");
+                //Type type = assembly.GetType(assemblyName + ".Interfaces");
+                //Interfaces instance = System.Activator.CreateInstance(type) as Interfaces;
+                Interfaces instance = PageMamage.LoadInterface("InterfaceLink", "Interfaces");
                 list.Add(instance);
-            }
+            //}
         }
     }
+
+    #region 数据绑定
     public class BlindInt : INotifyPropertyChanged
     {
         private int _theValue = 0;
@@ -226,5 +228,6 @@ namespace BasicShow
             }
         }
     }
+    #endregion
 
 }

@@ -53,6 +53,7 @@
             this.cmbSendNewLine = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -73,7 +74,6 @@
             this.ClearToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.WorkToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -230,9 +230,12 @@
             // 
             // tbRecvData
             // 
-            this.tbRecvData.Location = new System.Drawing.Point(3, 3);
+            this.tbRecvData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbRecvData.Location = new System.Drawing.Point(0, 0);
+            this.tbRecvData.Margin = new System.Windows.Forms.Padding(0);
+            this.tbRecvData.Multiline = true;
             this.tbRecvData.Name = "tbRecvData";
-            this.tbRecvData.Size = new System.Drawing.Size(100, 21);
+            this.tbRecvData.Size = new System.Drawing.Size(688, 418);
             this.tbRecvData.TabIndex = 34;
             // 
             // tabControl1
@@ -385,6 +388,15 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(93, 56);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(65, 20);
+            this.comboBox1.TabIndex = 14;
             // 
             // textBox2
             // 
@@ -587,15 +599,6 @@
             this.toolStripContainer1.TabIndex = 2;
             this.toolStripContainer1.Text = "toolStripContainer1";
             this.toolStripContainer1.TopToolStripPanelVisible = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(93, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(65, 20);
-            this.comboBox1.TabIndex = 14;
             // 
             // FormMain
             // 

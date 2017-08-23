@@ -7,7 +7,8 @@ namespace InterfaceLink
 {
     public interface Interfaces
     {
-        void AppendBytes(byte[] buffPort);
+        event EventHandler Even;
+        //void AppendBytes(byte[] buffPort);
         void Write(string text);
         void Write(char[] buffer, int offset, int count);
         bool Write(byte[] buffer, int offset, int count);
