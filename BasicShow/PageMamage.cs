@@ -174,7 +174,7 @@ namespace Pages
             List<Interfaces> list = new List<Interfaces>();
             foreach (FileInfo file in TheFolder.GetFiles())
             {
-                if (file.Extension == ".dll")
+                if (file.Extension == ".exe")
                 {
                     Debug.WriteLine("Find dll:" + file.Name);
                     InterfacesTemp = LoadInterface(".\\" + file.Name, assType);

@@ -28,9 +28,19 @@ namespace BasicSerialService
         }
         public FormMain(string title, SerialPort userSerialPort)
         {
+            this.Text = title;
             InitializeComponent();
             Init_SerialPort(userSerialPort);
         }
+        //public void FormShow(string title, SerialPort userSerialPort)
+        //{
+        //    InitializeComponent();
+        //    Init_SerialPort(userSerialPort);
+        //}
+        //public void FormShow()
+        //{
+        //    FormShow(null, null);
+        //}
         #endregion
 
         #region 窗体事件
@@ -49,7 +59,7 @@ namespace BasicSerialService
             thisSerialPort.cB_SerialDataBits = DataBitsComboBox;
             thisSerialPort.cB_SerialStopBits = StopBitsComboBox;
             thisSerialPort.Btn_Link = addDeviceOKButton;
-            //thisSerialPort.Tb_Stat = label3;
+            thisSerialPort.Tb_Stat = label1;
             thisSerialPort.DataReceived += ThisSerialPort_DataReceived;
             thisSerialPort.SerialInit(userSerialPort);
         }
@@ -132,6 +142,5 @@ namespace BasicSerialService
             throw new NotImplementedException();
         }
         #endregion
-
     }
 }

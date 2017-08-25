@@ -119,10 +119,7 @@ namespace BasicShow
                     WorkToolStripStatusLabel.Text = "";
                 }));
             });
-            this.Invoke(new Action(() =>
-            {
-                WorkToolStripStatusLabel.Text = "正在更新数据窗口……";
-            }));
+            WorkToolStripStatusLabel.Text = "正在更新数据窗口……";
             SendData.Start();
         }
 
@@ -148,12 +145,12 @@ namespace BasicShow
             //}
             list.ToArray()[0].DataReceived += FormMain_DataReceived;
             list.ToArray()[0].EventTest();
-            ((Form)(list.ToArray()[0])).Show();
+            //((Form)(list.ToArray()[0])).Show();
         }
 
         private void FormMain_DataReceived(object sender, EventArgs e)
         {
-            AppendBytes((byte[])sender);
+            byte[] a = (byte[])sender;
         }
     }
 

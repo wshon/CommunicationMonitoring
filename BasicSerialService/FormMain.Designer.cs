@@ -43,6 +43,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.addDeviceOKButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.layoutPane.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,6 +69,7 @@
             this.layoutPane.Controls.Add(this.label6, 0, 0);
             this.layoutPane.Controls.Add(this.TitleTextBox, 1, 0);
             this.layoutPane.Controls.Add(this.addDeviceOKButton, 1, 7);
+            this.layoutPane.Controls.Add(this.label1, 0, 7);
             this.layoutPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutPane.Location = new System.Drawing.Point(0, 0);
             this.layoutPane.Margin = new System.Windows.Forms.Padding(0);
@@ -221,6 +223,15 @@
             this.addDeviceOKButton.Text = "OK";
             this.addDeviceOKButton.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 173);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "label1";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -253,6 +264,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TitleTextBox;
         private System.Windows.Forms.Button addDeviceOKButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 

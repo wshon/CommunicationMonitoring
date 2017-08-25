@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{64ACC54B-5827-428F-89BE-D38FF7706122}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>BasicSerialService</RootNamespace>
     <AssemblyName>BasicSerialService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
