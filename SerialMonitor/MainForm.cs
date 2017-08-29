@@ -293,6 +293,11 @@ namespace SerialMonitor
         {
             NewLineStr = cmbSendNewLine.Text.Replace("\\r", "\r").Replace("\\n", "\n");
         }
+
+        private void chkShowTypeHex_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class BlindInt : INotifyPropertyChanged

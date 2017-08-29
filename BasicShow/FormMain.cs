@@ -25,19 +25,22 @@ namespace BasicShow
         }
 
         List<Interfaces> list = new List<Interfaces>();
-        private BlindInt SentBytes = new BlindInt();
+        private BlindInt SendBytes = new BlindInt();
         private BlindInt RecvBytes = new BlindInt();
-        private BlindInt FileSendPerss = new BlindInt();
+        private BlindInt FileSendPrs = new BlindInt();
+        private BlindString SendDatasShow = new BlindString();
         private BlindString RecvDatasShow = new BlindString();
+
         private List<byte> RecvDatas = new List<byte>();
         private string NewLineStr = "";
         
         private void FormMain_Load(object sender, EventArgs e)
         {
-            tbSendCount.DataBindings.Add("Text", SentBytes, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+            tbSendCount.DataBindings.Add("Text", SendBytes, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
             tbRecvCount.DataBindings.Add("Text", RecvBytes, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
-            prebarSendFile.DataBindings.Add("Value", FileSendPerss, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+            prsSendFile.DataBindings.Add("Value", FileSendPrs, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
             tbRecvData.DataBindings.Add("Text", RecvDatasShow, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+            tbSendData.DataBindings.Add("Text", SendDatasShow, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -45,50 +48,26 @@ namespace BasicShow
 
         }
 
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            int fRead;
-            int SizeBuf;
 
-            byte[] Buff = new byte[Convert.ToInt32(textLen.Text)];
-            byte[] BuffPort;
-            fRead = Convert.ToInt32(textLen.Text);
-            SizeBuf = fRead;
-            if (!File.Exists(tbSendFile.Text))
-            {
-                tbSendFile.Text = "文件未找到";
-                btnSendFile.Enabled = false;
-                return;
-            }
-            System.IO.FileStream file = new System.IO.FileStream(tbSendFile.Text, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-            prebarSendFile.Maximum = (int)((file.Length / SizeBuf)) + 1;
-            FileSendPerss.Value = 0;
-            Thread SendFile = new Thread(() => {
-                while (fRead == SizeBuf)
-                {
-                    fRead = file.Read(Buff, 0, SizeBuf);
-                    BuffPort = new byte[fRead];
-                    Array.Copy(Buff, BuffPort, fRead);
-                    if (list[0].Write(BuffPort, 0, fRead))
-                    {
-                        SentBytes.Value += fRead;
-                        FileSendPerss.Value++;
-                    }
-                    else
-                    {
-                        FileSendPerss.Value++;
-                        break;
-                    }
-                }
-                this.Invoke(new Action(() =>
-                {
-                    WorkToolStripStatusLabel.Text = "";
-                }));
-            });
-            WorkToolStripStatusLabel.Text = "正在发送文件……";
-            SendFile.Start();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //string dir = @"c:\Libs\";
+            //string assemblyName = "InterfaceLink";
+            //for (int i = 0; i < 3; i++)
+            //{
+            //Assembly assembly = Assembly.LoadFile(dir + assemblyName + ".dll");
+            //Type type = assembly.GetType(assemblyName + ".Interfaces");
+            //Interfaces instance = System.Activator.CreateInstance(type) as Interfaces;
+            list = new PageMamage().ExternInterface_Load("FormMain");
+            //Interfaces instance = PageMamage.LoadInterface("InterfaceLink", "Interfaces");
+            //    list.Add(instance);
+            //}
+            list[0].DataReceived += FormMain_DataReceived;
+            list[0].EventTest();
+            ((Form)(list[0])).Show();
         }
 
+        #region 数据统计
         private void tbRecvCount_TextChanged(object sender, EventArgs e)
         {
             RecvCountToolStripStatusLabel.Text = tbRecvCount.Text;
@@ -99,6 +78,18 @@ namespace BasicShow
             SendCountToolStripStatusLabel.Text = tbSendCount.Text;
         }
 
+        private void ClearToolStripStatusLabel_Click(object sender, EventArgs e)
+        {
+            ClearCountBytes();
+        }
+        private void ClearCountBytes()
+        {
+            SendBytes.Value = 0;
+            RecvBytes.Value = 0;
+        }
+        #endregion
+
+        #region 接收显示数据
         /// <summary>
         /// 更新窗体的数据绑定
         /// </summary>
@@ -119,42 +110,126 @@ namespace BasicShow
                     WorkToolStripStatusLabel.Text = "";
                 }));
             });
-            this.Invoke(new Action(() =>
+            if (!chkShowPause.Checked)
             {
-                WorkToolStripStatusLabel.Text = "正在更新数据窗口……";
-            }));
-            SendData.Start();
+                this.Invoke(new Action(() =>
+                {
+                    WorkToolStripStatusLabel.Text = "正在更新数据窗口……";
+                }));
+                SendData.Start();
+            }
         }
 
-        public void AppendBytes(byte[] buffPort)
+        private void chkShowTypeHex_CheckedChanged(object sender, EventArgs e)
         {
-            RecvDatas.AddRange(buffPort);
             UpdateRecvShow();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void chkShowPause_CheckedChanged(object sender, EventArgs e)
         {
-            List<Interfaces> list = new List<Interfaces>();
-            //string dir = @"c:\Libs\";
-            //string assemblyName = "InterfaceLink";
-            //for (int i = 0; i < 3; i++)
-            //{
-            //Assembly assembly = Assembly.LoadFile(dir + assemblyName + ".dll");
-            //Type type = assembly.GetType(assemblyName + ".Interfaces");
-            //Interfaces instance = System.Activator.CreateInstance(type) as Interfaces;
-            list = new PageMamage().ExternInterface_Load("FormMain");
-            //Interfaces instance = PageMamage.LoadInterface("InterfaceLink", "Interfaces");
-            //    list.Add(instance);
-            //}
-            list.ToArray()[0].DataReceived += FormMain_DataReceived;
-            list.ToArray()[0].EventTest();
-            ((Form)(list.ToArray()[0])).Show();
+            UpdateRecvShow();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            RecvDatas.Clear();
+            RecvDatasShow.Value = "";
+            ClearCountBytes();
+        }
+        #endregion
+
+        #region 接收数据
+        public void AppendBytes(byte[] buffPort)
+        {
+            RecvBytes.Value += buffPort.Length;
+            RecvDatas.AddRange(buffPort);
+            UpdateRecvShow();
         }
 
         private void FormMain_DataReceived(object sender, EventArgs e)
         {
             AppendBytes((byte[])sender);
         }
+        #endregion
+
+        #region 发送数据
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            byte[] SendTmp = System.Text.Encoding.Default.GetBytes(tbSendData.Text + NewLineStr);
+            int SengLenght = SendTmp.Length;
+            SendBytes.Value += SengLenght;
+            Thread SendData = new Thread(() => {
+                list[0].Write(SendTmp, 0, SengLenght);
+                this.Invoke(new Action(() =>
+                {
+                    btnSend.Enabled = true;
+                    btnSend.Text = "发送";
+                    WorkToolStripStatusLabel.Text = "";
+                }));
+            });
+            WorkToolStripStatusLabel.Text = "正在运行……";
+            btnSend.Enabled = false;
+            btnSend.Text = "发送中……";
+            SendData.Start();
+        }
+        #endregion
+
+        #region 发送文件
+        private void btnSendFile_Click(object sender, EventArgs e)
+        {
+            int fRead;
+            int SizeBuf;
+
+            byte[] Buff = new byte[Convert.ToInt32(textLen.Text)];
+            byte[] BuffPort;
+            fRead = Convert.ToInt32(textLen.Text);
+            SizeBuf = fRead;
+            if (!File.Exists(tbSendFile.Text))
+            {
+                tbSendFile.Text = "文件未找到";
+                btnSendFile.Enabled = false;
+                return;
+            }
+            System.IO.FileStream file = new System.IO.FileStream(tbSendFile.Text, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+            prsSendFile.Maximum = (int)((file.Length / SizeBuf)) + 1;
+            FileSendPrs.Value = 0;
+            Thread SendFile = new Thread(() => {
+                while (fRead == SizeBuf)
+                {
+                    fRead = file.Read(Buff, 0, SizeBuf);
+                    BuffPort = new byte[fRead];
+                    Array.Copy(Buff, BuffPort, fRead);
+                    if (list[0].Write(BuffPort, 0, fRead))
+                    {
+                        SendBytes.Value += fRead;
+                        FileSendPrs.Value++;
+                    }
+                    else
+                    {
+                        FileSendPrs.Value++;
+                        break;
+                    }
+                }
+                this.Invoke(new Action(() =>
+                {
+                    WorkToolStripStatusLabel.Text = "";
+                }));
+            });
+            WorkToolStripStatusLabel.Text = "正在发送文件……";
+            SendFile.Start();
+        }
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "All files (*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                tbSendFile.Text = openFileDialog1.FileName;
+                btnSendFile.Enabled = true;
+            }
+        }
+        #endregion
+
     }
 
     #region 数据绑定

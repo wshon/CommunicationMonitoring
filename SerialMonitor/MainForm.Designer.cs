@@ -77,15 +77,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ShowToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.SendCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.RecvCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ClearToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.WorkToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.ClearToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.RecvCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.SendCountToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.StatToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ShowToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -235,6 +235,7 @@
             this.chkShowTypeHex.TabIndex = 25;
             this.chkShowTypeHex.Text = "16进制显示";
             this.chkShowTypeHex.UseVisualStyleBackColor = true;
+            this.chkShowTypeHex.CheckedChanged += new System.EventHandler(this.chkShowTypeHex_CheckedChanged_1);
             // 
             // btnLink
             // 
@@ -664,6 +665,50 @@
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // ShowToolStripStatusLabel
+            // 
+            this.ShowToolStripStatusLabel.Name = "ShowToolStripStatusLabel";
+            this.ShowToolStripStatusLabel.Size = new System.Drawing.Size(89, 17);
+            this.ShowToolStripStatusLabel.Text = "MUUMLOVER";
+            // 
+            // StatToolStripStatusLabel
+            // 
+            this.StatToolStripStatusLabel.Name = "StatToolStripStatusLabel";
+            this.StatToolStripStatusLabel.Size = new System.Drawing.Size(72, 17);
+            this.StatToolStripStatusLabel.Text = "Sam Wong";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(24, 17);
+            this.toolStripStatusLabel1.Text = "Tx:";
+            // 
+            // SendCountToolStripStatusLabel
+            // 
+            this.SendCountToolStripStatusLabel.Name = "SendCountToolStripStatusLabel";
+            this.SendCountToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
+            this.SendCountToolStripStatusLabel.Text = "65535";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(25, 17);
+            this.toolStripStatusLabel2.Text = "Rx:";
+            // 
+            // RecvCountToolStripStatusLabel
+            // 
+            this.RecvCountToolStripStatusLabel.Name = "RecvCountToolStripStatusLabel";
+            this.RecvCountToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
+            this.RecvCountToolStripStatusLabel.Text = "65535";
+            // 
+            // ClearToolStripStatusLabel
+            // 
+            this.ClearToolStripStatusLabel.IsLink = true;
+            this.ClearToolStripStatusLabel.Name = "ClearToolStripStatusLabel";
+            this.ClearToolStripStatusLabel.Size = new System.Drawing.Size(32, 17);
+            this.ClearToolStripStatusLabel.Text = "清空";
+            this.ClearToolStripStatusLabel.Click += new System.EventHandler(this.ClearToolStripStatusLabel_Click);
+            // 
             // WorkToolStripStatusLabel
             // 
             this.WorkToolStripStatusLabel.Name = "WorkToolStripStatusLabel";
@@ -690,50 +735,6 @@
             this.toolStripContainer1.TabIndex = 9;
             this.toolStripContainer1.Text = "toolStripContainer1";
             this.toolStripContainer1.TopToolStripPanelVisible = false;
-            // 
-            // ClearToolStripStatusLabel
-            // 
-            this.ClearToolStripStatusLabel.IsLink = true;
-            this.ClearToolStripStatusLabel.Name = "ClearToolStripStatusLabel";
-            this.ClearToolStripStatusLabel.Size = new System.Drawing.Size(32, 17);
-            this.ClearToolStripStatusLabel.Text = "清空";
-            this.ClearToolStripStatusLabel.Click += new System.EventHandler(this.ClearToolStripStatusLabel_Click);
-            // 
-            // RecvCountToolStripStatusLabel
-            // 
-            this.RecvCountToolStripStatusLabel.Name = "RecvCountToolStripStatusLabel";
-            this.RecvCountToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
-            this.RecvCountToolStripStatusLabel.Text = "65535";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(25, 17);
-            this.toolStripStatusLabel2.Text = "Rx:";
-            // 
-            // SendCountToolStripStatusLabel
-            // 
-            this.SendCountToolStripStatusLabel.Name = "SendCountToolStripStatusLabel";
-            this.SendCountToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
-            this.SendCountToolStripStatusLabel.Text = "65535";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(24, 17);
-            this.toolStripStatusLabel1.Text = "Tx:";
-            // 
-            // StatToolStripStatusLabel
-            // 
-            this.StatToolStripStatusLabel.Name = "StatToolStripStatusLabel";
-            this.StatToolStripStatusLabel.Size = new System.Drawing.Size(72, 17);
-            this.StatToolStripStatusLabel.Text = "Sam Wong";
-            // 
-            // ShowToolStripStatusLabel
-            // 
-            this.ShowToolStripStatusLabel.Name = "ShowToolStripStatusLabel";
-            this.ShowToolStripStatusLabel.Size = new System.Drawing.Size(89, 17);
-            this.ShowToolStripStatusLabel.Text = "MUUMLOVER";
             // 
             // MainForm
             // 

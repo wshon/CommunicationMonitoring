@@ -11,10 +11,10 @@ namespace InterfaceLink
         void EventTest();
         event EventHandler DataReceived;
         //void AppendBytes(byte[] buffPort);
-        void Write(string text);
-        void Write(char[] buffer, int offset, int count);
+        bool Write(string text);
+        bool Write(char[] buffer, int offset, int count);
         bool Write(byte[] buffer, int offset, int count);
-        void WriteLine(string text);
+        bool WriteLine(string text);
         //void Recall_DataReceived(object sender, object e);
     }
 }

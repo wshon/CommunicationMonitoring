@@ -122,24 +122,24 @@ namespace BasicSerialService
             }
         }
 
-        void Interfaces.Write(string text)
+        bool Interfaces.Write(string text)
         {
-            throw new NotImplementedException();
+            return thisSerialPort.Write(text);
         }
 
-        void Interfaces.Write(char[] buffer, int offset, int count)
+        bool Interfaces.Write(char[] buffer, int offset, int count)
         {
-            throw new NotImplementedException();
+            return thisSerialPort.Write(buffer, offset, count);
         }
 
         bool Interfaces.Write(byte[] buffer, int offset, int count)
         {
-            throw new NotImplementedException();
+            return thisSerialPort.Write(buffer, offset, count);
         }
 
-        void Interfaces.WriteLine(string text)
+        bool Interfaces.WriteLine(string text)
         {
-            throw new NotImplementedException();
+            return thisSerialPort.WriteLine(text);
         }
         #endregion
     }

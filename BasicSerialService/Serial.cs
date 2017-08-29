@@ -516,11 +516,12 @@ namespace SerialLib
             //}
         }
 
-        public void Write(string text)
+        public bool Write(string text)
         {
             try
             {
                 SerialPortCon.Write(text);
+                return true;
             }
             catch (Exception)
             {
@@ -529,14 +530,16 @@ namespace SerialLib
                     Tb_Stat.ForeColor = Color.Red;
                     Tb_Stat.Text = "发送失败";
                 }));
+                return false;
             }
         }
 
-        public void Write(char[] buffer, int offset, int count)
+        public bool Write(char[] buffer, int offset, int count)
         {
             try
             {
                 SerialPortCon.Write(buffer, offset, count);
+                return true;
             }
             catch (Exception)
             {
@@ -545,6 +548,7 @@ namespace SerialLib
                     Tb_Stat.ForeColor = Color.Red;
                     Tb_Stat.Text = "发送失败";
                 }));
+                return false;
             }
         }
 
@@ -566,11 +570,12 @@ namespace SerialLib
             }
         }
 
-        public void WriteLine(string text)
+        public bool WriteLine(string text)
         {
             try
             {
                 SerialPortCon.WriteLine(text);
+                return true;
             }
             catch (Exception)
             {
@@ -579,6 +584,7 @@ namespace SerialLib
                     Tb_Stat.ForeColor = Color.Red;
                     Tb_Stat.Text = "发送失败";
                 }));
+                return false;
             }
         }
 

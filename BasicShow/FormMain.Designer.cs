@@ -32,7 +32,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.chkShowTypeHex = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.chkShowPause = new System.Windows.Forms.CheckBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tbSendData = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSend = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -54,7 +55,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tbSendFile = new System.Windows.Forms.TextBox();
@@ -62,7 +62,7 @@
             this.textLen = new System.Windows.Forms.TextBox();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.btnSendFile = new System.Windows.Forms.Button();
-            this.prebarSendFile = new System.Windows.Forms.ProgressBar();
+            this.prsSendFile = new System.Windows.Forms.ProgressBar();
             this.label7 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ShowToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -121,22 +121,22 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 418F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(784, 418);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 412F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(784, 412);
             this.tableLayoutPanel5.TabIndex = 34;
             // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.AutoSize = true;
             this.flowLayoutPanel3.Controls.Add(this.chkShowTypeHex);
-            this.flowLayoutPanel3.Controls.Add(this.checkBox3);
+            this.flowLayoutPanel3.Controls.Add(this.chkShowPause);
             this.flowLayoutPanel3.Controls.Add(this.btnClear);
             this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel1);
             this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel2);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(691, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(90, 412);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(90, 406);
             this.flowLayoutPanel3.TabIndex = 33;
             // 
             // chkShowTypeHex
@@ -148,16 +148,18 @@
             this.chkShowTypeHex.TabIndex = 25;
             this.chkShowTypeHex.Text = "16进制显示";
             this.chkShowTypeHex.UseVisualStyleBackColor = true;
+            this.chkShowTypeHex.CheckedChanged += new System.EventHandler(this.chkShowTypeHex_CheckedChanged);
             // 
-            // checkBox3
+            // chkShowPause
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(3, 25);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(72, 16);
-            this.checkBox3.TabIndex = 26;
-            this.checkBox3.Text = "暂停显示";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chkShowPause.AutoSize = true;
+            this.chkShowPause.Location = new System.Drawing.Point(3, 25);
+            this.chkShowPause.Name = "chkShowPause";
+            this.chkShowPause.Size = new System.Drawing.Size(72, 16);
+            this.chkShowPause.TabIndex = 26;
+            this.chkShowPause.Text = "暂停显示";
+            this.chkShowPause.UseVisualStyleBackColor = true;
+            this.chkShowPause.CheckedChanged += new System.EventHandler(this.chkShowPause_CheckedChanged);
             // 
             // btnClear
             // 
@@ -169,6 +171,7 @@
             this.btnClear.TabIndex = 23;
             this.btnClear.Text = "清空接收";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -177,7 +180,7 @@
             this.flowLayoutPanel1.Controls.Add(this.tbSendCount);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 69);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(47, 24);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(46, 12);
             this.flowLayoutPanel1.TabIndex = 27;
             // 
             // label2
@@ -185,18 +188,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(23, 12);
             this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
+            this.label2.Text = "Tx:";
             // 
             // tbSendCount
             // 
             this.tbSendCount.AutoSize = true;
-            this.tbSendCount.Location = new System.Drawing.Point(3, 12);
+            this.tbSendCount.Location = new System.Drawing.Point(32, 0);
             this.tbSendCount.Name = "tbSendCount";
-            this.tbSendCount.Size = new System.Drawing.Size(41, 12);
+            this.tbSendCount.Size = new System.Drawing.Size(11, 12);
             this.tbSendCount.TabIndex = 1;
-            this.tbSendCount.Text = "label3";
+            this.tbSendCount.Text = "0";
             this.tbSendCount.TextChanged += new System.EventHandler(this.tbSendCount_TextChanged);
             // 
             // flowLayoutPanel2
@@ -204,9 +207,9 @@
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.Controls.Add(this.label5);
             this.flowLayoutPanel2.Controls.Add(this.tbRecvCount);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 99);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 87);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(47, 24);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(46, 12);
             this.flowLayoutPanel2.TabIndex = 28;
             // 
             // label5
@@ -214,18 +217,18 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.Size = new System.Drawing.Size(23, 12);
             this.label5.TabIndex = 0;
-            this.label5.Text = "label5";
+            this.label5.Text = "Rx:";
             // 
             // tbRecvCount
             // 
             this.tbRecvCount.AutoSize = true;
-            this.tbRecvCount.Location = new System.Drawing.Point(3, 12);
+            this.tbRecvCount.Location = new System.Drawing.Point(32, 0);
             this.tbRecvCount.Name = "tbRecvCount";
-            this.tbRecvCount.Size = new System.Drawing.Size(41, 12);
+            this.tbRecvCount.Size = new System.Drawing.Size(11, 12);
             this.tbRecvCount.TabIndex = 1;
-            this.tbRecvCount.Text = "label6";
+            this.tbRecvCount.Text = "0";
             this.tbRecvCount.TextChanged += new System.EventHandler(this.tbRecvCount_TextChanged);
             // 
             // tbRecvData
@@ -235,18 +238,18 @@
             this.tbRecvData.Margin = new System.Windows.Forms.Padding(0);
             this.tbRecvData.Multiline = true;
             this.tbRecvData.Name = "tbRecvData";
-            this.tbRecvData.Size = new System.Drawing.Size(688, 418);
+            this.tbRecvData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbRecvData.Size = new System.Drawing.Size(688, 412);
             this.tbRecvData.TabIndex = 34;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(3, 421);
+            this.tabControl1.Location = new System.Drawing.Point(3, 415);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(778, 115);
+            this.tabControl1.Size = new System.Drawing.Size(778, 121);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -255,7 +258,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(770, 89);
+            this.tabPage1.Size = new System.Drawing.Size(770, 95);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "发送数据";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -263,18 +266,28 @@
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel6.Controls.Add(this.tbSendData, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel8, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.textBox2, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(764, 83);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(764, 89);
             this.tableLayoutPanel6.TabIndex = 0;
+            // 
+            // tbSendData
+            // 
+            this.tbSendData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbSendData.Location = new System.Drawing.Point(3, 3);
+            this.tbSendData.Multiline = true;
+            this.tbSendData.Name = "tbSendData";
+            this.tbSendData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbSendData.Size = new System.Drawing.Size(525, 83);
+            this.tbSendData.TabIndex = 12;
             // 
             // tableLayoutPanel8
             // 
@@ -283,7 +296,7 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.Controls.Add(this.btnSend, 0, 2);
             this.tableLayoutPanel8.Controls.Add(this.textBox3, 2, 1);
             this.tableLayoutPanel8.Controls.Add(this.checkBox2, 0, 0);
@@ -294,15 +307,15 @@
             this.tableLayoutPanel8.Controls.Add(this.button1, 2, 2);
             this.tableLayoutPanel8.Controls.Add(this.comboBox1, 1, 2);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(502, 0);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(531, 0);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 4;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(262, 83);
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(233, 89);
             this.tableLayoutPanel8.TabIndex = 11;
             // 
             // btnSend
@@ -310,7 +323,7 @@
             this.btnSend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSend.Location = new System.Drawing.Point(3, 56);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(84, 27);
+            this.btnSend.Size = new System.Drawing.Size(75, 30);
             this.btnSend.TabIndex = 4;
             this.btnSend.Text = "发送";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -319,7 +332,7 @@
             // textBox3
             // 
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Location = new System.Drawing.Point(164, 29);
+            this.textBox3.Location = new System.Drawing.Point(155, 29);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(75, 21);
             this.textBox3.TabIndex = 5;
@@ -327,31 +340,37 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
+            this.checkBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBox2.Location = new System.Drawing.Point(3, 3);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(84, 16);
+            this.checkBox2.Size = new System.Drawing.Size(75, 20);
             this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = "16进制发送";
+            this.checkBox2.Text = "发送HEX";
+            this.checkBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(93, 26);
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(84, 29);
+            this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.Size = new System.Drawing.Size(65, 21);
             this.label4.TabIndex = 7;
             this.label4.Text = "发送间隔：";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
+            this.checkBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBox4.Location = new System.Drawing.Point(3, 29);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(72, 16);
+            this.checkBox4.Size = new System.Drawing.Size(75, 21);
             this.checkBox4.TabIndex = 9;
             this.checkBox4.Text = "自动发送";
+            this.checkBox4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // cmbSendNewLine
@@ -364,7 +383,7 @@
             "\\r\\n",
             "\\r",
             "\\n"});
-            this.cmbSendNewLine.Location = new System.Drawing.Point(164, 3);
+            this.cmbSendNewLine.Location = new System.Drawing.Point(155, 3);
             this.cmbSendNewLine.Name = "cmbSendNewLine";
             this.cmbSendNewLine.Size = new System.Drawing.Size(75, 20);
             this.cmbSendNewLine.TabIndex = 11;
@@ -372,18 +391,21 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(93, 0);
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(84, 3);
+            this.label8.Margin = new System.Windows.Forms.Padding(3);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.Size = new System.Drawing.Size(65, 20);
             this.label8.TabIndex = 12;
             this.label8.Text = "发送空行：";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(164, 56);
+            this.button1.Location = new System.Drawing.Point(155, 56);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 27);
+            this.button1.Size = new System.Drawing.Size(75, 30);
             this.button1.TabIndex = 13;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -393,20 +415,11 @@
             // 
             this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(93, 56);
+            this.comboBox1.Location = new System.Drawing.Point(84, 61);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(65, 20);
             this.comboBox1.TabIndex = 14;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(3, 3);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(496, 77);
-            this.textBox2.TabIndex = 12;
             // 
             // tabPage3
             // 
@@ -414,7 +427,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(770, 89);
+            this.tabPage3.Size = new System.Drawing.Size(770, 95);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "发送文件";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -433,7 +446,7 @@
             this.tableLayoutPanel4.Controls.Add(this.textLen, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.btnOpenFile, 2, 3);
             this.tableLayoutPanel4.Controls.Add(this.btnSendFile, 3, 3);
-            this.tableLayoutPanel4.Controls.Add(this.prebarSendFile, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.prsSendFile, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.label7, 0, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
@@ -444,7 +457,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(764, 83);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(764, 89);
             this.tableLayoutPanel4.TabIndex = 22;
             // 
             // tbSendFile
@@ -484,6 +497,7 @@
             this.btnOpenFile.TabIndex = 4;
             this.btnOpenFile.Text = "打开";
             this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // btnSendFile
             // 
@@ -493,15 +507,16 @@
             this.btnSendFile.TabIndex = 3;
             this.btnSendFile.Text = "发送";
             this.btnSendFile.UseVisualStyleBackColor = true;
+            this.btnSendFile.Click += new System.EventHandler(this.btnSendFile_Click);
             // 
-            // prebarSendFile
+            // prsSendFile
             // 
-            this.tableLayoutPanel4.SetColumnSpan(this.prebarSendFile, 5);
-            this.prebarSendFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.prebarSendFile.Location = new System.Drawing.Point(74, 30);
-            this.prebarSendFile.Name = "prebarSendFile";
-            this.prebarSendFile.Size = new System.Drawing.Size(693, 15);
-            this.prebarSendFile.TabIndex = 6;
+            this.tableLayoutPanel4.SetColumnSpan(this.prsSendFile, 5);
+            this.prsSendFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.prsSendFile.Location = new System.Drawing.Point(74, 30);
+            this.prsSendFile.Name = "prsSendFile";
+            this.prsSendFile.Size = new System.Drawing.Size(693, 15);
+            this.prsSendFile.TabIndex = 6;
             // 
             // label7
             // 
@@ -551,8 +566,8 @@
             // SendCountToolStripStatusLabel
             // 
             this.SendCountToolStripStatusLabel.Name = "SendCountToolStripStatusLabel";
-            this.SendCountToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
-            this.SendCountToolStripStatusLabel.Text = "65535";
+            this.SendCountToolStripStatusLabel.Size = new System.Drawing.Size(15, 17);
+            this.SendCountToolStripStatusLabel.Text = "0";
             // 
             // toolStripStatusLabel2
             // 
@@ -563,8 +578,8 @@
             // RecvCountToolStripStatusLabel
             // 
             this.RecvCountToolStripStatusLabel.Name = "RecvCountToolStripStatusLabel";
-            this.RecvCountToolStripStatusLabel.Size = new System.Drawing.Size(43, 17);
-            this.RecvCountToolStripStatusLabel.Text = "65535";
+            this.RecvCountToolStripStatusLabel.Size = new System.Drawing.Size(15, 17);
+            this.RecvCountToolStripStatusLabel.Text = "0";
             // 
             // ClearToolStripStatusLabel
             // 
@@ -572,6 +587,7 @@
             this.ClearToolStripStatusLabel.Name = "ClearToolStripStatusLabel";
             this.ClearToolStripStatusLabel.Size = new System.Drawing.Size(32, 17);
             this.ClearToolStripStatusLabel.Text = "清空";
+            this.ClearToolStripStatusLabel.Click += new System.EventHandler(this.ClearToolStripStatusLabel_Click);
             // 
             // WorkToolStripStatusLabel
             // 
@@ -646,7 +662,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox chkShowPause;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
@@ -658,7 +674,7 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.ComboBox cmbSendNewLine;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbSendData;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TextBox tbSendFile;
@@ -666,7 +682,7 @@
         private System.Windows.Forms.TextBox textLen;
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.Button btnSendFile;
-        private System.Windows.Forms.ProgressBar prebarSendFile;
+        private System.Windows.Forms.ProgressBar prsSendFile;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
