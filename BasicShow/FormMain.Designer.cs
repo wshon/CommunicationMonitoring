@@ -54,7 +54,6 @@
             this.cmbSendNewLine = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tbSendFile = new System.Windows.Forms.TextBox();
@@ -74,6 +73,8 @@
             this.ClearToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.WorkToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -133,6 +134,8 @@
             this.flowLayoutPanel3.Controls.Add(this.btnClear);
             this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel1);
             this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel3.Controls.Add(this.button2);
+            this.flowLayoutPanel3.Controls.Add(this.button3);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(691, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
@@ -305,7 +308,6 @@
             this.tableLayoutPanel8.Controls.Add(this.cmbSendNewLine, 2, 0);
             this.tableLayoutPanel8.Controls.Add(this.label8, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.button1, 2, 2);
-            this.tableLayoutPanel8.Controls.Add(this.comboBox1, 1, 2);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(531, 0);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
@@ -410,16 +412,6 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(84, 61);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(65, 20);
-            this.comboBox1.TabIndex = 14;
             // 
             // tabPage3
             // 
@@ -616,6 +608,26 @@
             this.toolStripContainer1.Text = "toolStripContainer1";
             this.toolStripContainer1.TopToolStripPanelVisible = false;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(3, 105);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(3, 134);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 29;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -702,6 +714,7 @@
         private System.Windows.Forms.ToolStripStatusLabel WorkToolStripStatusLabel;
         private System.Windows.Forms.TextBox tbRecvData;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

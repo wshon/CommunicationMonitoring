@@ -230,6 +230,47 @@ namespace BasicShow
         }
         #endregion
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var path = Process.GetCurrentProcess().MainModule.FileName + " s";
+            DirectoryInfo TheFolder = new DirectoryInfo(".\\");
+            foreach (FileInfo file in TheFolder.GetFiles())
+            {
+                if (file.Extension == ".dll")
+                {
+                    try
+                    {
+                        Debug.WriteLine("Find dll:" + file.Name);
+                        Type type = PageMamage.LoadFromType(".\\" + file.Name, "Mamage");
+                        Object obj = Activator.CreateInstance(type);
+                        MethodInfo mi = type.GetMethod("install");
+                        mi.Invoke(obj, null);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var path = Process.GetCurrentProcess().MainModule.FileName + " s";
+            DirectoryInfo TheFolder = new DirectoryInfo(".\\");
+            foreach (FileInfo file in TheFolder.GetFiles())
+            {
+                if (file.Extension == ".dll")
+                {
+                    try
+                    {
+                        Debug.WriteLine("Find dll:" + file.Name);
+                        Type type = PageMamage.LoadFromType(".\\" + file.Name, "Mamage");
+                        Object obj = Activator.CreateInstance(type);
+                        MethodInfo mi = type.GetMethod("uninstall");
+                        mi.Invoke(obj, null);
+                    }
+                    catch { }
+                }
+            }
+        }
     }
 
     #region 数据绑定

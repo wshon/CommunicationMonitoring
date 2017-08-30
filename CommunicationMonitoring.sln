@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationMonitoring", "CommunicationMonitoring\CommunicationMonitoring.csproj", "{CC238855-2D20-4757-8079-52F4507BF197}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OLD", "OLD", "{A06E40F4-043A-4E0E-BCE1-CAB73055491E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceLink", "InterfaceLink\InterfaceLink.csproj", "{4FA71D55-85AB-489D-A371-D61C08608555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralSerialService", "GeneralSerialService\GeneralSerialService.csproj", "{D2D69F61-084D-4B55-83A0-142E9938FF39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -215,6 +217,22 @@ Global
 		{4FA71D55-85AB-489D-A371-D61C08608555}.Release|x64.Build.0 = Release|Any CPU
 		{4FA71D55-85AB-489D-A371-D61C08608555}.Release|x86.ActiveCfg = Release|Any CPU
 		{4FA71D55-85AB-489D-A371-D61C08608555}.Release|x86.Build.0 = Release|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Debug|ARM.Build.0 = Debug|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Debug|x64.Build.0 = Debug|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Debug|x86.Build.0 = Debug|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Release|ARM.ActiveCfg = Release|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Release|ARM.Build.0 = Release|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Release|x64.ActiveCfg = Release|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Release|x64.Build.0 = Release|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Release|x86.ActiveCfg = Release|Any CPU
+		{D2D69F61-084D-4B55-83A0-142E9938FF39}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -227,5 +245,8 @@ Global
 		{CD138149-5526-47E3-BD59-66263773AB6B} = {A06E40F4-043A-4E0E-BCE1-CAB73055491E}
 		{80924B2A-956D-4A88-866E-7A4254BDA199} = {A06E40F4-043A-4E0E-BCE1-CAB73055491E}
 		{49D59A80-5F0E-4D27-ABC9-75E57D6E59E6} = {A06E40F4-043A-4E0E-BCE1-CAB73055491E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46A06255-8572-4942-9532-D40825EDFFF2}
 	EndGlobalSection
 EndGlobal
