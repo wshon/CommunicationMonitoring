@@ -36,19 +36,39 @@ namespace Conver
                 for (int i = 0; i < bytes.Length; i++)
                 {
                     returnStr += bytes[i].ToString("X2") + split;
+                    //if ((leng != 0) && ((i + 1) % leng == 0))
+                    //{
+                    //    if (time)
+                    //        returnStr += " [" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "]";
+                    //    returnStr += "\r\n";
+                    //}
                 }
             }
             return returnStr;
         }
-
-        /// <summary> 
+        /// <summary>
         /// 字节数组转16进制字符串 
-        /// </summary> 
-        /// <param name="bytes"></param> 
-        /// <returns></returns> 
-        public static string byteToHexStr(byte[] bytes)
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <param name="split"></param>
+        /// <returns></returns>
+        public static string byteToHexStr(byte[] bytes, char split, int leng, bool time)
         {
-            return byteToHexStr(bytes, '\0');
+            string returnStr = "";
+            if (bytes != null)
+            {
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    returnStr += bytes[i].ToString("X2") + split;
+                    if ((leng != 0) && ((i + 1) % leng == 0))
+                    {
+                        if (time)
+                            returnStr += " [" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "]";
+                        returnStr += "\r\n";
+                    }
+                }
+            }
+            return returnStr;
         }
 
         /// <summary> 

@@ -30,9 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.addDeviceOKButton = new System.Windows.Forms.Button();
-            this.TitleTextBox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.addDeviceCancelButton = new System.Windows.Forms.Button();
             this.BaudRateComboBox = new System.Windows.Forms.ComboBox();
             this.SerialNumberComboBox = new System.Windows.Forms.ComboBox();
             this.lbBaudRate = new System.Windows.Forms.Label();
@@ -50,7 +47,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 173);
+            this.label1.Location = new System.Drawing.Point(421, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 14;
@@ -59,48 +56,17 @@
             // addDeviceOKButton
             // 
             this.addDeviceOKButton.AutoSize = true;
-            this.layoutPane.SetColumnSpan(this.addDeviceOKButton, 2);
-            this.addDeviceOKButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.addDeviceOKButton.Location = new System.Drawing.Point(143, 176);
+            this.addDeviceOKButton.Location = new System.Drawing.Point(492, 29);
             this.addDeviceOKButton.Name = "addDeviceOKButton";
             this.addDeviceOKButton.Size = new System.Drawing.Size(27, 22);
             this.addDeviceOKButton.TabIndex = 0;
             this.addDeviceOKButton.Text = "OK";
             this.addDeviceOKButton.UseVisualStyleBackColor = true;
             // 
-            // TitleTextBox
-            // 
-            this.TitleTextBox.Location = new System.Drawing.Point(98, 3);
-            this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(120, 21);
-            this.TitleTextBox.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 27);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Windows Name:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // addDeviceCancelButton
-            // 
-            this.addDeviceCancelButton.AutoSize = true;
-            this.addDeviceCancelButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.addDeviceCancelButton.Location = new System.Drawing.Point(176, 176);
-            this.addDeviceCancelButton.Name = "addDeviceCancelButton";
-            this.addDeviceCancelButton.Size = new System.Drawing.Size(60, 22);
-            this.addDeviceCancelButton.TabIndex = 1;
-            this.addDeviceCancelButton.Text = "Cancel";
-            this.addDeviceCancelButton.UseVisualStyleBackColor = true;
-            // 
             // BaudRateComboBox
             // 
             this.BaudRateComboBox.FormattingEnabled = true;
-            this.BaudRateComboBox.Location = new System.Drawing.Point(98, 56);
+            this.BaudRateComboBox.Location = new System.Drawing.Point(98, 29);
             this.BaudRateComboBox.Name = "BaudRateComboBox";
             this.BaudRateComboBox.Size = new System.Drawing.Size(120, 20);
             this.BaudRateComboBox.TabIndex = 4;
@@ -108,7 +74,7 @@
             // SerialNumberComboBox
             // 
             this.SerialNumberComboBox.FormattingEnabled = true;
-            this.SerialNumberComboBox.Location = new System.Drawing.Point(98, 30);
+            this.SerialNumberComboBox.Location = new System.Drawing.Point(98, 3);
             this.SerialNumberComboBox.Name = "SerialNumberComboBox";
             this.SerialNumberComboBox.Size = new System.Drawing.Size(120, 20);
             this.SerialNumberComboBox.TabIndex = 2;
@@ -117,9 +83,9 @@
             // 
             this.lbBaudRate.AutoSize = true;
             this.lbBaudRate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbBaudRate.Location = new System.Drawing.Point(3, 53);
+            this.lbBaudRate.Location = new System.Drawing.Point(3, 26);
             this.lbBaudRate.Name = "lbBaudRate";
-            this.lbBaudRate.Size = new System.Drawing.Size(89, 26);
+            this.lbBaudRate.Size = new System.Drawing.Size(89, 28);
             this.lbBaudRate.TabIndex = 5;
             this.lbBaudRate.Text = "Baud Rate:";
             this.lbBaudRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -128,7 +94,7 @@
             // 
             this.lbSerialNumber.AutoSize = true;
             this.lbSerialNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbSerialNumber.Location = new System.Drawing.Point(3, 27);
+            this.lbSerialNumber.Location = new System.Drawing.Point(3, 0);
             this.lbSerialNumber.Name = "lbSerialNumber";
             this.lbSerialNumber.Size = new System.Drawing.Size(89, 26);
             this.lbSerialNumber.TabIndex = 3;
@@ -138,10 +104,9 @@
             // lbDataBits
             // 
             this.lbDataBits.AutoSize = true;
-            this.lbDataBits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbDataBits.Location = new System.Drawing.Point(3, 105);
+            this.lbDataBits.Location = new System.Drawing.Point(224, 26);
             this.lbDataBits.Name = "lbDataBits";
-            this.lbDataBits.Size = new System.Drawing.Size(89, 26);
+            this.lbDataBits.Size = new System.Drawing.Size(65, 12);
             this.lbDataBits.TabIndex = 6;
             this.lbDataBits.Text = "Data Bits:";
             this.lbDataBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -149,10 +114,9 @@
             // lbStopBits
             // 
             this.lbStopBits.AutoSize = true;
-            this.lbStopBits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbStopBits.Location = new System.Drawing.Point(3, 131);
+            this.lbStopBits.Location = new System.Drawing.Point(421, 0);
             this.lbStopBits.Name = "lbStopBits";
-            this.lbStopBits.Size = new System.Drawing.Size(89, 26);
+            this.lbStopBits.Size = new System.Drawing.Size(65, 12);
             this.lbStopBits.TabIndex = 7;
             this.lbStopBits.Text = "Stop Bits:";
             this.lbStopBits.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -160,10 +124,9 @@
             // lbParity
             // 
             this.lbParity.AutoSize = true;
-            this.lbParity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbParity.Location = new System.Drawing.Point(3, 79);
+            this.lbParity.Location = new System.Drawing.Point(224, 0);
             this.lbParity.Name = "lbParity";
-            this.lbParity.Size = new System.Drawing.Size(89, 26);
+            this.lbParity.Size = new System.Drawing.Size(47, 12);
             this.lbParity.TabIndex = 8;
             this.lbParity.Text = "Parity:";
             this.lbParity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -171,7 +134,7 @@
             // DataBitsComboBox
             // 
             this.DataBitsComboBox.FormattingEnabled = true;
-            this.DataBitsComboBox.Location = new System.Drawing.Point(98, 108);
+            this.DataBitsComboBox.Location = new System.Drawing.Point(295, 29);
             this.DataBitsComboBox.Name = "DataBitsComboBox";
             this.DataBitsComboBox.Size = new System.Drawing.Size(120, 20);
             this.DataBitsComboBox.TabIndex = 9;
@@ -179,7 +142,7 @@
             // StopBitsComboBox
             // 
             this.StopBitsComboBox.FormattingEnabled = true;
-            this.StopBitsComboBox.Location = new System.Drawing.Point(98, 134);
+            this.StopBitsComboBox.Location = new System.Drawing.Point(492, 3);
             this.StopBitsComboBox.Name = "StopBitsComboBox";
             this.StopBitsComboBox.Size = new System.Drawing.Size(120, 20);
             this.StopBitsComboBox.TabIndex = 10;
@@ -187,7 +150,7 @@
             // ParityComboBox
             // 
             this.ParityComboBox.FormattingEnabled = true;
-            this.ParityComboBox.Location = new System.Drawing.Point(98, 82);
+            this.ParityComboBox.Location = new System.Drawing.Point(295, 3);
             this.ParityComboBox.Name = "ParityComboBox";
             this.ParityComboBox.Size = new System.Drawing.Size(120, 20);
             this.ParityComboBox.TabIndex = 11;
@@ -195,48 +158,44 @@
             // layoutPane
             // 
             this.layoutPane.BackColor = System.Drawing.Color.Transparent;
-            this.layoutPane.ColumnCount = 4;
+            this.layoutPane.ColumnCount = 7;
+            this.layoutPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.layoutPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.layoutPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.layoutPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.layoutPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.layoutPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.layoutPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutPane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.layoutPane.Controls.Add(this.ParityComboBox, 1, 3);
-            this.layoutPane.Controls.Add(this.StopBitsComboBox, 1, 5);
-            this.layoutPane.Controls.Add(this.DataBitsComboBox, 1, 4);
-            this.layoutPane.Controls.Add(this.lbParity, 0, 3);
-            this.layoutPane.Controls.Add(this.lbStopBits, 0, 5);
-            this.layoutPane.Controls.Add(this.lbDataBits, 0, 4);
-            this.layoutPane.Controls.Add(this.lbSerialNumber, 0, 1);
-            this.layoutPane.Controls.Add(this.lbBaudRate, 0, 2);
-            this.layoutPane.Controls.Add(this.SerialNumberComboBox, 1, 1);
-            this.layoutPane.Controls.Add(this.BaudRateComboBox, 1, 2);
-            this.layoutPane.Controls.Add(this.addDeviceCancelButton, 3, 7);
-            this.layoutPane.Controls.Add(this.label6, 0, 0);
-            this.layoutPane.Controls.Add(this.TitleTextBox, 1, 0);
-            this.layoutPane.Controls.Add(this.addDeviceOKButton, 1, 7);
-            this.layoutPane.Controls.Add(this.label1, 0, 7);
+            this.layoutPane.Controls.Add(this.lbSerialNumber, 0, 0);
+            this.layoutPane.Controls.Add(this.lbBaudRate, 0, 1);
+            this.layoutPane.Controls.Add(this.SerialNumberComboBox, 1, 0);
+            this.layoutPane.Controls.Add(this.BaudRateComboBox, 1, 1);
+            this.layoutPane.Controls.Add(this.lbParity, 2, 0);
+            this.layoutPane.Controls.Add(this.ParityComboBox, 3, 0);
+            this.layoutPane.Controls.Add(this.lbDataBits, 2, 1);
+            this.layoutPane.Controls.Add(this.DataBitsComboBox, 3, 1);
+            this.layoutPane.Controls.Add(this.lbStopBits, 4, 0);
+            this.layoutPane.Controls.Add(this.StopBitsComboBox, 5, 0);
+            this.layoutPane.Controls.Add(this.label1, 4, 1);
+            this.layoutPane.Controls.Add(this.addDeviceOKButton, 5, 1);
             this.layoutPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutPane.Location = new System.Drawing.Point(0, 0);
             this.layoutPane.Margin = new System.Windows.Forms.Padding(0);
             this.layoutPane.Name = "layoutPane";
-            this.layoutPane.RowCount = 8;
-            this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.layoutPane.RowCount = 3;
             this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutPane.Size = new System.Drawing.Size(239, 201);
+            this.layoutPane.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutPane.Size = new System.Drawing.Size(654, 75);
             this.layoutPane.TabIndex = 8;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(239, 201);
+            this.ClientSize = new System.Drawing.Size(654, 75);
             this.Controls.Add(this.layoutPane);
             this.Name = "FormMain";
             this.Text = "Form1";
@@ -262,9 +221,6 @@
         private System.Windows.Forms.Label lbBaudRate;
         private System.Windows.Forms.ComboBox SerialNumberComboBox;
         private System.Windows.Forms.ComboBox BaudRateComboBox;
-        private System.Windows.Forms.Button addDeviceCancelButton;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox TitleTextBox;
     }
 }
 

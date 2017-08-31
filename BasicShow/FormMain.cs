@@ -64,7 +64,21 @@ namespace BasicShow
             //}
             list[0].DataReceived += FormMain_DataReceived;
             list[0].EventTest();
+            //((Form)(list[0])).Show();
+
+            //Form tmpFrom = (Form)Activator.CreateInstance(type);
+            ((Form)(list[0])).BackColor = Color.White;
+            ((Form)(list[0])).Dock = DockStyle.Fill;
+            ((Form)(list[0])).FormBorderStyle = FormBorderStyle.None; //隐藏子窗体边框（去除最小花，最大化，关闭等按钮）
+            ((Form)(list[0])).TopLevel = false; //指示子窗体非顶级窗体
+            //                          /*生成子页面*/
+            TabPage tmpPage = new TabPage();
+            tmpPage.Controls.Add(((Form)(list[0])));//将子窗体载入panel
+            tmpPage.Text = ((Form)(list[0])).Text;
+            /*子页面添加至主页*/
+            tabControl1.TabPages.Add(tmpPage);
             ((Form)(list[0])).Show();
+            //tabControl1.tab
         }
 
         #region 数据统计
@@ -90,6 +104,13 @@ namespace BasicShow
         #endregion
 
         #region 接收显示数据
+
+        private void tbRecvData_TextChanged(object sender, EventArgs e)
+        {
+            tbRecvData.Focus();//获取焦点
+            tbRecvData.Select(tbRecvData.TextLength, 0);//光标定位到文本最后
+            tbRecvData.ScrollToCaret();//滚动到光标处
+        }
         /// <summary>
         /// 更新窗体的数据绑定
         /// </summary>
@@ -98,11 +119,11 @@ namespace BasicShow
             Thread SendData = new Thread(() => {
                 if (chkShowTypeHex.Checked)
                 {
-                    RecvDatasShow.Value = Conversion.byteToHexStr(RecvDatas.ToArray(), ' ');
+                    int.TryParse(textBox1.Text, out int leng);
+                    RecvDatasShow.Value = Conversion.byteToHexStr(RecvDatas.ToArray(), ' ', checkBox1.Checked ? leng : 0, checkBox3.Checked);
                 }
                 else
                 {
-
                     RecvDatasShow.Value = System.Text.Encoding.Default.GetString(RecvDatas.ToArray());
                 }
                 this.Invoke(new Action(() =>
@@ -270,6 +291,29 @@ namespace BasicShow
                     catch { }
                 }
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                if (int.TryParse(textBox1.Text, out int tmp))
+                {
+                    textBox1.Enabled = false;
+                }
+                else
+                {
+                    checkBox1.Checked = false;
+                    MessageBox.Show("长度输入错误");
+                    textBox1.Enabled = true;
+                    textBox1.Focus();
+                }
+            }
+            else
+            {
+                textBox1.Enabled = true;
+            }
+            UpdateRecvShow();
         }
     }
 
