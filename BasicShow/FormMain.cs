@@ -31,8 +31,9 @@ namespace BasicShow
         private BlindInt FileSendPrs = new BlindInt();
         private BlindString SendDatasShow = new BlindString();
         private BlindString RecvDatasShow = new BlindString();
-
-        private List<byte> RecvDatas = new List<byte>();
+        const int MAX_BUFFER_LEN = 1024;
+        private RingBuffer RecvDatas = new RingBuffer(MAX_BUFFER_LEN);
+        //private List<byte> RecvDatas = new List<byte>();
         private string NewLineStr = "";
         
         private void FormMain_Load(object sender, EventArgs e)
@@ -117,18 +118,44 @@ namespace BasicShow
         /// </summary>
         private void UpdateRecvShow()
         {
-            RecvDatasShow.Value = "";
-            UpdateRecvShow(RecvDatas.ToArray());
+            //RecvDatasShow.Value = "";
+            //UpdateRecvShow(RecvDatas.ToArray());
         }
 
 
         private void UpdateRecvShow(byte[] buffPort)
         {
             Thread SendData = new Thread(() => {
+                RecvDatas.WriteBuffer(buffPort);
                 if (chkShowTypeHex.Checked)
                 {
-                    int.TryParse(textBox1.Text, out int leng);
-                    RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, ' ', checkBox1.Checked ? leng : 0, checkBox3.Checked);
+                    if (checkBox1.Checked)
+                    {
+                        int.TryParse(textBox1.Text, out int leng);
+                        while (RecvDatas.GetDataCount() > leng)
+                        {
+                            buffPort = new byte[leng];
+                            RecvDatas.ReadBuffer(buffPort, 0, leng);
+                            RecvDatas.Clear(leng);
+                            RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, leng, ' ');
+                            RecvDatasShow.Value += "\r\n";
+                            Thread.Sleep(500);
+                        }
+                        leng = RecvDatas.GetDataCount();
+                        buffPort = new byte[leng];
+                        RecvDatas.ReadBuffer(buffPort, 0, leng);
+                        RecvDatas.Clear(leng);
+                        RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, leng, ' ');
+                        RecvDatasShow.Value += "\r\n";
+                        //RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, ' ', checkBox1.Checked ? leng : 0, checkBox3.Checked);
+                    }
+                    else
+                    {
+                        int leng = RecvDatas.GetDataCount();
+                        RecvDatas.ReadBuffer(buffPort, 0, leng);
+                        RecvDatas.Clear(leng);
+                        RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, leng, ' ');
+                    }
                 }
                 else
                 {
@@ -170,14 +197,13 @@ namespace BasicShow
         #region 接收数据
         public void AppendBytes(byte[] buffPort)
         {
-            RecvBytes.Value += buffPort.Length;
-            RecvDatas.AddRange(buffPort);
-            UpdateRecvShow(buffPort);
         }
 
         private void FormMain_DataReceived(object sender, EventArgs e)
         {
-            AppendBytes((byte[])sender);
+            RecvBytes.Value += ((byte[])sender).Length; //计算接收长度
+            UpdateRecvShow(((byte[])sender));   //
+            //AppendBytes((byte[])sender);
             AppendChart((byte[])sender);
         }
 
@@ -186,7 +212,6 @@ namespace BasicShow
 
 
         #region 图表
-
         private void chart1_GetToolTipText(object sender, ToolTipEventArgs e)
         {
             if (e.HitTestResult.ChartElementType == ChartElementType.DataPoint)
@@ -219,11 +244,11 @@ namespace BasicShow
                 this.Cursor = Cursors.Default;
             }
         }
-        RingBuffer buffer = new RingBuffer(240);
+        RingBuffer buffer = new RingBuffer(MAX_BUFFER_LEN);
         public void AppendChart(byte[] buffPort)
         {
             buffer.WriteBuffer(buffPort);
-            while (buffer.GetReserveCount() > 24)
+            while (buffer.GetDataCount() > 24)
             {
                 buffer.ReadBuffer(buffPort, 0, 1);
                 buffer.Clear(1);
