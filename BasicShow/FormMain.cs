@@ -14,6 +14,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BasicShow
 {
@@ -170,8 +171,86 @@ namespace BasicShow
         private void FormMain_DataReceived(object sender, EventArgs e)
         {
             AppendBytes((byte[])sender);
+            AppendChart((byte[])sender);
         }
+
         #endregion
+
+
+
+        #region 图表
+
+        private void chart1_GetToolTipText(object sender, ToolTipEventArgs e)
+        {
+            if (e.HitTestResult.ChartElementType == ChartElementType.DataPoint)
+            {
+                this.Cursor = Cursors.Cross;
+                int i = e.HitTestResult.PointIndex;
+                DataPoint dp = e.HitTestResult.Series.Points[i];
+                e.Text = string.Format("设备：" + e.HitTestResult.Series.Name + "\nRSSI：{1:F3}" + "dBm\n日期：{0}", DateTime.FromOADate(dp.XValue), dp.YValues[0]);
+            }
+            else
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+        private void chart1_MouseMove(object sender, MouseEventArgs e)
+        {
+            HitTestResult myTestResult = chart1.HitTest(e.X, e.Y);
+            if (myTestResult.ChartElementType == ChartElementType.DataPoint)
+            {
+                this.Cursor = Cursors.Cross;
+                int i = myTestResult.PointIndex;
+                DataPoint dp = myTestResult.Series.Points[i];
+
+                double doubleXValue = (dp.XValue);
+                double doubleYValue = dp.YValues[0];
+                //自我实现值的显示            
+            }
+            else
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+        RingBuffer buffer = new RingBuffer(240);
+        public void AppendChart(byte[] buffPort)
+        {
+            buffer.WriteBuffer(buffPort);
+            while (buffer.GetReserveCount() > 24)
+            {
+                buffer.ReadBuffer(buffPort, 0, 1);
+                buffer.Clear(1);
+                if (buffPort[0] == 0xBB)
+                {
+                    buffer.ReadBuffer(buffPort, 0, 23);
+                    buffer.Clear(23);
+                    Invoke((MethodInvoker)delegate ()
+                    {
+                        string series = Conversion.byteToHexStr(new byte[] { buffPort[0], buffPort[1], buffPort[2], buffPort[3] }, ' ');
+                        int current = ((buffPort[19] >= 128) ? ((buffPort[19] - 256) / 2 - 75) : (buffPort[19] / 2 - 75));
+                        try
+                        {
+                            chart1.Series[series].Name = series;
+                        }
+                        catch
+                        {
+                            Series seriesTmp = new Series();
+                            seriesTmp.ChartArea = "ChartArea1";
+                            seriesTmp.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                            seriesTmp.Legend = "Legend1";
+                            seriesTmp.Name = series;
+                            this.chart1.Series.Add(seriesTmp);
+                        }
+                        //chartShow.Series[series].Points.AddY(current);
+                        chart1.Series[series].Points.AddXY(DateTime.Now, current);
+                    });
+                }
+            }
+        }
+
+        #endregion
+
+
 
         #region 发送数据
         private void btnSend_Click(object sender, EventArgs e)
@@ -315,6 +394,7 @@ namespace BasicShow
             }
             UpdateRecvShow();
         }
+
     }
 
     #region 数据绑定
