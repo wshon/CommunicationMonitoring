@@ -220,6 +220,11 @@ namespace BasicShow
 
 
         #region 图表
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            chart1.Series.Clear();
+        }
         private void chart1_GetToolTipText(object sender, ToolTipEventArgs e)
         {
             if (e.HitTestResult.ChartElementType == ChartElementType.DataPoint)
@@ -227,7 +232,7 @@ namespace BasicShow
                 this.Cursor = Cursors.Cross;
                 int i = e.HitTestResult.PointIndex;
                 DataPoint dp = e.HitTestResult.Series.Points[i];
-                e.Text = string.Format("设备：" + e.HitTestResult.Series.Name + "\nRSSI：{1:F3}" + "dBm\n日期：{0}", DateTime.FromOADate(dp.XValue), dp.YValues[0]);
+                e.Text = string.Format("设备：{0}\nRSSI：{1:F1}dBm\n日期：{2:yyyy-MM-dd hh:mm:ss.fff}", e.HitTestResult.Series.Name, dp.YValues[0], DateTime.FromOADate(dp.XValue));
             }
             else
             {
@@ -236,6 +241,14 @@ namespace BasicShow
         }
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
+            int _currentPointX = e.X;
+            int _currentPointY = e.Y;
+            //MsChart.Refresh();没啥效果
+            chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(new PointF(_currentPointX, _currentPointY), true);
+            chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(new PointF(_currentPointX, _currentPointY), true);
+            //Application.DoEvents(); 使用此方法当有线程操作时会引发异常
+
+
             HitTestResult myTestResult = chart1.HitTest(e.X, e.Y);
             if (myTestResult.ChartElementType == ChartElementType.DataPoint)
             {
@@ -243,8 +256,10 @@ namespace BasicShow
                 int i = myTestResult.PointIndex;
                 DataPoint dp = myTestResult.Series.Points[i];
 
-                double doubleXValue = (dp.XValue);
-                double doubleYValue = dp.YValues[0];
+                //DateTime DateTimeXValue = DateTime.FromOADate(dp.XValue);
+                //double doubleYValue = dp.YValues[0];
+                //myTestResult.Series.LegendText = myTestResult.Series.Name + doubleYValue.ToString("F1") + "dBm\r\n" + DateTimeXValue.ToString("yyyy-MM-dd hh:mm:ss.fff");
+                myTestResult.Series.LegendText = string.Format("{0}\n{1:F1}dBm\n{2:yyyy-MM-dd}\n{2:hh:mm:ss.fff}", myTestResult.Series.Name, dp.YValues[0], DateTime.FromOADate(dp.XValue));
                 //自我实现值的显示            
             }
             else
@@ -269,7 +284,7 @@ namespace BasicShow
                     Invoke((MethodInvoker)delegate ()
                     {
                         string series = Conversion.byteToHexStr(new byte[] { buffPort[0], buffPort[1], buffPort[2], buffPort[3] }, ' ');
-                        int current = ((buffPort[19] >= 128) ? ((buffPort[19] - 256) / 2 - 75) : (buffPort[19] / 2 - 75));
+                        double current = ((buffPort[19] >= 128) ? ((buffPort[19] - 256) / 2 - 75) : (buffPort[19] / 2 - 75));
                         try
                         {
                             chart1.Series[series].Name = series;
@@ -278,13 +293,22 @@ namespace BasicShow
                         {
                             Series seriesTmp = new Series();
                             seriesTmp.ChartArea = "ChartArea1";
-                            seriesTmp.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                            //seriesTmp.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                            seriesTmp.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                            seriesTmp.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+                            seriesTmp.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
                             seriesTmp.Legend = "Legend1";
                             seriesTmp.Name = series;
                             this.chart1.Series.Add(seriesTmp);
+
+                            chart1.ChartAreas[0].AxisX.LabelStyle.Format = "{dd hh:mm:ss}";
+                            //chart1.ChartAreas[0].CursorX.
+                            chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
+                            chart1.ChartAreas[0].CursorY.IsUserEnabled = true;
                         }
                         //chartShow.Series[series].Points.AddY(current);
                         chart1.Series[series].Points.AddXY(DateTime.Now, current);
+                        //chart1.Series[series].
                     });
                 }
             }
@@ -436,7 +460,6 @@ namespace BasicShow
             }
             UpdateRecvShow();
         }
-
     }
 
     #region 数据绑定
