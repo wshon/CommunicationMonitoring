@@ -43,6 +43,8 @@ namespace BasicShow
             prsSendFile.DataBindings.Add("Value", FileSendPrs, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
             tbRecvData.DataBindings.Add("Text", RecvDatasShow, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
             tbSendData.DataBindings.Add("Text", SendDatasShow, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            button1.PerformClick();
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -132,26 +134,27 @@ namespace BasicShow
                     if (checkBox1.Checked)
                     {
                         int.TryParse(textBox1.Text, out int leng);
-                        while (RecvDatas.GetDataCount() > leng)
+                        while (RecvDatas.GetDataCount() >= leng)
                         {
                             buffPort = new byte[leng];
                             RecvDatas.ReadBuffer(buffPort, 0, leng);
                             RecvDatas.Clear(leng);
                             RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, leng, ' ');
                             RecvDatasShow.Value += "\r\n";
-                            Thread.Sleep(500);
+                            //Thread.Sleep(500);
                         }
-                        leng = RecvDatas.GetDataCount();
-                        buffPort = new byte[leng];
-                        RecvDatas.ReadBuffer(buffPort, 0, leng);
-                        RecvDatas.Clear(leng);
-                        RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, leng, ' ');
-                        RecvDatasShow.Value += "\r\n";
+                        //leng = RecvDatas.GetDataCount();
+                        //buffPort = new byte[leng];
+                        //RecvDatas.ReadBuffer(buffPort, 0, leng);
+                        //RecvDatas.Clear(leng);
+                        //RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, leng, ' ');
+                        //RecvDatasShow.Value += "\r\n";
                         //RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, ' ', checkBox1.Checked ? leng : 0, checkBox3.Checked);
                     }
                     else
                     {
                         int leng = RecvDatas.GetDataCount();
+                        buffPort = new byte[leng];
                         RecvDatas.ReadBuffer(buffPort, 0, leng);
                         RecvDatas.Clear(leng);
                         RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, leng, ' ');
@@ -159,7 +162,12 @@ namespace BasicShow
                 }
                 else
                 {
+                    int leng = RecvDatas.GetDataCount();
+                    buffPort = new byte[leng];
+                    RecvDatas.ReadBuffer(buffPort, 0, leng);
+                    RecvDatas.Clear(leng);
                     RecvDatasShow.Value += System.Text.Encoding.Default.GetString(buffPort);
+                    RecvDatasShow.Value = RecvDatasShow.Value.Replace('\0', '?');
                 }
                 this.Invoke(new Action(() =>
                 {
@@ -248,12 +256,14 @@ namespace BasicShow
         public void AppendChart(byte[] buffPort)
         {
             buffer.WriteBuffer(buffPort);
-            while (buffer.GetDataCount() > 24)
+            while (buffer.GetDataCount() >= 24)
             {
+                buffPort = new byte[1];
                 buffer.ReadBuffer(buffPort, 0, 1);
                 buffer.Clear(1);
                 if (buffPort[0] == 0xBB)
                 {
+                    buffPort = new byte[23];
                     buffer.ReadBuffer(buffPort, 0, 23);
                     buffer.Clear(23);
                     Invoke((MethodInvoker)delegate ()
