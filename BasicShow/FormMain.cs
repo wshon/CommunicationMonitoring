@@ -117,15 +117,22 @@ namespace BasicShow
         /// </summary>
         private void UpdateRecvShow()
         {
+            RecvDatasShow.Value = "";
+            UpdateRecvShow(RecvDatas.ToArray());
+        }
+
+
+        private void UpdateRecvShow(byte[] buffPort)
+        {
             Thread SendData = new Thread(() => {
                 if (chkShowTypeHex.Checked)
                 {
                     int.TryParse(textBox1.Text, out int leng);
-                    RecvDatasShow.Value = Conversion.byteToHexStr(RecvDatas.ToArray(), ' ', checkBox1.Checked ? leng : 0, checkBox3.Checked);
+                    RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, ' ', checkBox1.Checked ? leng : 0, checkBox3.Checked);
                 }
                 else
                 {
-                    RecvDatasShow.Value = System.Text.Encoding.Default.GetString(RecvDatas.ToArray());
+                    RecvDatasShow.Value += System.Text.Encoding.Default.GetString(buffPort);
                 }
                 this.Invoke(new Action(() =>
                 {
@@ -165,7 +172,7 @@ namespace BasicShow
         {
             RecvBytes.Value += buffPort.Length;
             RecvDatas.AddRange(buffPort);
-            UpdateRecvShow();
+            UpdateRecvShow(buffPort);
         }
 
         private void FormMain_DataReceived(object sender, EventArgs e)
