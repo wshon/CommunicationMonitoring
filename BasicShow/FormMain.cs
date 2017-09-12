@@ -66,23 +66,26 @@ namespace BasicShow
             //Interfaces instance = PageMamage.LoadInterface("InterfaceLink", "Interfaces");
             //    list.Add(instance);
             //}
-            list[0].DataReceived += FormMain_DataReceived;
-            list[0].EventTest();
-            //((Form)(list[0])).Show();
+            foreach (Interfaces item in list)
+            {
+                item.DataReceived += FormMain_DataReceived;
+                item.EventTest();
+                //((Form)(list[0])).Show();
 
-            //Form tmpFrom = (Form)Activator.CreateInstance(type);
-            ((Form)(list[0])).BackColor = Color.White;
-            ((Form)(list[0])).Dock = DockStyle.Fill;
-            ((Form)(list[0])).FormBorderStyle = FormBorderStyle.None; //隐藏子窗体边框（去除最小花，最大化，关闭等按钮）
-            ((Form)(list[0])).TopLevel = false; //指示子窗体非顶级窗体
-            //                          /*生成子页面*/
-            TabPage tmpPage = new TabPage();
-            tmpPage.Controls.Add(((Form)(list[0])));//将子窗体载入panel
-            tmpPage.Text = ((Form)(list[0])).Text;
-            /*子页面添加至主页*/
-            tabControl1.TabPages.Add(tmpPage);
-            ((Form)(list[0])).Show();
-            //tabControl1.tab
+                //Form tmpFrom = (Form)Activator.CreateInstance(type);
+                ((Form)item).BackColor = Color.White;
+                ((Form)item).Dock = DockStyle.Fill;
+                ((Form)item).FormBorderStyle = FormBorderStyle.None; //隐藏子窗体边框（去除最小花，最大化，关闭等按钮）
+                ((Form)item).TopLevel = false; //指示子窗体非顶级窗体
+                                                    //                          /*生成子页面*/
+                TabPage tmpPage = new TabPage();
+                tmpPage.Controls.Add(((Form)item));//将子窗体载入panel
+                tmpPage.Text = ((Form)item).Text;
+                /*子页面添加至主页*/
+                tabControl1.TabPages.Add(tmpPage);
+                ((Form)item).Show();
+                //tabControl1.tab
+            }
         }
 
         #region 数据统计
@@ -140,6 +143,7 @@ namespace BasicShow
                             RecvDatas.ReadBuffer(buffPort, 0, leng);
                             RecvDatas.Clear(leng);
                             RecvDatasShow.Value += Conversion.byteToHexStr(buffPort, leng, ' ');
+                            if(checkBox3.Checked) RecvDatasShow.Value += " [" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "]";
                             RecvDatasShow.Value += "\r\n";
                             //Thread.Sleep(500);
                         }
@@ -284,7 +288,7 @@ namespace BasicShow
                     Invoke((MethodInvoker)delegate ()
                     {
                         string series = Conversion.byteToHexStr(new byte[] { buffPort[0], buffPort[1], buffPort[2], buffPort[3] }, ' ');
-                        double current = ((buffPort[19] >= 128) ? ((buffPort[19] - 256) / 2 - 75) : (buffPort[19] / 2 - 75));
+                        double current = ((buffPort[19] >= 128) ? ((buffPort[19] - 256) / 2.0 - 75) : (buffPort[19] / 2.0 - 75));
                         try
                         {
                             chart1.Series[series].Name = series;
@@ -301,8 +305,11 @@ namespace BasicShow
                             seriesTmp.Name = series;
                             this.chart1.Series.Add(seriesTmp);
 
+                            chart1.ChartAreas[0].AxisY.IsStartedFromZero = false;
                             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "{dd hh:mm:ss}";
                             //chart1.ChartAreas[0].CursorX.
+                            chart1.ChartAreas[0].CursorX.Interval = 0.00001;
+                            chart1.ChartAreas[0].CursorY.Interval = 0.5;
                             chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
                             chart1.ChartAreas[0].CursorY.IsUserEnabled = true;
                         }

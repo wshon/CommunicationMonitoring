@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{75155288-A9B0-4AF7-9AC1-FF031EADC87B}</ProjectGuid>
+    <ProjectGuid>{27C68B10-43FA-41E1-BE75-003454159736}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>BasicShow</RootNamespace>
-    <AssemblyName>BasicShow</AssemblyName>
+    <RootNamespace>BasicSocketServer</RootNamespace>
+    <AssemblyName>BasicSocketServer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,21 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChartShow.cs" />
-    <Compile Include="Conversion.cs" />
-    <Compile Include="FormMain.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="PageMamage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RingBuffer.cs" />
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -77,32 +69,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BasicSerialService\BasicSerialService.csproj">
-      <Project>{64acc54b-5827-428f-89be-d38ff7706122}</Project>
-      <Name>BasicSerialService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BasicSocketClient\BasicSocketClient.csproj">
-      <Project>{c918233d-01a9-4a0c-9aa6-ed0a0efbbb20}</Project>
-      <Name>BasicSocketClient</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BasicSocketServer\BasicSocketServer.csproj">
-      <Project>{27c68b10-43fa-41e1-be75-003454159736}</Project>
-      <Name>BasicSocketServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GeneralSerialService\GeneralSerialService.csproj">
-      <Project>{d2d69f61-084d-4b55-83a0-142e9938ff39}</Project>
-      <Name>GeneralSerialService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\InterfaceLink\InterfaceLink.csproj">
-      <Project>{4fa71d55-85ab-489d-a371-d61c08608555}</Project>
-      <Name>InterfaceLink</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VirtualSerialService\VirtualSerialService.csproj">
-      <Project>{96171e2a-3ead-4be0-8e83-a4950a40b003}</Project>
-      <Name>VirtualSerialService</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
