@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BasicSocketClient
@@ -107,7 +108,7 @@ namespace BasicSocketClient
                     label1.Text = "连接成功";
                     _SocketClient.ReceiveMessage();
                     addDeviceOKButton.Text = "断开连接";
-                    _SocketClient.DataReceived += ThisSerialPort_DataReceived;
+                    _SocketClient.DataReceived += ThisSocket_DataReceived;
                 }
                 else
                 {
@@ -115,12 +116,17 @@ namespace BasicSocketClient
                 }
             }
         }
-        private void ThisSerialPort_DataReceived(object sender, EventArgs e)
+
+        //Socket接收事件
+        byte[] bytes;
+        private void ThisSocket_DataReceived(object sender, EventArgs e)
         {
-            this.Invoke(new Action(() =>
-            {
-                DataReceived?.Invoke(((byte[])sender), new EventArgs());
-            }));
+            Thread SetProgress = new Thread(() => {
+                bytes = ((byte[])sender);
+                DataReceived?.Invoke(bytes, new EventArgs());
+            });
+            SetProgress.IsBackground = true;
+            SetProgress.Start();
         }
 
         private void button1_Click(object sender, EventArgs e)
